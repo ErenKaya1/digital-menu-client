@@ -35,24 +35,28 @@ const routes = [
         component: Dashboard,
       },
       {
-        path: "/account",
+        path: "/dashboard/account",
         component: () => import(/* webpackChunkName: "account" */ "@/views/Dashboard/Account.vue"),
       },
       {
-        path: "/categories",
+        path: "/dashboard/categories",
         component: () => import(/* webpackChunkName: "categories" */ "@/views/Dashboard/Categories.vue"),
       },
       {
-        path: "/products",
+        path: "/dashboard/products",
         component: () => import(/* webpackChunkName: "products" */ "@/views/Dashboard/Products.vue"),
       },
       {
-        path: "/product-groups",
+        path: "/dashboard/product-groups",
         component: () => import(/* webpackChunkName: "product-groups" */ "@/views/Dashboard/ProductGroups.vue"),
       },
       {
-        path: "/qr",
+        path: "/dashboard/qr",
         component: () => import(/* webpackChunkName: "qr" */ "@/views/Dashboard/Qr.vue"),
+      },
+      {
+        path: "/dashboard/renew-subscription",
+        component: () => import(/* webpackChunkName: "renew-subscription" */ "@/views/Dashboard/RenewSubscription.vue"),
       },
     ],
   },

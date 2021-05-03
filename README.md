@@ -11,3 +11,5 @@
 - [ ] Ürün eklerken veya düzenlerken fiyat bugu
 - [ ] Seçilen para birimine göre sembolün gösterilmesi
 - [ ] Ekleme ve düzenleme sayfalarının modal değil de yeni view olması
+- [ ] Parola Sıfırlama Formu
+- [ ] JWT token HttpOnly cookiede saklanacak

@@ -26,27 +26,27 @@ export default {
             icon: "lnr lnr-home",
           },
           {
-            href: "/products",
+            href: "/dashboard/products",
             title: "Ürünler",
             icon: "fas fa-utensils",
           },
           {
-            href: "/product-groups",
+            href: "/dashboard/product-groups",
             title: "Ürün Grupları",
             icon: "fas fa-utensils",
           },
           {
-            href: "/categories",
+            href: "/dashboard/categories",
             title: "Kategoriler",
             icon: "fas fa-layer-group",
           },
           {
-            href: "/qr",
+            href: "/dashboard/qr",
             title: "QR Kod",
             icon: "fas fa-qrcode",
           },
           {
-            href: "/account",
+            href: "/dashboard/account",
             title: "Profil",
             icon: "lnr lnr-user",
           },

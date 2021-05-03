@@ -2,7 +2,7 @@
   <div>
     <b-alert variant="danger" show v-if="subscriptionStatus === 'Expired'">
         Üyeliğiniz bitti.
-        Üyeliğinizi yenilemek için <a href="#">tıklayınız.</a>
+        Üyeliğinizi yenilemek için <b-link to="/dashboard/renew-subscription">tıklayınız.</b-link>
     </b-alert>
     <b-alert variant="danger" show v-else-if="subscriptionStatus === 'Suspended'">Üyeliğiniz askıya alındı.</b-alert>
   </div>

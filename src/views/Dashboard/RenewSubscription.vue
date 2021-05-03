@@ -1,0 +1,179 @@
+<template>
+  <div>
+    <h3 class="renew-subscription-title">Kendinize En Uygun Paketi Seçin</h3>
+    <b-row>
+      <b-col md="4" class="d-flex flex-column py-4 text-center" :class="index != 2 ? 'pricing-bordered' : ''" v-for="(type, index) in subscriptionTypes" :key="type.id">
+        <h5 class="m-0">{{ type.title }}</h5>
+        <div class="flex-grow-1">
+          <div class="py-4 my-2">
+            <span class="d-inline-block text-muted text-big align-middle mr-2">₺</span>
+            <span class="display-3 d-inline-block font-weight-bold align-middle pricing-price">{{ type.price }}</span>
+            <span class="d-inline-block text-muted text-big align-middle ml-2">/ mo</span>
+          </div>
+          <div class="pb-5">
+            <p class="mb-2" v-for="(feature, index) in type.features" :key="index">{{ feature.isUnlimited ? $t("landingView.pricingBlock.unlimited") : feature.totalValue }} {{ feature.name }}</p>
+          </div>
+          <b-button :variant="type.id === selectedSubscriptionTypeId ? 'primary' : 'outline-primary'" @click="selectSubscriptionType(type.id)">Seç</b-button>
+        </div>
+      </b-col>
+    </b-row>
+    <vue-pay-card class="mt-5" :value-fields="creditCard" :labels="labels" :is-card-number-masked="false" />
+    <div class="payment-form">
+      <form @submit.prevent="renewSubscription">
+        <b-form-group label="Kart Sahibi" :state="validateState('cardName')" invalid-feedback="Zorunlu Alan">
+          <b-input id="v-card-name" data-card-field v-model="creditCard.cardName" placeholder="Eren Kaya" :state="validateState('cardName')" />
+        </b-form-group>
+        <b-form-group label="Kart Numarası" :state="validateState('cardNumber')" invalid-feedback="Zorunlu Alan">
+          <b-input id="v-card-number" data-card-field v-model="creditCard.cardNumber" placeholder="4242 4242 4242 4242" :state="validateState('cardNumber')" />
+        </b-form-group>
+        <b-form-row>
+          <b-col>
+            <b-form-group label="Ay" :state="validateState('cardMonth')" invalid-feedback="Zorunlu Alan">
+              <b-input id="v-card-month" data-card-field v-model="creditCard.cardMonth" placeholder="12" :state="validateState('cardMonth')" />
+            </b-form-group>
+          </b-col>
+          <b-col>
+            <b-form-group label="Yıl" :state="validateState('cardYear')" invalid-feedback="Zorunlu Alan">
+              <b-input id="v-card-year" data-card-field v-model="creditCard.cardYear" placeholder="2021" :state="validateState('cardYear')" />
+            </b-form-group>
+          </b-col>
+          <b-col>
+            <b-form-group label="Güvenlik Kodu" :state="validateState('cardCvv')" invalid-feedback="Zorunlu Alan">
+              <b-input id="v-card-cvv" data-card-field v-model="creditCard.cardCvv" placeholder="000" :state="validateState('cardCvv')" />
+            </b-form-group>
+          </b-col>
+        </b-form-row>
+        <b-button type="submit" variant="landing-secondary" block>Ödemeyi Yap</b-button>
+      </form>
+    </div>
+  </div>
+</template>
+
+<script>
+import subscriptionService from "@/services/subscriptionService";
+import VuePayCard from "vue-paycard";
+import { required } from "vuelidate/lib/validators";
+
+export default {
+  components: { VuePayCard },
+
+  data() {
+    return {
+      subscriptionTypes: [],
+      selectedSubscriptionTypeId: "",
+      creditCard: {
+        cardName: "",
+        cardNumber: "",
+        cardMonth: "",
+        cardYear: "",
+        cardCvv: "",
+      },
+      labels: {
+        cardHolder: "Kart Sahibi",
+        cardExpires: "Tarih",
+        cardCvv: "CVV",
+      },
+      subscriptionModel: new FormData(),
+    };
+  },
+
+  validations: {
+    creditCard: {
+      cardName: {
+        required,
+      },
+      cardNumber: {
+        required,
+      },
+      cardMonth: {
+        required,
+      },
+      cardYear: {
+        required,
+      },
+      cardCvv: {
+        required,
+      },
+    },
+  },
+
+  async mounted() {
+    const subscriptionTypesResponse = await subscriptionService.getSubscriptionTypes();
+    if (subscriptionTypesResponse.success) {
+      this.subscriptionTypes = subscriptionTypesResponse.data;
+    }
+  },
+
+  methods: {
+    async renewSubscription() {
+      this.$v.$touch();
+      if (!this.$v.$invalid) {
+        if (!this.selectedSubscriptionTypeId) {
+          this.$notify({
+            group: "notify-top-right",
+            text: "Lütfen abonelik türünü seçiniz.",
+            duration: 5000,
+            type: "error",
+          });
+
+          return;
+        }
+
+        this.subscriptionModel.append("SubscriptionTypeId", this.selectedSubscriptionTypeId);
+        this.subscriptionModel.append("CardHolder", this.creditCard.cardName);
+        this.subscriptionModel.append("CardNumber", this.creditCard.cardNumber);
+        this.subscriptionModel.append("CardMonth", this.creditCard.cardMonth);
+        this.subscriptionModel.append("CardYear", this.creditCard.cardYear);
+        this.subscriptionModel.append("CardCvv", this.creditCard.cardCvv);
+      }
+
+      const response = await subscriptionService.renewSubscription(this.$store.state.user.userId, this.subscriptionModel);
+      if (response.success) {
+        alert("Başarıyla kaydedildi.");
+      }
+    },
+
+    selectSubscriptionType(id) {
+      this.selectedSubscriptionTypeId = id;
+    },
+
+    validateState(name) {
+      const { $dirty, $error } = this.$v.creditCard[name];
+      return $dirty ? !$error : null;
+    },
+  },
+};
+</script>
+
+<style>
+.pricing-bordered {
+  border-right: 1px solid var(--color-muted);
+}
+
+h5 {
+  font-weight: 500;
+  color: var(--color-footer-text);
+}
+
+.pricing-price {
+  font-weight: 700;
+  color: var(--color-footer-text);
+}
+
+.renew-subscription-title {
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+  color: var(--color-footer-text);
+}
+
+.payment-form {
+  display: flex;
+  justify-content: center;
+}
+
+.payment-form form {
+  width: 430px;
+  margin-top: 50px;
+}
+</style>
