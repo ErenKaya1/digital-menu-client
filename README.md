@@ -10,3 +10,4 @@
 - [ ] Görsellerin dosya formatları kontrol edilecek
 - [ ] Ürün eklerken veya düzenlerken fiyat bugu
 - [ ] Seçilen para birimine göre sembolün gösterilmesi
+- [ ] Ekleme ve düzenleme sayfalarının modal değil de yeni view olması

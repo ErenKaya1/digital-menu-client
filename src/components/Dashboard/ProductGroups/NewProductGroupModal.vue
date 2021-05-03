@@ -44,6 +44,7 @@ import productService from "@/services/productService";
 import categoryService from "@/services/categoryService";
 import Multiselect from "vue-multiselect";
 import "vue-multiselect/dist/vue-multiselect.min.css";
+import productGroupService from "@/services/productGroupService";
 
 export default {
   components: { Multiselect },
@@ -121,7 +122,39 @@ export default {
   },
 
   methods: {
-    submitProductGroupForm() {},
+    async submitProductGroupForm() {
+      this.$v.$touch();
+      if (!this.$v.$invalid) {
+        this.productGroupModel.append("NameTR", this.productGroup.nameTR);
+        this.productGroupModel.append("NameEN", this.productGroup.nameEN);
+        this.productGroupModel.append("Price", this.productGroup.price);
+        this.productGroupModel.append("DescriptionTR", this.productGroup.descriptionTR);
+        this.productGroupModel.append("DescriptionEN", this.productGroup.descriptionEN);
+        this.productGroupModel.append("CategoryId", this.productGroup.categoryId);
+        console.log(this.productGroup.products);
+        // this.productGroupModel.append("Products", this.productGroup.products);
+
+        const userId = this.$store.state.user.userId;
+        const data = await productGroupService.insertProductGroup(userId, this.productGroupModel);
+        if (data.success) {
+          this.$notify({
+            group: "notify-top-right",
+            text: "Ürün grubu başarıyla kaydedildi.",
+            duration: 5000,
+            type: "success",
+          });
+        } else {
+          this.$notify({
+            group: "notify-top-right",
+            text: "Bir hata oluştu.",
+            duration: 5000,
+            type: "error",
+          });
+        }
+
+        this.productGroupModel = new FormData();
+      }
+    },
 
     validateState(name) {
       const { $dirty, $error } = this.$v.productGroup[name];

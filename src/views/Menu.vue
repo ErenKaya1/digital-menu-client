@@ -57,13 +57,15 @@ export default {
     async fetchMenu() {
       const companySlug = this.$route.params.companySlug;
       const menu = await menuService.getMenu(companySlug);
-      if (menu.code === 200) {
+      if (menu.success) {
         this.categories = menu.data.categories;
         this.logoPath = menu.data.companyLogo || null;
         this.selectedCategoryId = this.categories[0].id;
         this.selectedCategoryName = this.categories[0].name;
         this.selectedCategoryDescription = this.categories[0].description;
         this.products = this.categories.find((category) => category.id === this.selectedCategoryId).products;
+      } else {
+        this.$router.push("/menu-error");
       }
     },
   },

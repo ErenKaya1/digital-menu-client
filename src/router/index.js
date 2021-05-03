@@ -55,11 +55,16 @@ const routes = [
         component: () => import(/* webpackChunkName: "qr" */ "@/views/Dashboard/Qr.vue"),
       },
     ],
-  },,
+  },
   {
     path: "/menu/:companySlug",
     name: "Menu",
     component: () => import(/* webpackChunkName: "menu" */ "@/views/Menu.vue"),
+  },
+  {
+    path: "/menu-error",
+    name: "MenuError",
+    component: () => import(/* webpackChunkName: "menu-error" */ "@/views/MenuError.vue"),
   },
 ];
 
