@@ -139,6 +139,102 @@ export default {
         setTimeout(() => {
           this.$router.push("/dashboard");
         }, 2000);
+      } else {
+        var message = "Ödeme alınırken bir hata oluştu.";
+
+        switch (response.message) {
+          case "10051":
+            message = "Kart limiti yetersiz.";
+            break;
+
+          case "10005":
+            message = "İşlem onaylanmadı.";
+            break;
+
+          case "10012":
+            message = "Geçersiz işlem.";
+            break;
+
+          case "10041":
+          case "10051":
+            message = "Bu kart için kayıp, çalıntı bildirimi yapılmıştır.";
+            break;
+
+          case "10054":
+            message = "Vadesi dolmuş kart.";
+            break;
+
+          case "10084":
+            message = "CVC kodu hatalı.";
+            break;
+
+          case "10057":
+            message = "Kart sahibi bu işlemi yapamaz.";
+            break;
+
+          case "10058":
+            message = "Terminalin bu işlemi yapmaya yetkisi yok.";
+            break;
+
+          case "10093":
+            message = "Kartınız e-ticaret işlemlerine kapalıdır. Bankanızı arayınız.";
+            break;
+
+          case "10201":
+            message = "Kart, işleme izin vermedi.";
+            break;
+
+          case "10206":
+            message = "CVC uzunluğu geçersiz.";
+            break;
+
+          case "10207":
+            message = "Bankanızdan onay alınız.";
+            break;
+
+          case "10214":
+            message = "İletişim veya sistem hatası.";
+            break;
+
+          case "10215":
+            message = "Geçersiz kart numarası.";
+            break;
+
+          case "10216":
+            message = "Banka bilgileri bulunamadı.";
+            break;
+
+          case "10217":
+            message = "Bu işlem için 3D Secure zorunludur.";
+            break;
+
+          case "10219":
+            message = "Bankaya gönderilen istek zaman aşımına uğradı.";
+            break;
+
+          case "10225":
+            message = "Kısıtlı kart.";
+            break;
+
+          case "10228":
+            message = "Banka veya terminal işlem yapamıyor.";
+            break;
+
+          case "10229":
+            message = "Son kullanma tarihi geçersiz.";
+            break;
+
+          case "10232":
+            message = "Geçersiz tutar.";
+            break;
+        }
+
+        this.$notify({
+          group: "notify-top-right",
+          text: message,
+          duration: 5000,
+          type: "error",
+        });
       }
     },
 
