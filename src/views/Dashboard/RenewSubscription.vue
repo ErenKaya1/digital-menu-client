@@ -121,7 +121,7 @@ export default {
 
         this.subscriptionModel.append("SubscriptionTypeId", this.selectedSubscriptionTypeId);
         this.subscriptionModel.append("CardHolder", this.creditCard.cardName);
-        this.subscriptionModel.append("CardNumber", this.creditCard.cardNumber);
+        this.subscriptionModel.append("CardNumber", this.creditCard.cardNumber.replace(/ /g, ""));
         this.subscriptionModel.append("CardMonth", this.creditCard.cardMonth);
         this.subscriptionModel.append("CardYear", this.creditCard.cardYear);
         this.subscriptionModel.append("CardCvv", this.creditCard.cardCvv);
@@ -129,7 +129,16 @@ export default {
 
       const response = await subscriptionService.renewSubscription(this.$store.state.user.userId, this.subscriptionModel);
       if (response.success) {
-        alert("Başarıyla kaydedildi.");
+        this.$notify({
+          group: "notify-top-right",
+          text: "Aboneliğiniz başarıyla yenilendi.",
+          duration: 5000,
+          type: "success",
+        });
+
+        setTimeout(() => {
+          this.$router.push("/dashboard");
+        }, 2000);
       }
     },
 

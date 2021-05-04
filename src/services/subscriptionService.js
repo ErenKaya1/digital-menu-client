@@ -10,4 +10,9 @@ export default {
     const response = await client.get(`/subscription/check/${userId}`);
     return response.data;
   },
+
+  async renewSubscription(userId, subscriptionModel) {
+    const response = await client.post(`subscription/${userId}`, subscriptionModel);
+    return response.data;
+  },
 };
