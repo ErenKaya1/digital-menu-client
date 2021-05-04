@@ -46,6 +46,11 @@ export default {
             icon: "fas fa-qrcode",
           },
           {
+            href: "/dashboard/theme",
+            title: "Tema",
+            icon: "fas fa-palette",
+          },
+          {
             href: "/dashboard/account",
             title: "Profil",
             icon: "lnr lnr-user",

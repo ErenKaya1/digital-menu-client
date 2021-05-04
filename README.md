@@ -13,3 +13,5 @@
 - [ ] Ekleme ve düzenleme sayfalarının modal değil de yeni view olması
 - [ ] Parola Sıfırlama Formu
 - [ ] JWT token HttpOnly cookiede saklanacak
+- [ ] Abonelik yenileme sayfasında abonelik kontrolü
+- [ ] Menu düzenleme ekranı dropdown stilleri

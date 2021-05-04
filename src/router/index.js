@@ -58,6 +58,10 @@ const routes = [
         path: "/dashboard/renew-subscription",
         component: () => import(/* webpackChunkName: "renew-subscription" */ "@/views/Dashboard/RenewSubscription.vue"),
       },
+      {
+        path: "/dashboard/theme",
+        component: () => import(/* webpackChunkName: "theme" */ "@/views/Dashboard/Theme.vue"),
+      },
     ],
   },
   {
