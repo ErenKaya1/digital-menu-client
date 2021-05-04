@@ -1,18 +1,18 @@
 <template>
-  <div class="product">
+  <div :style="styles.product" class="product">
     <div class="product-image">
       <b-img :src="product.imagePath" :alt="product.name" fluid />
     </div>
     <div class="product-details">
-      <p class="name">{{ product.name }}</p>
-      <p class="price">{{ product.price }}</p>
+      <p :style="styles.text" class="name">{{ product.name }}</p>
+      <p :style="styles.price" class="price">{{ product.price }}</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["product"],
+  props: ["product", "styles"],
 };
 </script>
 
@@ -51,7 +51,6 @@ export default {
 .product .product-details .price {
   font-size: 18px;
   font-weight: bold;
-  color: var(--color-landing-primary);
 }
 
 .product .product-details .name {

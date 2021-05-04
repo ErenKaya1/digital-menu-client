@@ -24,7 +24,7 @@
           </swiper-slide>
         </swiper>
         <div class="selected-category-overview">
-          <h6>İçecek</h6>
+          <h6 :style="styles.text">İçecek</h6>
           <p :style="styles.category.description">Birbirinden Güzel İçecekler</p>
         </div>
         <b-row>

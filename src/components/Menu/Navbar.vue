@@ -18,7 +18,7 @@ import CurrencySwitcher from "../Menu/CurrencySwitcher.vue";
 
 export default {
   components: { LanguageSwitcher, CurrencySwitcher },
-  props: ["logo"],
+  props: ["logo", "styles"],
 
   computed: {
     switcherSizes() {

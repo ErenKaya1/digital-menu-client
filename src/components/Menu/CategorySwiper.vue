@@ -1,9 +1,9 @@
 <template>
   <swiper class="swiper" :options="swiperOptions">
-    <swiper-slide v-for="category in categories" :key="category.id" class="category-slide" :class="{ active: selectedCategoryId === category.id }">
+    <swiper-slide v-for="category in categories" :key="category.id" class="category-slide" :style="selectedCategoryId === category.id ? styles.category.border : null">
       <div @click="$emit('categorySwitched', category.id)">
         <b-img :src="category.imagePath" fluid />
-        <span>{{ category.name }}</span>
+        <span :style="styles.text">{{ category.name }}</span>
       </div>
     </swiper-slide>
   </swiper>
@@ -14,7 +14,7 @@ import { Swiper, SwiperSlide } from "vue-awesome-swiper";
 import "swiper/css/swiper.min.css";
 export default {
   components: { Swiper, SwiperSlide },
-  props: ["categories", "selectedCategoryId"],
+  props: ["categories", "selectedCategoryId", "styles"],
   data() {
     return {
       swiperOptions: {

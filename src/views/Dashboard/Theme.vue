@@ -68,6 +68,7 @@
 
 <script>
 import MenuPreview from "@/components/Dashboard/Theme/MenuPreview.vue";
+import menuService from "@/services/menuService";
 
 export default {
   components: { MenuPreview },
@@ -106,11 +107,69 @@ export default {
       },
 
       logo: null,
+      themeModel: new FormData(),
     };
   },
 
   methods: {
-    submitThemeForm() {},
+    async submitThemeForm() {
+      this.themeModel.append("BackgroundColor", this.styles.menu.backgroundColor);
+      this.themeModel.append("TextColor", this.styles.text.color);
+      this.themeModel.append("PriceColor", this.styles.price.color);
+      this.themeModel.append("CategoryDescriptionColor", this.styles.category.description.color);
+      this.themeModel.append("SelectedCategoryBorderColor", this.styles.category.border.borderColor);
+      this.themeModel.append("ProductBackgroundColor", this.styles.product.backgroundColor);
+      this.themeModel.append("LanguageCurrencyBackgroundColor", this.styles.languageCurrency.backgroundColor);
+      this.themeModel.append("LanguageCurrencyTextColor", this.styles.languageCurrency.color);
+      this.themeModel.append("LinkColor", this.styles.link.color);
+
+      const response = await menuService.updateMenuTheme(this.$store.state.user.userId, this.themeModel);
+      if (response.success) {
+        this.$notify({
+          group: "notify-top-right",
+          text: "Başarıyla güncellendi.",
+          duration: 5000,
+          type: "success",
+        });
+      }
+    },
+  },
+
+  async mounted() {
+    const themeResponse = await menuService.getMenuTheme(this.$store.state.user.userId);
+    if (themeResponse.success) {
+      console.log(themeResponse);
+      this.styles = {
+        menu: {
+          backgroundColor: themeResponse.data.backgroundColor,
+        },
+        text: {
+          color: themeResponse.data.textColor,
+        },
+        link: {
+          color: themeResponse.data.linkColor,
+        },
+        price: {
+          color: themeResponse.data.priceColor,
+        },
+        product: {
+          backgroundColor: themeResponse.data.productBackgroundColor,
+        },
+        languageCurrency: {
+          backgroundColor: themeResponse.data.languageCurrencyBackgroundColor,
+          color: themeResponse.data.languageCurrencyTextColor,
+        },
+        category: {
+          description: {
+            color: themeResponse.data.categoryDescriptionColor,
+          },
+          border: {
+            borderBottom: "2px solid",
+            borderColor: themeResponse.data.selectedCategoryBorderColor,
+          },
+        },
+      };
+    }
   },
 };
 </script>
