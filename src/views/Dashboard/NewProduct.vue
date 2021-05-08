@@ -115,17 +115,7 @@ export default {
             duration: 5000,
             type: "success",
           });
-
-          this.product = {
-            nameTR: "",
-            nameEN: "",
-            descriptionTR: "",
-            descriptionEN: "",
-            price: "0",
-            categoryId: null,
-          };
-          this.productModel = new FormData();
-          this.imageUrl = "";
+          
           this.$root.$emit("refreshProducts");
           this.$router.push("/dashboard/products");
         } else if (data.code === 400) {

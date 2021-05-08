@@ -14,4 +14,5 @@
 - [ ] Parola Sıfırlama Formu
 - [ ] JWT token HttpOnly cookiede saklanacak
 - [ ] Abonelik yenileme sayfasında abonelik kontrolü
+- [ ] Abonelik yenileme kart numarası formatlama
 - [ ] Menu düzenleme ekranı dropdown stilleri

@@ -1,15 +1,20 @@
 <template>
-  <b-modal id="new-category" title="Yeni Kategori" scrollable hide-footer>
-    <form @submit.prevent="submitCategoryForm" class="px-3" enctype="multipart/form-data">
+  <div class="new-category">
+    <div class="bg" @click="$router.go(-1)">
+      <span class="close text-light">X</span>
+    </div>
+    <form @submit.prevent="submitCategoryForm" enctype="multipart/form-data">
+      <h5 class="h5">Yeni Ürün Ekle</h5>
+      <hr />
       <b-form-group
         label="Kategori Adı (TR)"
-        :state="validateState('name_tr')"
-        :invalid-feedback="!$v.category.name_tr.required ? 'Türkçe varsayılan dil olduğu için zorunludur.' : !$v.category.name_tr.maxLength ? 'Kategori adı 50 karakterden uzun olamaz.' : ''"
+        :state="validateState('nameTR')"
+        :invalid-feedback="!$v.category.nameTR.required ? 'Türkçe varsayılan dil olduğu için zorunludur.' : !$v.category.nameTR.maxLength ? 'Kategori adı 50 karakterden uzun olamaz.' : ''"
       >
-        <b-input v-model="category.name_tr" :state="validateState('name_tr')" />
+        <b-input v-model="category.nameTR" :state="validateState('nameTR')" />
       </b-form-group>
-      <b-form-group label="Kategori Adı (EN)" :state="!category.name_en ? null : validateState('name_en')" :invalid-feedback="!$v.category.name_tr.maxLength ? 'Kategori adı 50 karakterden uzun olamaz.' : ''">
-        <b-input v-model="category.name_en" :state="!category.name_en ? null : validateState('name_en')" />
+      <b-form-group label="Kategori Adı (EN)" :state="!category.nameEN ? null : validateState('nameEN')" :invalid-feedback="!$v.category.nameTR.maxLength ? 'Kategori adı 50 karakterden uzun olamaz.' : ''">
+        <b-input v-model="category.nameEN" :state="!category.nameEN ? null : validateState('nameEN')" />
       </b-form-group>
       <b-form-group label="Açıklama (TR)">
         <b-textarea rows="4" v-model.trim="category.descriptionTR" />
@@ -24,9 +29,9 @@
         <img :src="imageUrl" class="image-preview" fluid />
       </b-form-group>
       <b-btn type="submit" variant="landing-secondary" class="mt-4">Kaydet</b-btn>
-      <b-btn @click="closeModal" variant="danger" class="mt-4 ml-2">Vazgeç</b-btn>
+      <b-btn @click="$router.go(-1)" variant="danger" class="mt-4 ml-2">Vazgeç</b-btn>
     </form>
-  </b-modal>
+  </div>
 </template>
 
 <script>
@@ -37,8 +42,8 @@ export default {
   data() {
     return {
       category: {
-        name_tr: "",
-        name_en: "",
+        nameTR: "",
+        nameEN: "",
         descriptionTR: "",
         descriptionEN: "",
       },
@@ -49,11 +54,11 @@ export default {
 
   validations: {
     category: {
-      name_tr: {
+      nameTR: {
         required,
         maxLength: maxLength(50),
       },
-      name_en: {
+      nameEN: {
         maxLength: maxLength(50),
       },
     },
@@ -63,14 +68,13 @@ export default {
     async submitCategoryForm() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
-        this.categoryModel.append("NameTR", this.category.name_tr);
-        this.categoryModel.append("NameEN", this.category.name_en);
+        this.categoryModel.append("NameTR", this.category.nameTR);
+        this.categoryModel.append("NameEN", this.category.nameEN);
         this.categoryModel.append("DescriptionTR", this.category.descriptionTR);
         this.categoryModel.append("DescriptionEN", this.category.descriptionEN);
 
         const data = await categoryService.insertCategory(this.$store.state.user.userId, this.categoryModel);
         if (data.code === 200) {
-          this.$emit("category-saved");
           this.$notify({
             group: "notify-top-right",
             text: "Kategori başarıyla kaydedildi.",
@@ -78,14 +82,8 @@ export default {
             type: "success",
           });
 
-          this.category = {
-            name_tr: "",
-            name_en: "",
-          };
-          this.categoryModel = new FormData();
-          this.imageUrl = "";
-          this.$v.$reset();
-          this.$bvModal.hide("new-category");
+          this.$root.$emit("refreshCategories");
+          this.$router.push("/dashboard/categories");
         }
       }
     },
@@ -95,10 +93,6 @@ export default {
       return $dirty ? !$error : null;
     },
 
-    closeModal() {
-      this.$bvModal.hide("new-category");
-    },
-
     imagePreview(event) {
       this.categoryModel.append("ImageFile", event, event.name);
       this.imageUrl = URL.createObjectURL(event);
@@ -106,3 +100,61 @@ export default {
   },
 };
 </script>
+
+<style>
+.new-category {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+}
+
+.new-category .bg {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+}
+
+.new-category .bg span {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  cursor: pointer;
+}
+
+.new-category form {
+  position: absolute;
+  background-color: var(--color-white);
+  height: 90%;
+  padding: 20px;
+  width: 40%;
+  overflow: scroll;
+  transition: width 0.4s ease;
+}
+
+@media screen and (max-width: 992px) {
+  .new-category form {
+    width: 70%;
+  }
+
+  .new-category .bg span {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .new-category form {
+    width: 90%;
+  }
+
+  .new-category .bg span {
+    right: 5px;
+    top: 5px;
+  }
+}
+</style>

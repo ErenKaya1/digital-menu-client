@@ -2,7 +2,7 @@
   <div>
     <b-row>
       <b-col cols="12">
-        <b-button v-b-modal.new-category variant="landing-secondary">Yeni Kategori</b-button>
+        <b-button to="/dashboard/categories/new" variant="landing-secondary">Yeni Kategori</b-button>
       </b-col>
     </b-row>
     <b-row class="mt-4">
@@ -10,6 +10,7 @@
         <categories-table />
       </b-col>
     </b-row>
+    <router-view />
   </div>
 </template>
 

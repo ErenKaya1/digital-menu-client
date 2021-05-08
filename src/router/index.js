@@ -41,6 +41,12 @@ const routes = [
       {
         path: "/dashboard/categories",
         component: () => import(/* webpackChunkName: "categories" */ "@/views/Dashboard/Categories.vue"),
+        children: [
+          {
+            path: "/dashboard/categories/new",
+            component: () => import(/* webpackChunkName: "new-category" */ "@/views/Dashboard/NewCategory.vue"),
+          },
+        ],
       },
       {
         path: "/dashboard/products",

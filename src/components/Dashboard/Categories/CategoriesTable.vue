@@ -9,17 +9,15 @@
       </template>
     </b-table>
     <b-alert variant="warning" show v-else>Henüz kategori eklemediniz.</b-alert>
-    <new-category-modal v-on:category-saved="refreshCategories" />
   </div>
 </template>
 
 <script>
 import categoryService from "@/services/categoryService";
-import NewCategoryModal from "@/components/Dashboard/Categories/NewCategoryModal.vue";
 import CategoryDetailsButton from "@/components/Dashboard/Categories/CategoryDetailsButton.vue";
 
 export default {
-  components: { NewCategoryModal, CategoryDetailsButton },
+  components: { CategoryDetailsButton },
   data() {
     return {
       categories: [],
@@ -33,6 +31,10 @@ export default {
 
   async mounted() {
     await this.fetchCategories();
+
+    this.$root.$on("refreshCategories", async () => {
+      await this.fetchCategories();
+    });
   },
 
   methods: {
