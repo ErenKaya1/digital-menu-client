@@ -1,10 +1,10 @@
 <template>
-  <div class="new-category">
+  <div class="edit-category">
     <div class="bg" @click="$router.go(-1)">
       <span class="close text-light">X</span>
     </div>
     <form @submit.prevent="submitCategoryForm" enctype="multipart/form-data">
-      <h5 class="h5">Yeni Kategori Ekle</h5>
+      <h5 class="h5">Kategori Düzenle</h5>
       <hr />
       <b-form-group
         label="Kategori Adı (TR)"
@@ -25,8 +25,8 @@
       <b-form-group label="Kategori Görseli">
         <b-form-file @input="imagePreview" placeholder="Dosya Seç veya Sürükle" drop-placeholder="Buraya Bırak" accept="image/*" />
       </b-form-group>
-      <b-form-group v-if="imageUrl">
-        <img :src="imageUrl" class="image-preview" fluid />
+      <b-form-group v-if="category.imagePath">
+        <img :src="category.imagePath" class="image-preview" fluid />
       </b-form-group>
       <b-btn type="submit" variant="landing-secondary" class="mt-4">Kaydet</b-btn>
       <b-btn @click="$router.go(-1)" variant="danger" class="mt-4 ml-2">Vazgeç</b-btn>
@@ -42,13 +42,15 @@ export default {
   data() {
     return {
       category: {
+        id: "",
         nameTR: "",
         nameEN: "",
         descriptionTR: "",
         descriptionEN: "",
+        imagePath: "",
       },
+
       categoryModel: new FormData(),
-      imageUrl: "",
     };
   },
 
@@ -64,26 +66,41 @@ export default {
     },
   },
 
+  async mounted() {
+    const categoryId = this.$route.params.id;
+    const categoryData = await categoryService.getById(this.$store.state.user.userId, categoryId);
+    if (categoryData.success) {
+      this.category = {
+        id: categoryData.data.id,
+        nameTR: categoryData.data.nameTR,
+        nameEN: categoryData.data.nameEN,
+        descriptionTR: categoryData.data.descriptionTR,
+        descriptionEN: categoryData.data.descriptionEN,
+        imagePath: categoryData.data.imagePath,
+      };
+    }
+  },
+
   methods: {
     async submitCategoryForm() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
+        this.categoryModel.append("Id", this.category.id);
         this.categoryModel.append("NameTR", this.category.nameTR);
         this.categoryModel.append("NameEN", this.category.nameEN);
         this.categoryModel.append("DescriptionTR", this.category.descriptionTR);
         this.categoryModel.append("DescriptionEN", this.category.descriptionEN);
 
-        const data = await categoryService.insertCategory(this.$store.state.user.userId, this.categoryModel);
-        if (data.code === 200) {
+        const categoryData = await categoryService.updateCategory(this.$store.state.user.userId, this.categoryModel);
+        if (categoryData.code === 200) {
           this.$notify({
             group: "notify-top-right",
-            text: "Kategori başarıyla kaydedildi.",
+            text: "Kategori başarıyla güncellendi.",
             duration: 5000,
             type: "success",
           });
 
           this.$root.$emit("refreshCategories");
-          this.$router.push("/dashboard/categories");
         }
       }
     },
@@ -95,14 +112,15 @@ export default {
 
     imagePreview(event) {
       this.categoryModel.append("ImageFile", event, event.name);
-      this.imageUrl = URL.createObjectURL(event);
+      this.category.imagePath = URL.createObjectURL(event);
     },
   },
 };
 </script>
 
+
 <style>
-.new-category {
+.edit-category {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -114,20 +132,20 @@ export default {
   height: 100%;
 }
 
-.new-category .bg {
+.edit-category .bg {
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
   height: 100%;
 }
 
-.new-category .bg span {
+.edit-category .bg span {
   position: absolute;
   right: 30px;
   top: 20px;
   cursor: pointer;
 }
 
-.new-category form {
+.edit-category form {
   position: absolute;
   background-color: var(--color-white);
   height: 90%;
@@ -138,21 +156,21 @@ export default {
 }
 
 @media screen and (max-width: 992px) {
-  .new-category form {
+  .edit-category form {
     width: 70%;
   }
 
-  .new-category .bg span {
+  .edit-category .bg span {
     font-size: 18px;
   }
 }
 
 @media screen and (max-width: 576px) {
-  .new-category form {
+  .edit-category form {
     width: 90%;
   }
 
-  .new-category .bg span {
+  .edit-category .bg span {
     right: 5px;
     top: 5px;
   }

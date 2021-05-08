@@ -115,7 +115,7 @@ export default {
             duration: 5000,
             type: "success",
           });
-          
+
           this.$root.$emit("refreshProducts");
           this.$router.push("/dashboard/products");
         } else if (data.code === 400) {
@@ -174,7 +174,7 @@ export default {
   height: 90%;
   padding: 20px;
   width: 40%;
-  overflow: scroll;
+  overflow-y: scroll;
   transition: width 0.4s ease;
 }
 

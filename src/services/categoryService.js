@@ -17,4 +17,8 @@ export default {
     const response = await client.delete(`/category/${userId}/${categoryId}`);
     return response.data;
   },
+  async getById(userId, categoryId) {
+    const response = await client.get(`/category/${userId}/${categoryId}`);
+    return response.data;
+  },
 };

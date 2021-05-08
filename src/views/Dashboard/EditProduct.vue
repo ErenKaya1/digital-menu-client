@@ -4,7 +4,7 @@
       <span class="close text-light">X</span>
     </div>
     <form @submit.prevent="submitProductForm" enctype="multipart/form-data">
-      <h5 class="h5">Yeni Ürün Ekle</h5>
+      <h5 class="h5">Ürün Düzenle</h5>
       <hr />
       <b-form-group label="Ürün Adı (TR)" :state="validateState('nameTR')" :invalid-feedback="!$v.product.nameTR.required ? 'Türkçe varsayılan dil olduğu için zorunludur.' : !$v.product.nameTR.maxLength ? 'Ürün adı 50 karakterden uzun olamaz.' : ''">
         <b-input v-model.trim="product.nameTR" :state="validateState('nameTR')" />
@@ -140,7 +140,6 @@ export default {
             type: "success",
           });
 
-          this.productModel = new FormData();
           this.$root.$emit("refreshProducts");
         } else {
           this.$notify({
@@ -198,7 +197,7 @@ export default {
   height: 90%;
   padding: 20px;
   width: 40%;
-  overflow: scroll;
+  overflow-y: scroll;
   transition: width 0.4s ease;
 }
 

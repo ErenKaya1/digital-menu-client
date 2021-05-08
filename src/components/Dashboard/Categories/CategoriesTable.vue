@@ -4,7 +4,7 @@
       <template #cell(nameTR)="row">{{ row.value }}</template>
       <template #cell(nameEN)="row">{{ row.value }}</template>
       <template #cell(actions)="row">
-        <category-details-button v-on:categorySaved="refreshCategories" :category="row.item" />
+        <b-button @click="$router.push(`/dashboard/category/edit/${row.item.id}`)" size="sm" variant="info" class="mr-1">Düzenle</b-button>
         <b-button size="sm" variant="danger" @click="deleteCategory(row.item)" class="mr-1">Sil</b-button>
       </template>
     </b-table>
@@ -14,10 +14,8 @@
 
 <script>
 import categoryService from "@/services/categoryService";
-import CategoryDetailsButton from "@/components/Dashboard/Categories/CategoryDetailsButton.vue";
 
 export default {
-  components: { CategoryDetailsButton },
   data() {
     return {
       categories: [],

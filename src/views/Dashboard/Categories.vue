@@ -2,7 +2,7 @@
   <div>
     <b-row>
       <b-col cols="12">
-        <b-button to="/dashboard/categories/new" variant="landing-secondary">Yeni Kategori</b-button>
+        <b-button to="/dashboard/category/new" variant="landing-secondary">Yeni Kategori</b-button>
       </b-col>
     </b-row>
     <b-row class="mt-4">

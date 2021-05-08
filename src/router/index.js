@@ -43,8 +43,12 @@ const routes = [
         component: () => import(/* webpackChunkName: "categories" */ "@/views/Dashboard/Categories.vue"),
         children: [
           {
-            path: "/dashboard/categories/new",
+            path: "/dashboard/category/new",
             component: () => import(/* webpackChunkName: "new-category" */ "@/views/Dashboard/NewCategory.vue"),
+          },
+          {
+            path: "/dashboard/category/edit/:id",
+            component: () => import(/* webpackChunkName: "edit-category" */ "@/views/Dashboard/EditCategory.vue"),
           },
         ],
       },
@@ -53,11 +57,11 @@ const routes = [
         component: () => import(/* webpackChunkName: "products" */ "@/views/Dashboard/Products.vue"),
         children: [
           {
-            path: "/dashboard/products/new",
+            path: "/dashboard/product/new",
             component: () => import(/* webpackChunkName: "new-product" */ "@/views/Dashboard/NewProduct.vue"),
           },
           {
-            path: "/dashboard/products/edit/:id",
+            path: "/dashboard/product/edit/:id",
             component: () => import(/* webpackChunkName: "edit-product" */ "@/views/Dashboard/EditProduct.vue"),
           },
         ],
