@@ -50,6 +50,10 @@ const routes = [
             path: "/dashboard/products/new",
             component: () => import(/* webpackChunkName: "new-product" */ "@/views/Dashboard/NewProduct.vue"),
           },
+          {
+            path: "/dashboard/products/edit/:id",
+            component: () => import(/* webpackChunkName: "edit-product" */ "@/views/Dashboard/EditProduct.vue"),
+          },
         ],
       },
       {

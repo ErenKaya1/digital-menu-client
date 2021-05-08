@@ -5,7 +5,7 @@
       <template #cell(nameEN)="row">{{ row.value }}</template>
       <template #cell(price)="row">{{ row.value }}</template>
       <template #cell(actions)="row">
-        <product-details-button v-on:productUpdated="refreshProducts" :product="row.item" />
+        <b-button size="sm" variant="info" @click="$router.push(`/dashboard/products/edit/${row.item.id}`)" class="mr-1">Düzenle</b-button>
         <b-button size="sm" variant="danger" @click="deleteProduct(row.item)" class="mr-1">Sil</b-button>
       </template>
     </b-table>
@@ -14,11 +14,9 @@
 </template>
 
 <script>
-import ProductDetailsButton from "@/components/Dashboard/Products/ProductDetailsButton.vue";
 import productService from "@/services/productService";
 
 export default {
-  components: { ProductDetailsButton },
   data() {
     return {
       products: [],

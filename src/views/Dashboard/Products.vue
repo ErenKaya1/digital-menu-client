@@ -18,8 +18,6 @@
 import ProductsTable from "../../components/Dashboard/Products/ProductsTable.vue";
 export default {
   components: { ProductsTable },
-
-  methods: {},
 };
 </script>
 
