@@ -1,14 +1,17 @@
 <template>
   <div>
-    <b-dropdown id="currencySwitcher" :text="selectedCurrency.symbol" class="mr-2" :variant="variant" :size="size">
-      <b-dropdown-item v-for="(currency, index) in currencies" :key="index" @click="setCurrency(currency)">{{ currency.symbol }}</b-dropdown-item>
-    </b-dropdown>
+    <div class="dropdown menuCurrencySwitcher">
+      <button :style="styles.languageCurrency" id="menuCurrencySwitcher" :class="switcherClasses" class="btn dropdown-toggle mr-2" type="button" data-toggle="dropdown">{{ selectedCurrency.symbol }}</button>
+      <div class="dropdown-menu" aria-labelledby="menuCurrencySwitcher">
+        <b-button class="dropdown-item" v-for="(currency, index) in currencies" :key="index" @click="setCurrency(currency)">{{ currency.symbol }}</b-button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["variant", "size"],
+  props: ["variant", "size", "styles"],
 
   data() {
     return {
@@ -20,6 +23,13 @@ export default {
 
       selectedCurrency: { name: "try", symbol: "₺" },
     };
+  },
+
+  computed: {
+    switcherClasses() {
+      const size = window.outerWidth;
+      return size >= 768 ? "btn-md" : "btn-sm";
+    },
   },
 
   mounted() {
@@ -38,7 +48,7 @@ export default {
 </script>
 
 <style>
-#currencySwitcher .dropdown-menu .dropdown-item:active {
+.menuCurrencySwitcher .dropdown-menu .dropdown-item:active {
   background-color: var(--color-landing-secondary) !important;
   overflow: hidden;
 }

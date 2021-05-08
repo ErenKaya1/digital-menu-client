@@ -17,6 +17,7 @@
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
+    "jquery": "^3.6.0",
     "linearicons": "^1.0.2",
     "pace-js": "^1.2.4",
     "qrcode": "^1.4.4",

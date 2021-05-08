@@ -162,7 +162,9 @@ a.text-landing-primary:hover {
 }
 
 #languageSwitcher .dropdown-menu,
-#currencySwitcher .dropdown-menu {
+#currencySwitcher .dropdown-menu,
+.menuLanguageSwitcher .dropdown-menu,
+.menuCurrencySwitcher .dropdown-menu {
   min-width: 0 !important;
 }
 

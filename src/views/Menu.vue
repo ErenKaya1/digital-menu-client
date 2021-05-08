@@ -1,6 +1,6 @@
 <template>
   <div :style="styles.menu">
-    <app-navbar :styles="styles" :logo="this.logoPath" v-on:languageChanged="refreshMenu" v-on:currencyChanged="refreshMenu" />
+    <menu-navbar :styles="styles" :logo="this.logoPath" v-on:languageChanged="refreshMenu" v-on:currencyChanged="refreshMenu" />
     <b-container>
       <category-swiper :styles="styles" :categories="categories" :selectedCategoryId="selectedCategoryId" v-on:categorySwitched="switchCategory" />
       <div class="selected-category-overview">
@@ -19,13 +19,13 @@
 
 <script>
 import menuService from "@/services/menuService";
-import AppNavbar from "@/components/Menu/Navbar.vue";
+import MenuNavbar from "@/components/Menu/MenuNavbar.vue";
 import Product from "@/components/Menu/Product.vue";
 import CategorySwiper from "@/components/Menu/CategorySwiper.vue";
 import MenuFooter from "@/components/Menu/MenuFooter.vue";
 
 export default {
-  components: { AppNavbar, Product, CategorySwiper, MenuFooter },
+  components: { MenuNavbar, Product, CategorySwiper, MenuFooter },
   data() {
     return {
       categories: [],

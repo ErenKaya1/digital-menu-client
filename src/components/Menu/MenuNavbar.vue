@@ -5,19 +5,19 @@
         <b-img v-if="this.logo" :src="this.logo" class="menu-logo" fluid />
       </b-navbar-brand>
       <b-navbar-nav class="ml-auto">
-        <currency-switcher variant="landing-primary" v-on:currencyChanged="$emit('currencyChanged')" :size="switcherSizes"/>
-        <language-switcher variant="landing-primary" v-on:languageChanged="$emit('languageChanged')" :size="switcherSizes" />
+        <currency-switcher :styles="styles" v-on:currencyChanged="$emit('currencyChanged')" :size="switcherSizes" />
+        <menu-language-switcher :styles="styles" v-on:languageChanged="$emit('languageChanged')" :size="switcherSizes" />
       </b-navbar-nav>
     </b-container>
   </b-navbar>
 </template>
 
 <script>
-import LanguageSwitcher from "../Landing/LanguageSwitcher.vue";
-import CurrencySwitcher from "../Menu/CurrencySwitcher.vue";
+import MenuLanguageSwitcher from "../Menu/MenuLanguageSwitcher.vue";
+import CurrencySwitcher from "./CurrencySwitcher.vue";
 
 export default {
-  components: { LanguageSwitcher, CurrencySwitcher },
+  components: { MenuLanguageSwitcher, CurrencySwitcher },
   props: ["logo", "styles"],
 
   computed: {

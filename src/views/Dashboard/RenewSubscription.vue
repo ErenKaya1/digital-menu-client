@@ -1,50 +1,55 @@
 <template>
   <div>
-    <h3 class="renew-subscription-title">Kendinize En Uygun Paketi Seçin</h3>
-    <b-row>
-      <b-col md="4" class="d-flex flex-column py-4 text-center" :class="index != 2 ? 'pricing-bordered' : ''" v-for="(type, index) in subscriptionTypes" :key="type.id">
-        <h5 class="m-0">{{ type.title }}</h5>
-        <div class="flex-grow-1">
-          <div class="py-4 my-2">
-            <span class="d-inline-block text-muted text-big align-middle mr-2">₺</span>
-            <span class="display-3 d-inline-block font-weight-bold align-middle pricing-price">{{ type.price }}</span>
-            <span class="d-inline-block text-muted text-big align-middle ml-2">/ mo</span>
+    <div v-if="isSubscribe">
+      <b-alert variant="warning" show>Zaten devam eden bir aboneliğiniz var.</b-alert>
+    </div>
+    <div v-else class="renew-subscription">
+      <h3 class="renew-subscription-title">Kendinize En Uygun Paketi Seçin</h3>
+      <b-row>
+        <b-col md="4" class="d-flex flex-column py-4 text-center" :class="index != 2 ? 'pricing-bordered' : ''" v-for="(type, index) in subscriptionTypes" :key="type.id">
+          <h5 class="m-0">{{ type.title }}</h5>
+          <div class="flex-grow-1">
+            <div class="py-4 my-2">
+              <span class="d-inline-block text-muted text-big align-middle mr-2">₺</span>
+              <span class="display-3 d-inline-block font-weight-bold align-middle pricing-price">{{ type.price }}</span>
+              <span class="d-inline-block text-muted text-big align-middle ml-2">/ mo</span>
+            </div>
+            <div class="pb-5">
+              <p class="mb-2" v-for="(feature, index) in type.features" :key="index">{{ feature.isUnlimited ? $t("landingView.pricingBlock.unlimited") : feature.totalValue }} {{ feature.name }}</p>
+            </div>
+            <b-button :variant="type.id === selectedSubscriptionTypeId ? 'primary' : 'outline-primary'" @click="selectSubscriptionType(type.id)">Seç</b-button>
           </div>
-          <div class="pb-5">
-            <p class="mb-2" v-for="(feature, index) in type.features" :key="index">{{ feature.isUnlimited ? $t("landingView.pricingBlock.unlimited") : feature.totalValue }} {{ feature.name }}</p>
-          </div>
-          <b-button :variant="type.id === selectedSubscriptionTypeId ? 'primary' : 'outline-primary'" @click="selectSubscriptionType(type.id)">Seç</b-button>
-        </div>
-      </b-col>
-    </b-row>
-    <vue-pay-card class="mt-5" :value-fields="creditCard" :labels="labels" :is-card-number-masked="false" />
-    <div class="payment-form">
-      <form @submit.prevent="renewSubscription">
-        <b-form-group label="Kart Sahibi" :state="validateState('cardName')" invalid-feedback="Zorunlu Alan">
-          <b-input id="v-card-name" data-card-field v-model="creditCard.cardName" placeholder="Eren Kaya" :state="validateState('cardName')" />
-        </b-form-group>
-        <b-form-group label="Kart Numarası" :state="validateState('cardNumber')" invalid-feedback="Zorunlu Alan">
-          <b-input id="v-card-number" data-card-field v-model="creditCard.cardNumber" placeholder="4242 4242 4242 4242" :state="validateState('cardNumber')" />
-        </b-form-group>
-        <b-form-row>
-          <b-col>
-            <b-form-group label="Ay" :state="validateState('cardMonth')" invalid-feedback="Zorunlu Alan">
-              <b-input id="v-card-month" data-card-field v-model="creditCard.cardMonth" placeholder="12" :state="validateState('cardMonth')" />
-            </b-form-group>
-          </b-col>
-          <b-col>
-            <b-form-group label="Yıl" :state="validateState('cardYear')" invalid-feedback="Zorunlu Alan">
-              <b-input id="v-card-year" data-card-field v-model="creditCard.cardYear" placeholder="2021" :state="validateState('cardYear')" />
-            </b-form-group>
-          </b-col>
-          <b-col>
-            <b-form-group label="Güvenlik Kodu" :state="validateState('cardCvv')" invalid-feedback="Zorunlu Alan">
-              <b-input id="v-card-cvv" data-card-field v-model="creditCard.cardCvv" placeholder="000" :state="validateState('cardCvv')" />
-            </b-form-group>
-          </b-col>
-        </b-form-row>
-        <b-button type="submit" variant="landing-secondary" block>Ödemeyi Yap</b-button>
-      </form>
+        </b-col>
+      </b-row>
+      <vue-pay-card class="mt-5" :value-fields="creditCard" :labels="labels" :is-card-number-masked="false" />
+      <div class="payment-form">
+        <form @submit.prevent="renewSubscription">
+          <b-form-group label="Kart Sahibi" :state="validateState('cardName')" invalid-feedback="Zorunlu Alan">
+            <b-input id="v-card-name" data-card-field v-model="creditCard.cardName" placeholder="Eren Kaya" :state="validateState('cardName')" />
+          </b-form-group>
+          <b-form-group label="Kart Numarası" :state="validateState('cardNumber')" invalid-feedback="Zorunlu Alan">
+            <b-input maxlength="19" @input="formatCardNumber" id="v-card-number" data-card-field v-model="creditCard.cardNumber" placeholder="4242 4242 4242 4242" :state="validateState('cardNumber')" />
+          </b-form-group>
+          <b-form-row>
+            <b-col>
+              <b-form-group label="Ay" :state="validateState('cardMonth')" invalid-feedback="Zorunlu Alan">
+                <b-input id="v-card-month" data-card-field v-model="creditCard.cardMonth" placeholder="12" :state="validateState('cardMonth')" />
+              </b-form-group>
+            </b-col>
+            <b-col>
+              <b-form-group label="Yıl" :state="validateState('cardYear')" invalid-feedback="Zorunlu Alan">
+                <b-input id="v-card-year" data-card-field v-model="creditCard.cardYear" placeholder="2021" :state="validateState('cardYear')" />
+              </b-form-group>
+            </b-col>
+            <b-col>
+              <b-form-group label="Güvenlik Kodu" :state="validateState('cardCvv')" invalid-feedback="Zorunlu Alan">
+                <b-input id="v-card-cvv" data-card-field v-model="creditCard.cardCvv" placeholder="000" :state="validateState('cardCvv')" />
+              </b-form-group>
+            </b-col>
+          </b-form-row>
+          <b-button type="submit" variant="landing-secondary" block>Ödemeyi Yap</b-button>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -52,7 +57,7 @@
 <script>
 import subscriptionService from "@/services/subscriptionService";
 import VuePayCard from "vue-paycard";
-import { required } from "vuelidate/lib/validators";
+import { required, minLength } from "vuelidate/lib/validators";
 
 export default {
   components: { VuePayCard },
@@ -74,6 +79,7 @@ export default {
         cardCvv: "CVV",
       },
       subscriptionModel: new FormData(),
+      isSubscribe: true,
     };
   },
 
@@ -84,6 +90,7 @@ export default {
       },
       cardNumber: {
         required,
+        minLength: minLength(19),
       },
       cardMonth: {
         required,
@@ -98,9 +105,11 @@ export default {
   },
 
   async mounted() {
-    const subscriptionTypesResponse = await subscriptionService.getSubscriptionTypes();
-    if (subscriptionTypesResponse.success) {
-      this.subscriptionTypes = subscriptionTypesResponse.data;
+    const currentSubscription = await subscriptionService.checkSubscriptionStatus(this.$store.state.user.userId);
+    if (currentSubscription.message === "Expired") this.isSubscribe = false;
+    else {
+      const subscriptionTypesResponse = await subscriptionService.getSubscriptionTypes();
+      if (subscriptionTypesResponse.success) this.subscriptionTypes = subscriptionTypesResponse.data;
     }
   },
 
@@ -139,6 +148,7 @@ export default {
             this.$router.push("/dashboard");
           }, 2000);
         } else {
+          this.$v.$reset();
           var message = "Ödeme alınırken bir hata oluştu.";
 
           switch (response.message) {
@@ -246,6 +256,18 @@ export default {
       const { $dirty, $error } = this.$v.creditCard[name];
       return $dirty ? !$error : null;
     },
+
+    formatCardNumber(value) {
+      value = value.replace(/\s/g, "");
+      var newValue = "";
+
+      for (var i = 0; i < value.length; i++) {
+        if (i % 4 == 0 && i > 0) newValue = newValue.concat(" ");
+        newValue = newValue.concat(value[i]);
+      }
+
+      this.creditCard.cardNumber = newValue;
+    },
   },
 };
 </script>
@@ -255,7 +277,7 @@ export default {
   border-right: 1px solid var(--color-muted);
 }
 
-h5 {
+.renew-subscription h5 {
   font-weight: 500;
   color: var(--color-footer-text);
 }

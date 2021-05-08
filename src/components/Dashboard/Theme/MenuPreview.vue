@@ -7,10 +7,12 @@
             <b-img v-if="this.logo" :src="this.logo" class="menu-logo" fluid />
           </b-navbar-brand>
           <b-navbar-nav class="ml-auto">
-            <currency-switcher variant="landing-primary" size="sm" />
-            <b-dropdown variant="landing-primary" :style="styles.languageCurrency" text="TR" size="sm">
-              <b-dropdown-item>TR</b-dropdown-item>
-            </b-dropdown>
+            <div>
+              <button :style="styles.languageCurrency" class="btn btn-sm dropdown-toggle mr-2" type="button">₺</button>
+            </div>
+            <div>
+              <button :style="styles.languageCurrency" class="btn btn-sm dropdown-toggle" type="button">TR</button>
+            </div>
           </b-navbar-nav>
         </b-container>
       </b-navbar>

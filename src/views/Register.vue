@@ -147,14 +147,29 @@ export default {
       this.$v.$touch();
       if (!this.$v.$invalid) {
         const data = await authService.register(this.credentials);
-        if (data.code == 200) {
+        if (data.success) {
           this.$store.dispatch("setToken", data.data.token);
           this.$store.dispatch("setUser", data.data.user);
           this.$router.push("/dashboard");
         } else if (data.code === 409) {
+          var errorMessage = "";
+
+          switch (data.errorCode) {
+            // duplicated username
+            case 1:
+              errorMessage = "Girdiğiniz kullanıcı adı daha önce alınmış.";
+              break;
+
+            // duplicated email address
+            case 2:
+              errorMessage = "Girdğiniz e-posta adresi daha önce alınmış.";
+              break;
+          }
+
+          this.$v.$reset();
           this.$notify({
             group: "notify",
-            text: "Kullanıcı adı veya e-mail daha önce alınmış.",
+            text: errorMessage,
             duration: 5000,
             type: "error",
           });

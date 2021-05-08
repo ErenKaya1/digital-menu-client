@@ -58,11 +58,10 @@ export default {
     async submitCompanyForm() {
       this.companyModel.append("name", this.company.name);
       this.companyModel.append("slug", this.company.slug);
+      
       const data = await accountService.updateCompany(this.$store.state.user.userId, this.companyModel);
-
-      if (data.code === 200) {
+      if (data.success) {
         this.company = data.data;
-
         this.$notify({
           group: "notify-top-right",
           text: "Şirket bilgileri başarıyla güncellendi.",
@@ -71,6 +70,21 @@ export default {
         });
 
         this.companyModel = new FormData();
+      } else {
+        var errorMessage = "";
+
+        switch (data.errorCode) {
+          case 0:
+            errorMessage = "Girdiğiniz slug daha önce alınmış.";
+            break;
+        }
+
+        this.$notify({
+          group: "notify-top-right",
+          text: errorMessage,
+          duration: 5000,
+          type: "error",
+        });
       }
     },
 
