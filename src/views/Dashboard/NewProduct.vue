@@ -1,6 +1,11 @@
 <template>
-  <b-modal id="new-product" title="Yeni Ürün" scrollable hide-footer>
-    <form @submit.prevent="submitProductForm" class="px-3" enctype="multipart/form-data">
+  <div class="new-product">
+    <div class="bg" @click="$router.go(-1)">
+      <span class="close text-light">X</span>
+    </div>
+    <form @submit.prevent="submitProductForm" enctype="multipart/form-data">
+      <h5 class="h5">Yeni Ürün Ekle</h5>
+      <hr />
       <b-form-group label="Ürün Adı (TR)" :state="validateState('nameTR')" :invalid-feedback="!$v.product.nameTR.required ? 'Türkçe varsayılan dil olduğu için zorunludur.' : !$v.product.nameTR.maxLength ? 'Ürün adı 50 karakterden uzun olamaz.' : ''">
         <b-input v-model.trim="product.nameTR" :state="validateState('nameTR')" />
       </b-form-group>
@@ -26,9 +31,9 @@
         <img :src="imageUrl" class="image-preview" fluid />
       </b-form-group>
       <b-btn type="submit" variant="landing-secondary" class="mt-4">Kaydet</b-btn>
-      <b-btn @click="closeModal" variant="danger" class="mt-4 ml-2">Vazgeç</b-btn>
+      <b-btn @click="$router.go(-1)" variant="danger" class="mt-4 ml-2">Vazgeç</b-btn>
     </form>
-  </b-modal>
+  </div>
 </template>
 
 <script>
@@ -74,12 +79,19 @@ export default {
 
   async mounted() {
     const categoryData = await categoryService.getAllCategories(this.$store.state.user.userId);
-    if (categoryData.code === 200) {
+    if (categoryData.success) {
       categoryData.data.map((category) => {
         this.categories.push({
           value: category.id,
           text: category.nameTR,
         });
+      });
+    } else {
+      this.$notify({
+        group: "notify-top-right",
+        text: "Kategoriler yüklenirken bir hata oluştu.",
+        duration: 5000,
+        type: "error",
       });
     }
   },
@@ -114,9 +126,8 @@ export default {
           };
           this.productModel = new FormData();
           this.imageUrl = "";
-          this.$v.$reset();
-          this.$bvModal.hide("new-product");
-          this.$emit("productSaved");
+          this.$root.$emit("refreshProducts");
+          this.$router.push("/dashboard/products");
         } else if (data.code === 400) {
           this.$notify({
             group: "notify-top-right",
@@ -137,13 +148,64 @@ export default {
       this.productModel.append("ImageFile", event, event.name);
       this.imageUrl = URL.createObjectURL(event);
     },
-
-    closeModal() {
-      this.$bvModal.hide("new-product");
-    },
   },
 };
 </script>
 
 <style>
+.new-product {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+}
+
+.new-product .bg {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+}
+
+.new-product .bg span {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  cursor: pointer;
+}
+
+.new-product form {
+  position: absolute;
+  background-color: var(--color-white);
+  height: 90%;
+  padding: 20px;
+  width: 40%;
+  overflow: scroll;
+  transition: width 0.4s ease;
+}
+
+@media screen and (max-width: 992px) {
+  .new-product form {
+    width: 70%;
+  }
+
+  .new-product .bg span {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .new-product form {
+    width: 90%;
+  }
+
+  .new-product .bg span {
+    right: 5px;
+    top: 5px;
+  }
+}
 </style>

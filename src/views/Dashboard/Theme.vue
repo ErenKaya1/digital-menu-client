@@ -138,7 +138,6 @@ export default {
   async mounted() {
     const themeResponse = await menuService.getMenuTheme(this.$store.state.user.userId);
     if (themeResponse.success) {
-      console.log(themeResponse);
       this.styles = {
         menu: {
           backgroundColor: themeResponse.data.backgroundColor,

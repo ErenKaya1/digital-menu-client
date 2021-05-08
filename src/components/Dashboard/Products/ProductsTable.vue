@@ -10,17 +10,15 @@
       </template>
     </b-table>
     <b-alert variant="warning" show v-else>Henüz ürün eklemediniz.</b-alert>
-    <new-product-modal v-on:productSaved="refreshProducts()" />
   </div>
 </template>
 
 <script>
-import NewProductModal from "@/components/Dashboard/Products/NewProductModal.vue";
 import ProductDetailsButton from "@/components/Dashboard/Products/ProductDetailsButton.vue";
 import productService from "@/services/productService";
 
 export default {
-  components: { NewProductModal, ProductDetailsButton },
+  components: { ProductDetailsButton },
   data() {
     return {
       products: [],
@@ -35,6 +33,10 @@ export default {
 
   async mounted() {
     await this.fetchProducts();
+
+    this.$root.$on("refreshProducts", async () => {
+      await this.fetchProducts();
+    });
   },
 
   methods: {

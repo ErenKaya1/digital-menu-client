@@ -31,11 +31,6 @@ export default {
             icon: "fas fa-utensils",
           },
           {
-            href: "/dashboard/product-groups",
-            title: "Ürün Grupları",
-            icon: "fas fa-utensils",
-          },
-          {
             href: "/dashboard/categories",
             title: "Kategoriler",
             icon: "fas fa-layer-group",

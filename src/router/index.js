@@ -45,10 +45,12 @@ const routes = [
       {
         path: "/dashboard/products",
         component: () => import(/* webpackChunkName: "products" */ "@/views/Dashboard/Products.vue"),
-      },
-      {
-        path: "/dashboard/product-groups",
-        component: () => import(/* webpackChunkName: "product-groups" */ "@/views/Dashboard/ProductGroups.vue"),
+        children: [
+          {
+            path: "/dashboard/products/new",
+            component: () => import(/* webpackChunkName: "new-product" */ "@/views/Dashboard/NewProduct.vue"),
+          },
+        ],
       },
       {
         path: "/dashboard/qr",

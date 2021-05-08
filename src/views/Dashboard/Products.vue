@@ -2,7 +2,7 @@
   <div>
     <b-row>
       <b-col cols="12">
-        <b-button v-b-modal.new-product variant="landing-secondary">Yeni Ürün</b-button>
+        <b-button to="/dashboard/products/new" variant="landing-secondary">Yeni Ürün</b-button>
       </b-col>
     </b-row>
     <b-row class="mt-4">
@@ -10,6 +10,7 @@
         <products-table />
       </b-col>
     </b-row>
+    <router-view />
   </div>
 </template>
 
@@ -17,6 +18,8 @@
 import ProductsTable from "../../components/Dashboard/Products/ProductsTable.vue";
 export default {
   components: { ProductsTable },
+
+  methods: {},
 };
 </script>
 
