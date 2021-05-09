@@ -15,8 +15,12 @@ export default {
     const response = await client.post("/user/forgot-password", credentials);
     return response.data;
   },
-  async logout(userId){
+  async logout(userId) {
     const response = await client.delete(`/user/logout/${userId}`);
     return response.data;
-  }
+  },
+  async resetPassword(credentials) {
+    const response = await client.post("/user/reset-password", credentials);
+    return response.data;
+  },
 };

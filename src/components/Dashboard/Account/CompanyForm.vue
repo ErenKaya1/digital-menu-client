@@ -17,7 +17,7 @@
       <b-form-checkbox v-model.trim="customSlug" />
     </b-form-group>
     <b-form-group label="Menü Linki (Bu alanı değiştirseniz QR kodunuzu da yenilemeniz gerekmektedir.)">
-      <b-input-group prepend="https://www.digitalmenu.com/">
+      <b-input-group prepend="https://www.digitalmenu.com/menu/">
         <b-form-input v-model.trim="company.slug" :disabled="!customSlug" />
       </b-input-group>
     </b-form-group>

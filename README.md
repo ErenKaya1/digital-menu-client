@@ -10,8 +10,8 @@
 - [ ] Ürün eklerken veya düzenlerken fiyat bugu
 - [ ] Seçilen para birimine göre sembolün gösterilmesi
 - [x] Ekleme ve düzenleme sayfalarının modal değil de yeni view olması
-- [ ] Parola Sıfırlama Formu
-- [ ] JWT token HttpOnly cookiede saklanacak
+- [x] Parola Sıfırlama Formu
+- [ ] JWT token HttpOnly cookiede saklanacak (?)
 - [x] Abonelik yenileme sayfasında abonelik kontrolü
 - [x] Abonelik yenileme kart numarası formatlama
 - [x] Menu düzenleme ekranı dropdown stilleri

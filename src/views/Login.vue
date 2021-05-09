@@ -28,7 +28,7 @@
                   <div>{{ $t("password") }}</div>
                   <b-link to="/forgot-password" class="d-block small text-landing-primary">{{ $t("forgotPassword") }}</b-link>
                 </div>
-                <b-input type="password" v-model="credentials.password" :state="validateState('password')"/>
+                <b-input type="password" v-model="credentials.password" :state="validateState('password')" />
               </b-form-group>
 
               <div class="d-flex justify-content-between align-items-center m-0">
@@ -84,12 +84,30 @@ export default {
     async login() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
+        this.$v.$reset();
         const data = await authService.authenticate(this.credentials);
-        if (data.code === 200) {
+        if (data.success) {
           this.$store.dispatch("setToken", data.data.token);
           this.$store.dispatch("setUser", data.data.user);
           this.$store.dispatch("setPersistent", this.credentials.isPersistent);
           this.$router.push("/dashboard");
+        } else {
+          var errorMessage = "";
+          console.log(data);
+
+          switch (data.errorCode) {
+            // incorrect login
+            case 3:
+              errorMessage = "Lütfen bilgilerinizi konrol ediniz.";
+              break;
+          }
+
+          this.$notify({
+            group: "notify",
+            text: errorMessage,
+            duration: 5000,
+            type: "error",
+          });
         }
       }
     },

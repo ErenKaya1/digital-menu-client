@@ -123,6 +123,7 @@ export default {
     async submitProductForm() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
+        this.$v.$reset();
         this.productModel.append("Id", this.product.id);
         this.productModel.append("Price", this.product.price);
         this.productModel.append("NameTR", this.product.nameTR);
@@ -139,7 +140,6 @@ export default {
             duration: 5000,
             type: "success",
           });
-
           this.$root.$emit("refreshProducts");
         } else {
           this.$notify({
@@ -173,7 +173,7 @@ export default {
   align-items: center;
   top: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 1000;
   width: 100%;
   height: 100%;
 }
