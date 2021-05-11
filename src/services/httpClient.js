@@ -11,9 +11,11 @@ const httpClient = axios.create({
 httpClient.interceptors.request.use(
   (config) => {
     if (store.state.token) config.headers["Authorization"] = `Bearer ${store.state.token}`;
+    if (store.state.isPersistent) config.headers["X-IsPersistent"] = true;
+    else config.headers["X-IsPersistent"] = false;
     if (cookie.get("lang")) config.headers["X-Language"] = cookie.get("lang").toLowerCase();
     else config.headers["X-Language"] = "tr";
-    if(cookie.get("currency")) config.headers["X-Currency"] = cookie.get("currency").toLowerCase();
+    if (cookie.get("currency")) config.headers["X-Currency"] = cookie.get("currency").toLowerCase();
     else config.headers["X-Currency"] = "try";
 
     return config;

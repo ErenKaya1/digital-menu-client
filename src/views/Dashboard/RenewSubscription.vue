@@ -106,10 +106,13 @@ export default {
 
   async mounted() {
     const currentSubscription = await subscriptionService.checkSubscriptionStatus(this.$store.state.user.userId);
-    if (currentSubscription.message === "Expired") this.isSubscribe = false;
-    else {
+    if (currentSubscription.message === "Expired") {
       const subscriptionTypesResponse = await subscriptionService.getSubscriptionTypes();
-      if (subscriptionTypesResponse.success) this.subscriptionTypes = subscriptionTypesResponse.data;
+      if (subscriptionTypesResponse.success) {
+        this.subscriptionTypes = subscriptionTypesResponse.data;
+      }
+
+      this.isSubscribe = false;
     }
   },
 
