@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <table-loader v-if="!isLoaded" />
+  <div v-else>
     <b-table :items="categories" :fields="fields" thead-class="table-header" bordered hover head-variant="dark" v-if="categories.length > 0" class="dashboard-table">
       <template #cell(nameTR)="row">{{ row.value }}</template>
       <template #cell(nameEN)="row">{{ row.value }}</template>
@@ -14,8 +15,10 @@
 
 <script>
 import categoryService from "@/services/categoryService";
+import TableLoader from "@/components/TableLoader.vue";
 
 export default {
+  components: { TableLoader },
   data() {
     return {
       categories: [],
@@ -24,6 +27,7 @@ export default {
         { key: "nameEN", label: "Kategori Adı (EN)", sortable: true },
         { key: "actions", label: "Seçenekler", tdClass: "options-column", thClass: "options-column" },
       ],
+      isLoaded: false,
     };
   },
 
@@ -31,6 +35,7 @@ export default {
     await this.fetchCategories();
 
     this.$root.$on("refreshCategories", async () => {
+      this.isLoaded = false;
       await this.fetchCategories();
     });
   },
@@ -74,6 +79,8 @@ export default {
       if (categoryData.code === 200) {
         this.categories = categoryData.data;
       }
+
+      this.isLoaded = true;
     },
   },
 };

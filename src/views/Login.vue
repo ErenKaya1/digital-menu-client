@@ -84,6 +84,7 @@ export default {
     async login() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
+        var loader = this.$loading.show();
         this.$v.$reset();
         const data = await authService.authenticate(this.credentials);
         if (data.success) {
@@ -93,7 +94,6 @@ export default {
           this.$router.push("/dashboard");
         } else {
           var errorMessage = "";
-          console.log(data);
 
           switch (data.errorCode) {
             // incorrect login
@@ -109,6 +109,8 @@ export default {
             type: "error",
           });
         }
+
+        loader.hide();
       }
     },
 

@@ -1,5 +1,6 @@
 <template>
-  <b-row>
+  <table-loader v-if="!isLoaded" />
+  <b-row v-else>
     <b-col cols="7">
       <form @submit.prevent="submitThemeForm" class="border p-3 theme-form">
         <b-form-row>
@@ -69,9 +70,10 @@
 <script>
 import MenuPreview from "@/components/Dashboard/Theme/MenuPreview.vue";
 import menuService from "@/services/menuService";
+import TableLoader from "@/components/TableLoader.vue";
 
 export default {
-  components: { MenuPreview },
+  components: { MenuPreview, TableLoader },
 
   data() {
     return {
@@ -108,6 +110,7 @@ export default {
 
       logo: null,
       themeModel: new FormData(),
+      isLoaded: false,
     };
   },
 
@@ -179,6 +182,8 @@ export default {
         },
       };
     }
+
+    this.isLoaded = true;
   },
 };
 </script>

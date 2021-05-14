@@ -146,6 +146,8 @@ export default {
     async register() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
+        var loader = this.$loading.show();
+        this.$v.$reset();
         const data = await authService.register(this.credentials);
         if (data.success) {
           this.$store.dispatch("setToken", data.data.token);
@@ -166,7 +168,6 @@ export default {
               break;
           }
 
-          this.$v.$reset();
           this.$notify({
             group: "notify",
             text: errorMessage,
@@ -174,6 +175,8 @@ export default {
             type: "error",
           });
         }
+
+        loader.hide();
       }
     },
 

@@ -1,7 +1,7 @@
 <template>
   <div class="authentication-wrapper authentication-2 px-4">
     <div class="authentication-inner py-5">
-      <b-alert variant="danger" show v-if="hasError">{{ errorMessage }}</b-alert>
+      <b-alert variant="danger" show v-if="errorMessage">{{ errorMessage }}</b-alert>
       <form class="card" @submit.prevent="resetPassword">
         <div class="p-4 p-sm-5">
           <!-- Logo -->
@@ -15,10 +15,10 @@
           <h5 class="text-center text-muted font-weight-normal mb-4">{{ $t("forgotPasswordView.formTitle") }}</h5>
           <hr class="mt-0 mb-4" />
           <b-form-group label="Yeni Parola" :state="validateNewPassword()" :invalid-feedback="!$v.credentials.newPassword.required ? 'Zorunlu Alan' : !$v.credentials.newPassword.minLength ? 'Parola en az 6 karakter uzunluğunda olmalıdır.' : ''">
-            <b-input v-model="credentials.newPassword" :state="validateNewPassword()" />
+            <b-input v-model="credentials.newPassword" type="password" :state="validateNewPassword()" />
           </b-form-group>
           <b-form-group label="Yeni Parola Tekrar" :state="validateNewPasswordConfirm()" :invalid-feedback="!$v.newPasswordConfirm.required ? 'Zorunlu Alan' : !$v.newPasswordConfirm.sameAs ? 'Parolalar uyuşmuyor.' : ''">
-            <b-input v-model="newPasswordConfirm" :state="validateNewPasswordConfirm()" />
+            <b-input v-model="newPasswordConfirm" type="password" :state="validateNewPasswordConfirm()" />
           </b-form-group>
 
           <b-btn type="submit" variant="landing-primary" :block="true">Parola Sıfırla</b-btn>
@@ -42,7 +42,6 @@ export default {
       },
 
       newPasswordConfirm: "",
-      hasError: false,
       errorMessage: "",
     };
   },
@@ -76,6 +75,7 @@ export default {
     async resetPassword() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
+        var loader = this.$loading.show();
         this.$v.$reset();
         const response = await authService.resetPassword(this.credentials);
         if (response.success) {
@@ -106,9 +106,9 @@ export default {
               this.errorMessage = "Parola değiştirilirken bir hata meydana geldi.";
               break;
           }
-
-          this.hasError = true;
         }
+
+        loader.hide();
       }
     },
 

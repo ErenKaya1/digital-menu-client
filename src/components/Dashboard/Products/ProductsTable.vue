@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <table-loader v-if="!isLoaded" />
+  <div v-else>
     <b-table :items="products" :fields="fields" thead-class="table-header" bordered hover head-variant="dark" v-if="products.length > 0" class="dashboard-table">
       <template #cell(nameTR)="row">{{ row.value }}</template>
       <template #cell(nameEN)="row">{{ row.value }}</template>
@@ -15,8 +16,10 @@
 
 <script>
 import productService from "@/services/productService";
+import TableLoader from "@/components/TableLoader.vue";
 
 export default {
+  components: { TableLoader },
   data() {
     return {
       products: [],
@@ -26,6 +29,7 @@ export default {
         { key: "price", label: "Fiyat", sortable: true },
         { key: "actions", label: "Seçenekler", tdClass: "options-column", thClass: "options-column" },
       ],
+      isLoaded: false,
     };
   },
 
@@ -33,6 +37,7 @@ export default {
     await this.fetchProducts();
 
     this.$root.$on("refreshProducts", async () => {
+      this.isLoaded = false;
       await this.fetchProducts();
     });
   },
@@ -43,6 +48,8 @@ export default {
       if (data.code === 200) {
         this.products = data.data;
       }
+
+      this.isLoaded = true;
     },
 
     async refreshProducts() {
