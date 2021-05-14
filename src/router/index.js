@@ -95,6 +95,11 @@ const routes = [
     name: "MenuError",
     component: () => import(/* webpackChunkName: "menu-error" */ "@/views/MenuError.vue"),
   },
+  {
+    path: "*",
+    name: "NotFound",
+    component: () => import(/* webpackChunkName: "not-found" */ "@/views/404.vue"),
+  },
 ];
 
 const router = new VueRouter({
