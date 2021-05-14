@@ -54,6 +54,14 @@ body {
   border-color: var(--color-landing-primary);
 }
 
+.bg-landing-primary {
+  background-color: var(--color-landing-primary);
+}
+
+.bg-landing-secondary {
+  background-color: var(--color-landing-secondary);
+}
+
 a.text-landing-primary:hover {
   color: var(--color-landing-primary);
   text-decoration: underline;

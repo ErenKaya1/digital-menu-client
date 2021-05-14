@@ -4,7 +4,7 @@ import router from "@/router/index";
 import cookie from "vue-cookie";
 
 const httpClient = axios.create({
-  baseURL: process.env.VUE_APP_BACKEND_URL || "http://api.erenkaya.tk",
+  baseURL: process.env.VUE_APP_BACKEND_URL,
   withCredentials: true,
 });
 
