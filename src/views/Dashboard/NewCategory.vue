@@ -68,6 +68,7 @@ export default {
     async submitCategoryForm() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
+        var loader = this.$loading.show();
         this.categoryModel.append("NameTR", this.category.nameTR);
         this.categoryModel.append("NameEN", this.category.nameEN);
         this.categoryModel.append("DescriptionTR", this.category.descriptionTR);
@@ -85,6 +86,8 @@ export default {
           this.$root.$emit("refreshCategories");
           this.$router.push("/dashboard/categories");
         }
+
+        loader.hide();
       }
     },
 

@@ -1,10 +1,11 @@
 <template>
-  <div>menu error</div>
+  <not-found />
 </template>
 
 <script>
-export default {};
-</script>
+import NotFound from "@/components/NotFound.vue";
 
-<style>
-</style>
+export default {
+  components: { NotFound },
+};
+</script>

@@ -75,8 +75,9 @@ export default {
     async submitAccountForm() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
+        var loader = this.$loading.show();
         var data = await accountService.updateProfile(this.user);
-        if (data.code === 200) {
+        if (data.success) {
           this.$notify({
             group: "notify-top-right",
             text: "Hesap bilgileri başarıyla güncellendi.",
@@ -86,7 +87,17 @@ export default {
 
           this.$store.dispatch("setToken", data.data.token);
           this.$store.dispatch("setUser", data.data.user);
+        } else {
+          this.$notify({
+            group: "notify-top-right",
+            text: "Hesap bilgileri güncellenemedi.",
+            duration: 5000,
+            type: "error",
+          });
         }
+
+        this.$v.$reset();
+        loader.hide();
       }
     },
 

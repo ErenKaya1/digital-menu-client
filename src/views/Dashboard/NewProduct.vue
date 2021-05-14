@@ -100,6 +100,7 @@ export default {
     async submitProductForm() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
+        var loader = this.$loading.show();
         this.productModel.append("NameTR", this.product.nameTR);
         this.productModel.append("NameEN", this.product.nameEN);
         this.productModel.append("DescriptionTR", this.product.descriptionTR);
@@ -108,7 +109,7 @@ export default {
         this.productModel.append("CategoryId", this.product.categoryId);
 
         const data = await productService.insertProduct(this.$store.state.user.userId, this.productModel);
-        if (data.code === 200) {
+        if (data.success) {
           this.$notify({
             group: "notify-top-right",
             text: "Ürün başarıyla kaydedildi.",
@@ -126,6 +127,8 @@ export default {
             type: "error",
           });
         }
+
+        loader.hide();
       }
     },
 

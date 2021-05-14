@@ -123,6 +123,7 @@ export default {
     async submitProductForm() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
+        var loader = this.$loading.show();
         this.$v.$reset();
         this.productModel.append("Id", this.product.id);
         this.productModel.append("Price", this.product.price);
@@ -149,6 +150,8 @@ export default {
             type: "error",
           });
         }
+
+        loader.hide();
       }
     },
 

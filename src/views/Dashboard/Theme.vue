@@ -113,6 +113,7 @@ export default {
 
   methods: {
     async submitThemeForm() {
+      var loader = this.$loading.show();
       this.themeModel.append("BackgroundColor", this.styles.menu.backgroundColor);
       this.themeModel.append("TextColor", this.styles.text.color);
       this.themeModel.append("PriceColor", this.styles.price.color);
@@ -131,7 +132,16 @@ export default {
           duration: 5000,
           type: "success",
         });
+      } else {
+        this.$notify({
+          group: "notify-top-right",
+          text: "Tema güncellenemedi.",
+          duration: 5000,
+          type: "success",
+        });
       }
+
+      loader.hide();
     },
   },
 

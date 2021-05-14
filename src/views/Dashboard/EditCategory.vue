@@ -85,6 +85,8 @@ export default {
     async submitCategoryForm() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
+        var loader = this.$loading.show();
+        this.$v.$reset();
         this.categoryModel.append("Id", this.category.id);
         this.categoryModel.append("NameTR", this.category.nameTR);
         this.categoryModel.append("NameEN", this.category.nameEN);
@@ -92,7 +94,7 @@ export default {
         this.categoryModel.append("DescriptionEN", this.category.descriptionEN);
 
         const categoryData = await categoryService.updateCategory(this.$store.state.user.userId, this.categoryModel);
-        if (categoryData.code === 200) {
+        if (categoryData.success) {
           this.$notify({
             group: "notify-top-right",
             text: "Kategori başarıyla güncellendi.",
@@ -101,7 +103,16 @@ export default {
           });
 
           this.$root.$emit("refreshCategories");
+        } else {
+          this.$notify({
+            group: "notify-top-right",
+            text: "Kategori güncellenemedi.",
+            duration: 5000,
+            type: "error",
+          });
         }
+
+        loader.hide();
       }
     },
 

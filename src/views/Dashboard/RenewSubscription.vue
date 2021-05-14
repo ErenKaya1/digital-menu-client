@@ -131,6 +131,8 @@ export default {
           return;
         }
 
+        var loader = this.$loading.show();
+
         this.subscriptionModel.append("SubscriptionTypeId", this.selectedSubscriptionTypeId);
         this.subscriptionModel.append("CardHolder", this.creditCard.cardName);
         this.subscriptionModel.append("CardNumber", this.creditCard.cardNumber.replace(/ /g, ""));
@@ -248,6 +250,8 @@ export default {
             type: "error",
           });
         }
+
+        loader.hide();
       }
     },
 

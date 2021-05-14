@@ -59,8 +59,9 @@ export default {
     async submitPasswordForm() {
       this.$v.$touch();
       if (!this.$v.$invalid) {
+        var loader = this.$loading.show();
         var data = await accountService.updatePassword(this.$store.state.user.userId, this.passwordCredentials);
-        if (data.code === 200) {
+        if (data.success) {
           this.$notify({
             group: "notify-top-right",
             text: "Parola başarıyla güncellendi.",
@@ -82,6 +83,7 @@ export default {
         };
         this.newPasswordConfirm = "";
         this.$v.$reset();
+        loader.hide();
       }
     },
 

@@ -98,7 +98,7 @@ const routes = [
   {
     path: "*",
     name: "NotFound",
-    component: () => import(/* webpackChunkName: "not-found" */ "@/views/404.vue"),
+    component: () => import(/* webpackChunkName: "404" */ "@/views/404.vue"),
   },
 ];
 

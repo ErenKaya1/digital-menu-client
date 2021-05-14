@@ -56,9 +56,10 @@ export default {
     },
 
     async submitCompanyForm() {
+      var loader = this.$loading.show();
       this.companyModel.append("name", this.company.name);
       this.companyModel.append("slug", this.company.slug);
-      
+
       const data = await accountService.updateCompany(this.$store.state.user.userId, this.companyModel);
       if (data.success) {
         this.company = data.data;
@@ -86,6 +87,8 @@ export default {
           type: "error",
         });
       }
+
+      loader.hide();
     },
 
     imagePreview(event) {
