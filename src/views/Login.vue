@@ -54,8 +54,8 @@ export default {
   data() {
     return {
       credentials: {
-        userName: "erenkaya",
-        password: "asdasd",
+        userName: "",
+        password: "",
         isPersistent: false,
       },
     };
@@ -98,7 +98,7 @@ export default {
           switch (data.errorCode) {
             // incorrect credentials
             case 3:
-              errorMessage = this.$t("loginView.errorMessages.invalidCredentials")
+              errorMessage = this.$t("loginView.errorMessages.invalidCredentials");
               break;
           }
 

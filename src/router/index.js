@@ -96,6 +96,10 @@ const routes = [
     component: () => import(/* webpackChunkName: "menu-error" */ "@/views/MenuError.vue"),
   },
   {
+    path: "/about-us",
+    component: () => import(/* webpackChunkName: "about-us" */ "@/views/AboutUs.vue"),
+  },
+  {
     path: "*",
     name: "NotFound",
     component: () => import(/* webpackChunkName: "404" */ "@/views/404.vue"),

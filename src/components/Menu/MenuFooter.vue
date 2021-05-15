@@ -9,7 +9,7 @@
       <b-row>
         <div class="col-6 col-sm pb-4">
           <div :style="styles.text" class="font-secondary font-weight-bold mb-3">{{ $t("menuView.footer.whoWeAre").toLocaleUpperCase() }}</div>
-          <b-link :style="styles.link" to="/about" class="d-block small pb-2">{{ $t("menuView.footer.aboutUs") }}</b-link>
+          <b-link :style="styles.link" to="/about-us" class="d-block small pb-2">{{ $t("menuView.footer.aboutUs") }}</b-link>
           <b-link :style="styles.link" to="/ourstory" class="d-block small pb-2">{{ $t("menuView.footer.ourStory") }}</b-link>
           <b-link :style="styles.link" to="/crew" class="d-block small pb-2">{{ $t("menuView.footer.crew") }}</b-link>
         </div>
