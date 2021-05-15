@@ -26,8 +26,8 @@
           </swiper-slide>
         </swiper>
         <div class="selected-category-overview">
-          <h6 :style="styles.text">İçecek</h6>
-          <p :style="styles.category.description">Birbirinden Güzel İçecekler</p>
+          <h6 :style="styles.text">{{ $t("dashboard.themeView.previewCategoryName") }}</h6>
+          <p :style="styles.category.description">{{ $t("dashboard.themeView.previewCategoryDescription") }}</p>
         </div>
         <b-row>
           <b-col v-for="(product, index) in previewProducts" :key="index" cols="12" class="p-md-0 mr-md-3">
@@ -46,30 +46,30 @@
       <footer class="footer pt-4">
         <b-container class="text-center py-4">
           <div class="pb-3">
-            <span :style="styles.text" class="font-weight-bolder">LANDING</span>
+            <span :style="styles.text" class="font-weight-bolder">DIGITAL MENU</span>
             <span :style="styles.text" class="align-top">©</span>
           </div>
           <hr class="mb-4" />
           <b-row>
             <div class="col pb-4">
-              <div :style="styles.text" class="font-secondary font-weight-bold mb-3">{{ $t("footer.whoWeAre").toLocaleUpperCase() }}</div>
-              <b-link :style="styles.link" to="/about" class="d-block small pb-2">{{ $t("footer.aboutus") }}</b-link>
-              <b-link :style="styles.link" to="/ourstory" class="d-block small pb-2">{{ $t("footer.ourstory") }}</b-link>
-              <b-link :style="styles.link" to="/crew" class="d-block small pb-2">{{ $t("footer.crew") }}</b-link>
+              <div :style="styles.text" class="font-secondary font-weight-bold mb-3">{{ $t("dashboard.themeView.previewFooterWhoAreAre").toLocaleUpperCase() }}</div>
+              <span :style="styles.link" class="d-block small pb-2">{{ $t("dashboard.themeView.previewFooterAboutUs") }}</span>
+              <span :style="styles.link" class="d-block small pb-2">{{ $t("dashboard.themeView.previewFooterOurStory") }}</span>
+              <span :style="styles.link" class="d-block small pb-2">{{ $t("dashboard.themeView.previewFooterCrew") }}</span>
             </div>
             <div class="col pb-4">
-              <div :style="styles.text" class="font-secondary font-weight-bold mb-3">{{ $t("footer.support").toLocaleUpperCase() }}</div>
-              <b-link :style="styles.link" to="/faq" class="d-block small pb-2">{{ $t("footer.faq").toLocaleUpperCase() }}</b-link>
-              <b-link :style="styles.link" to="/policy" class="d-block small pb-2">{{ $t("footer.privacyPolicy") }}</b-link>
-              <b-link :style="styles.link" to="/contact" class="d-block small pb-2">{{ $t("footer.contact") }}</b-link>
+              <div :style="styles.text" class="font-secondary font-weight-bold mb-3">{{ $t("dashboard.themeView.previewFooterSupport").toLocaleUpperCase() }}</div>
+              <span :style="styles.link" class="d-block small pb-2">{{ $t("dashboard.themeView.previewFooterFaq").toLocaleUpperCase() }}</span>
+              <span :style="styles.link" class="d-block small pb-2">{{ $t("dashboard.themeView.previewFooterprivacyPolicy") }}</span>
+              <span :style="styles.link" class="d-block small pb-2">{{ $t("dashboard.themeView.previewFooterContact") }}</span>
             </div>
           </b-row>
           <b-row>
             <div class="col pb-4">
-              <div :style="styles.text" class="font-secondary font-weight-bold mb-3">{{ $t("footer.socialMedia").toLocaleUpperCase() }}</div>
-              <a href="#" :style="styles.link" class="d-block small pb-2" target="_blank"> &nbsp;Twitter</a>
-              <a href="#" :style="styles.link" class="d-block small pb-2" target="_blank"> &nbsp;Facebook</a>
-              <a href="#" :style="styles.link" class="d-block small pb-2" target="_blank"> &nbsp;Instagram</a>
+              <div :style="styles.text" class="font-secondary font-weight-bold mb-3">{{ $t("dashboard.themeView.previewFooterSocialMedia").toLocaleUpperCase() }}</div>
+              <span :style="styles.link" class="d-block small pb-2" target="_blank"> &nbsp;Twitter</span>
+              <span :style="styles.link" class="d-block small pb-2" target="_blank"> &nbsp;Facebook</span>
+              <span :style="styles.link" class="d-block small pb-2" target="_blank"> &nbsp;Instagram</span>
             </div>
           </b-row>
         </b-container>
@@ -101,19 +101,19 @@ export default {
       },
 
       previewCategories: [
-        { name: "Başlangıç", imagePath: "https://cdn.mos.cms.futurecdn.net/QRMF2ZxVFShdqoxh5gxUQ8-768-80.jpg" },
-        { name: "Ara Sıcak", imagePath: "https://cdn.mos.cms.futurecdn.net/QRMF2ZxVFShdqoxh5gxUQ8-768-80.jpg" },
-        { name: "Ana Yemek", imagePath: "https://cdn.mos.cms.futurecdn.net/QRMF2ZxVFShdqoxh5gxUQ8-768-80.jpg" },
-        { name: "İçecek", imagePath: "https://cdn.mos.cms.futurecdn.net/QRMF2ZxVFShdqoxh5gxUQ8-768-80.jpg" },
-        { name: "Tatlı", imagePath: "https://cdn.mos.cms.futurecdn.net/QRMF2ZxVFShdqoxh5gxUQ8-768-80.jpg" },
+        { name: this.$t("dashboard.themeView.previewCategory1"), imagePath: "https://cdn.mos.cms.futurecdn.net/QRMF2ZxVFShdqoxh5gxUQ8-768-80.jpg" },
+        { name: this.$t("dashboard.themeView.previewCategory2"), imagePath: "https://cdn.mos.cms.futurecdn.net/QRMF2ZxVFShdqoxh5gxUQ8-768-80.jpg" },
+        { name: this.$t("dashboard.themeView.previewCategory3"), imagePath: "https://cdn.mos.cms.futurecdn.net/QRMF2ZxVFShdqoxh5gxUQ8-768-80.jpg" },
+        { name: this.$t("dashboard.themeView.previewCategory4"), imagePath: "https://cdn.mos.cms.futurecdn.net/QRMF2ZxVFShdqoxh5gxUQ8-768-80.jpg" },
+        { name: this.$t("dashboard.themeView.previewCategory5"), imagePath: "https://cdn.mos.cms.futurecdn.net/QRMF2ZxVFShdqoxh5gxUQ8-768-80.jpg" },
       ],
 
       previewProducts: [
-        { name: "Su", price: 2, imagePath: "https://cdn.mos.cms.futurecdn.net/QRMF2ZxVFShdqoxh5gxUQ8-768-80.jpg" },
-        { name: "Kola", price: 5, imagePath: "https://cdn.mos.cms.futurecdn.net/QRMF2ZxVFShdqoxh5gxUQ8-768-80.jpg" },
-        { name: "Ayran", price: 4, imagePath: "https://cdn.mos.cms.futurecdn.net/QRMF2ZxVFShdqoxh5gxUQ8-768-80.jpg" },
-        { name: "Ice Tea", price: 4, imagePath: "https://cdn.mos.cms.futurecdn.net/QRMF2ZxVFShdqoxh5gxUQ8-768-80.jpg" },
-        { name: "Portakal Suyu", price: 10, imagePath: "https://cdn.mos.cms.futurecdn.net/QRMF2ZxVFShdqoxh5gxUQ8-768-80.jpg" },
+        { name: this.$t("dashboard.themeView.previewProduct1"), price: 2, imagePath: "https://cdn.mos.cms.futurecdn.net/QRMF2ZxVFShdqoxh5gxUQ8-768-80.jpg" },
+        { name: this.$t("dashboard.themeView.previewProduct2"), price: 5, imagePath: "https://cdn.mos.cms.futurecdn.net/QRMF2ZxVFShdqoxh5gxUQ8-768-80.jpg" },
+        { name: this.$t("dashboard.themeView.previewProduct3"), price: 4, imagePath: "https://cdn.mos.cms.futurecdn.net/QRMF2ZxVFShdqoxh5gxUQ8-768-80.jpg" },
+        { name: this.$t("dashboard.themeView.previewProduct4"), price: 4, imagePath: "https://cdn.mos.cms.futurecdn.net/QRMF2ZxVFShdqoxh5gxUQ8-768-80.jpg" },
+        { name: this.$t("dashboard.themeView.previewProduct5"), price: 10, imagePath: "https://cdn.mos.cms.futurecdn.net/QRMF2ZxVFShdqoxh5gxUQ8-768-80.jpg" },
       ],
     };
   },

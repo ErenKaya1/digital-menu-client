@@ -20,25 +20,25 @@
 
             <h4 class="text-center custom-text-muted font-weight-normal mt-5 mb-0">{{ $t("loginView.formTitle") }}</h4>
             <form class="my-5" @submit.prevent="login">
-              <b-form-group :label="this.$t('username')" :state="validateState('userName')" :invalid-feedback="$v.credentials.userName.$error ? $t('messages.error.usernameRequiredError') : ''">
+              <b-form-group :label="$t('loginView.username')" :state="validateState('userName')" :invalid-feedback="$v.credentials.userName.$error ? $t('loginView.errorMessages.usernameRequired') : ''">
                 <b-input v-model="credentials.userName" :state="validateState('userName')" />
               </b-form-group>
-              <b-form-group :state="validateState('password')" :invalid-feedback="$v.credentials.password.$error ? $t('messages.error.passwordRequiredError') : ''">
+              <b-form-group :state="validateState('password')" :invalid-feedback="$v.credentials.password.$error ? $t('loginView.errorMessages.passwordRequired') : ''">
                 <div slot="label" class="d-flex justify-content-between align-items-end">
-                  <div>{{ $t("password") }}</div>
-                  <b-link to="/forgot-password" class="d-block small text-landing-primary">{{ $t("forgotPassword") }}</b-link>
+                  <div>{{ $t("loginView.password") }}</div>
+                  <b-link to="/forgot-password" class="d-block small text-landing-primary">{{ $t("loginView.forgotPassword") }}</b-link>
                 </div>
                 <b-input type="password" v-model="credentials.password" :state="validateState('password')" />
               </b-form-group>
 
               <div class="d-flex justify-content-between align-items-center m-0">
-                <b-check v-model="credentials.isPersistent" class="m-0">{{ $t("rememberMe") }}</b-check>
-                <b-btn type="submit" variant="landing-primary">{{ $t("signin") }}</b-btn>
+                <b-check v-model="credentials.isPersistent" class="m-0">{{ $t("loginView.rememberMe") }}</b-check>
+                <b-btn type="submit" variant="landing-primary">{{ $t("loginView.formButtonText") }}</b-btn>
               </div>
             </form>
             <div class="text-center text-muted">
               {{ $t("loginView.dontHaveAnAccountYet") }}
-              <b-link to="/register" class="text-landing-primary">{{ $t("signup") }}</b-link>
+              <b-link to="/register" class="text-landing-primary">{{ $t("loginView.signUpLinkText") }}</b-link>
             </div>
           </div>
         </b-col>
@@ -96,9 +96,9 @@ export default {
           var errorMessage = "";
 
           switch (data.errorCode) {
-            // incorrect login
+            // incorrect credentials
             case 3:
-              errorMessage = "Lütfen bilgilerinizi konrol ediniz.";
+              errorMessage = this.$t("loginView.errorMessages.invalidCredentials")
               break;
           }
 

@@ -1,13 +1,13 @@
 <template>
   <b-card no-body>
     <b-tabs card>
-      <b-tab title="Hesap" title-link-class="text-secondary" active>
+      <b-tab :title="$t('dashboard.accountView.accountSettingsTitle')" title-link-class="text-secondary" active>
         <account-form />
       </b-tab>
-      <b-tab title="İşletme" title-link-class="text-secondary">
+      <b-tab :title="$t('dashboard.accountView.companySettingsTitle')" title-link-class="text-secondary">
         <company-form />
       </b-tab>
-      <b-tab title="Parola" title-link-class="text-secondary">
+      <b-tab :title="$t('dashboard.accountView.passwordSettingsTitle')" title-link-class="text-secondary">
         <password-form />
       </b-tab>
     </b-tabs>
@@ -21,7 +21,7 @@ import PasswordForm from "../../components/Dashboard/Account/PasswordForm.vue";
 export default {
   components: { AccountForm, CompanyForm, PasswordForm },
   async mounted() {
-    this.$title = "Account";
+    this.$title = this.$t("dashboard.accountView.tabTitle");
   },
 };
 </script>

@@ -2,7 +2,7 @@
   <div>
     <b-row>
       <b-col cols="12">
-        <b-button to="/dashboard/product/new" variant="landing-secondary">Yeni Ürün</b-button>
+        <b-button to="/dashboard/product/new" variant="landing-secondary">{{ $t("dashboard.productsView.newProductButtonText") }}</b-button>
       </b-col>
     </b-row>
     <b-row class="mt-4">
@@ -18,6 +18,10 @@
 import ProductsTable from "../../components/Dashboard/Products/ProductsTable.vue";
 export default {
   components: { ProductsTable },
+
+  mounted() {
+    this.$title = this.$t("dashboard.productsView.tabTitle");
+  },
 };
 </script>
 

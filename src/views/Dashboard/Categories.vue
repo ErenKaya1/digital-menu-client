@@ -2,7 +2,7 @@
   <div>
     <b-row>
       <b-col cols="12">
-        <b-button to="/dashboard/category/new" variant="landing-secondary">Yeni Kategori</b-button>
+        <b-button to="/dashboard/category/new" variant="landing-secondary">{{ $t("dashboard.categoriesView.newCategoryButtonText") }}</b-button>
       </b-col>
     </b-row>
     <b-row class="mt-4">
@@ -20,7 +20,7 @@ export default {
   components: { CategoriesTable },
 
   mounted() {
-    this.$title = "Categories";
+    this.$title = this.$t("dashboard.categoriesView.tabTitle");
   },
 };
 </script>

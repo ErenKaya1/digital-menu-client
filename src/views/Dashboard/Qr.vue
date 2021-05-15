@@ -4,36 +4,36 @@
     <div class="border p-3 qrcode-form">
       <b-form-row>
         <b-col>
-          <b-form-group label="Kenar Boşlukları">
+          <b-form-group :label="$t('dashboard.qrView.margin')">
             <b-input @input="generateQRCode" v-model.trim="QRCodeOptions.margin" />
           </b-form-group>
         </b-col>
         <b-col>
-          <b-form-group label="Ölçek">
+          <b-form-group :label="$t('dashboard.qrView.scale')">
             <b-input @input="generateQRCode" v-model.trim="QRCodeOptions.scale" />
           </b-form-group>
         </b-col>
       </b-form-row>
       <b-form-row>
         <b-col>
-          <b-form-group label="QR Kod Rengi">
+          <b-form-group :label="$t('dashboard.qrView.qrCodeColor')">
             <b-input @input="generateQRCode" type="color" v-model.trim="QRCodeOptions.color.dark" />
           </b-form-group>
         </b-col>
         <b-col>
-          <b-form-group label="Arka Plan Rengi">
+          <b-form-group :label="$t('dashboard.qrView.backgroundColor')">
             <b-input @input="generateQRCode" type="color" v-model.trim="QRCodeOptions.color.light" />
           </b-form-group>
         </b-col>
       </b-form-row>
       <b-form-row>
         <b-col>
-          <b-form-group label="Dosya Formatı">
+          <b-form-group :label="$t('dashboard.qrView.fileFormat')">
             <b-form-select @input="generateQRCode" :options="imageTypes" v-model="QRCodeOptions.type" />
           </b-form-group>
         </b-col>
         <b-col>
-          <b-form-group label="Kalite (0-1)">
+          <b-form-group :label="$t('dashboard.qrView.quality')">
             <b-input @input="generateQRCode" :disabled="QRCodeOptions.type === 'image/png'" v-model="QRCodeOptions.quality" />
           </b-form-group>
         </b-col>
@@ -41,7 +41,7 @@
       <b-form-row>
         <b-col>
           <b-form-group>
-            <b-link download="digital_menu" :href="this.imageUrl" class="btn btn-landing-secondary">İndir</b-link>
+            <b-link download="digital_menu" :href="this.imageUrl" class="btn btn-landing-secondary">{{ $t("dashboard.qrView.downloadButtonText") }}</b-link>
           </b-form-group>
         </b-col>
       </b-form-row>
@@ -83,6 +83,7 @@ export default {
   },
 
   async mounted() {
+    this.$title = this.$t("dashboard.qrView.tabTitle");
     const companyData = await accountService.getCompany(this.$store.state.user.userId);
     if (companyData.code === 200) {
       this.company = companyData.data;
@@ -95,7 +96,7 @@ export default {
 
   methods: {
     async generateQRCode() {
-      this.imageUrl = await QRCode.toDataURL(`https://localhost:5001/menu/${this.company.slug}`, this.QRCodeOptions);
+      this.imageUrl = await QRCode.toDataURL(`${process.env.VUE_APP_URL}/${this.company.slug}`, this.QRCodeOptions);
     },
   },
 };

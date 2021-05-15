@@ -12,16 +12,24 @@
           </div>
           <!-- / Logo -->
 
-          <h5 class="text-center text-muted font-weight-normal mb-4">{{ $t("forgotPasswordView.formTitle") }}</h5>
+          <h5 class="text-center text-muted font-weight-normal mb-4">{{ $t("resetPasswordView.formTitle") }}</h5>
           <hr class="mt-0 mb-4" />
-          <b-form-group label="Yeni Parola" :state="validateNewPassword()" :invalid-feedback="!$v.credentials.newPassword.required ? 'Zorunlu Alan' : !$v.credentials.newPassword.minLength ? 'Parola en az 6 karakter uzunluğunda olmalıdır.' : ''">
+          <b-form-group
+            :label="$t('resetPasswordView.newPassword')"
+            :state="validateNewPassword()"
+            :invalid-feedback="!$v.credentials.newPassword.required ? $t('resetPasswordView.errorMessages.newPasswordRequired') : !$v.credentials.newPassword.minLength ? $t('resetPasswordView.errorMessages.newPasswordMinLength') : ''"
+          >
             <b-input v-model="credentials.newPassword" type="password" :state="validateNewPassword()" />
           </b-form-group>
-          <b-form-group label="Yeni Parola Tekrar" :state="validateNewPasswordConfirm()" :invalid-feedback="!$v.newPasswordConfirm.required ? 'Zorunlu Alan' : !$v.newPasswordConfirm.sameAs ? 'Parolalar uyuşmuyor.' : ''">
+          <b-form-group
+            :label="$t('resetPasswordView.newPasswordConfirm')"
+            :state="validateNewPasswordConfirm()"
+            :invalid-feedback="!$v.newPasswordConfirm.required ? $t('resetPasswordView.errorMessages.newPasswordConfirmRequired') : !$v.newPasswordConfirm.sameAs ? $t('resetPasswordView.errorMessages.passwordsDontMatch') : ''"
+          >
             <b-input v-model="newPasswordConfirm" type="password" :state="validateNewPasswordConfirm()" />
           </b-form-group>
 
-          <b-btn type="submit" variant="landing-primary" :block="true">Parola Sıfırla</b-btn>
+          <b-btn type="submit" variant="landing-primary" :block="true">{{ $t("resetPasswordView.formButtonText") }}</b-btn>
         </div>
       </form>
     </div>
@@ -65,9 +73,10 @@ export default {
   },
 
   mounted() {
+    this.$title = this.$t("resetPasswordView.tabTitle");
     this.credentials = {
-      userId: this.$route.params.userId,
-      token: this.$route.params.token,
+      userId: this.$route.query.userId,
+      token: this.$route.query.token,
     };
   },
 
@@ -81,7 +90,7 @@ export default {
         if (response.success) {
           this.$notify({
             group: "notify",
-            text: "Parolanız başarıyla değiştirildi. Yeni parolanızla giriş yapabilirsiniz.",
+            text: this.$t("resetPasswordView.messages.passwordUpdatedSuccessfully"),
             duration: 5000,
             type: "success",
           });
@@ -94,16 +103,16 @@ export default {
           switch (response.errorCode) {
             // expired reset password token
             case 4:
-              this.errorMessage = "Parola yenileme bağlantısının süresi doldu.";
+              this.errorMessage = this.$t("resetPasswordView.errorMessages.resetPasswordTokenExpired");
               break;
 
             // invalid reset password token
             case 5:
-              this.errorMessage = "Parola yenileme bağlantısı geçersiz.";
+              this.errorMessage = this.$t("resetPasswordView.errorMessages.invalidResetPasswordToken");
               break;
 
             default:
-              this.errorMessage = "Parola değiştirilirken bir hata meydana geldi.";
+              this.errorMessage = this.$t("resetPasswordView.errorMessages.passwordUpdateFailed");
               break;
           }
         }

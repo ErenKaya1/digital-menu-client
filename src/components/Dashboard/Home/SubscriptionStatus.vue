@@ -1,10 +1,9 @@
 <template>
   <div>
     <b-alert variant="danger" show v-if="subscriptionStatus === 'Expired'">
-        Üyeliğiniz bitti.
-        Üyeliğinizi yenilemek için <b-link to="/dashboard/renew-subscription">tıklayınız.</b-link>
+      {{ $t("dashboard.homeView.subscriptionExpiredFirst") }}<b-link to="/dashboard/renew-subscription">{{ $t("dashboard.homeView.subscriptionExpiredSecond") }}</b-link>
     </b-alert>
-    <b-alert variant="danger" show v-else-if="subscriptionStatus === 'Suspended'">Üyeliğiniz askıya alındı.</b-alert>
+    <b-alert variant="danger" show v-else-if="subscriptionStatus === 'Suspended'">{{ $t("dashboard.homeView.subscriptionSuspended") }}</b-alert>
   </div>
 </template>
 

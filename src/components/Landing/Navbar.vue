@@ -1,25 +1,25 @@
 <template>
   <b-navbar class="landing-navbar pt-lg-4" toggleable="lg" type="dark" fixed="top">
     <b-container fluid class="px-3">
-      <b-navbar-brand to="/" class="text-big font-weight-bolder line-height-1 text-expanded py-3">LANDING</b-navbar-brand>
+      <b-navbar-brand to="/" class="text-big font-weight-bolder line-height-1 text-expanded py-3">DIGITAL MENU</b-navbar-brand>
       <b-navbar-toggle target="landing-navbar-collapse" @click="navbarToggle"></b-navbar-toggle>
       <b-collapse id="landing-navbar-collapse" is-nav>
         <b-navbar-nav class="align-items-lg-center ml-auto">
-          <b-nav-item href="#features" is="a" class="anchor-link nav-link nav-item">{{ $t("features") }}</b-nav-item>
-          <b-nav-item href="#screenshots" is="a" class="anchor-link nav-link nav-item">{{ $t("screenshots") }}</b-nav-item>
-          <b-nav-item href="#pricing" is="a" class="anchor-link nav-link nav-item">{{ $t("pricing") }}</b-nav-item>
+          <b-nav-item href="#features" is="a" class="anchor-link nav-link nav-item">{{ $t("landingView.navbar.features") }}</b-nav-item>
+          <b-nav-item href="#screenshots" is="a" class="anchor-link nav-link nav-item">{{ $t("landingView.navbar.screenshots") }}</b-nav-item>
+          <b-nav-item href="#pricing" is="a" class="anchor-link nav-link nav-item">{{ $t("landingView.navbar.pricing") }}</b-nav-item>
           <language-switcher v-on:languageChanged="handleLanguageChange" variant="outline-light"/>
           <b-nav-item is="div" class="nav-item py-3 py-lg-0 ml-lg-4" v-if="isUserLoggedIn">
             <b-link to="/dashboard" class="btn-dashboard anchor-link btn btn-outline-light rounded-pill text-expanded ml-1">
-              <small>{{ $t("dashboard") }}</small>
+              <small>{{ $t("landingView.navbar.dashboard") }}</small>
             </b-link>
             <b-button @click="logout" variant="outline-light" class="btn-logout rounded-pill anchor-link btn text-expanded ml-1">
-              <small>{{ $t("logout") }}</small>
+              <small>{{ $t("landingView.navbar.logout") }}</small>
             </b-button>
           </b-nav-item>
           <b-nav-item is="div" class="nav-item py-3 py-lg-0 ml-lg-4" v-else>
             <b-link to="/login" class="btn-login anchor-link btn btn-outline-light rounded-pill text-expanded ml-1">
-              <small>{{ $t("signin") }}</small>
+              <small>{{ $t("landingView.navbar.login") }}</small>
             </b-link>
           </b-nav-item>
         </b-navbar-nav>

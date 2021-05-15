@@ -1,10 +1,10 @@
 <template>
   <div>
     <div v-if="isSubscribe">
-      <b-alert variant="warning" show>Zaten devam eden bir aboneliğiniz var.</b-alert>
+      <b-alert variant="warning" show>{{ $t("dashboard.renewSubscriptionView.messages.alreadySubscribe") }}</b-alert>
     </div>
     <div v-else class="renew-subscription">
-      <h3 class="renew-subscription-title">Kendinize En Uygun Paketi Seçin</h3>
+      <h3 class="renew-subscription-title">{{ $t("dashboard.renewSubscriptionView.subscriptionTypesTitle") }}</h3>
       <b-row>
         <b-col md="4" class="d-flex flex-column py-4 text-center" :class="index != 2 ? 'pricing-bordered' : ''" v-for="(type, index) in subscriptionTypes" :key="type.id">
           <h5 class="m-0">{{ type.title }}</h5>
@@ -12,42 +12,42 @@
             <div class="py-4 my-2">
               <span class="d-inline-block text-muted text-big align-middle mr-2">₺</span>
               <span class="display-3 d-inline-block font-weight-bold align-middle pricing-price">{{ type.price }}</span>
-              <span class="d-inline-block text-muted text-big align-middle ml-2">/ mo</span>
+              <span class="d-inline-block text-muted text-big align-middle ml-2">/ {{ $t("dashboard.renewSubscriptionView.montlyPeriod") }}</span>
             </div>
             <div class="pb-5">
-              <p class="mb-2" v-for="(feature, index) in type.features" :key="index">{{ feature.isUnlimited ? $t("landingView.pricingBlock.unlimited") : feature.totalValue }} {{ feature.name }}</p>
+              <p class="mb-2" v-for="(feature, index) in type.features" :key="index">{{ feature.isUnlimited ? $t("dashboard.renewSubscriptionView.unlimited") : feature.totalValue }} {{ feature.name }}</p>
             </div>
-            <b-button :variant="type.id === selectedSubscriptionTypeId ? 'primary' : 'outline-primary'" @click="selectSubscriptionType(type.id)">Seç</b-button>
+            <b-button :variant="type.id === selectedSubscriptionTypeId ? 'primary' : 'outline-primary'" @click="selectSubscriptionType(type.id)">{{ $t("dashboard.renewSubscriptionView.subscriptionTypesButtonText") }}</b-button>
           </div>
         </b-col>
       </b-row>
       <vue-pay-card class="mt-5" :value-fields="creditCard" :labels="labels" :is-card-number-masked="false" />
       <div class="payment-form">
         <form @submit.prevent="renewSubscription">
-          <b-form-group label="Kart Sahibi" :state="validateState('cardName')" invalid-feedback="Zorunlu Alan">
+          <b-form-group :label="$t('dashboard.renewSubscriptionView.cardHolder')" :state="validateState('cardName')" :invalid-feedback="$t('dashboard.renewSubscriptionView.errorMessages.cardHolderRequired')">
             <b-input id="v-card-name" data-card-field v-model="creditCard.cardName" placeholder="Eren Kaya" :state="validateState('cardName')" />
           </b-form-group>
-          <b-form-group label="Kart Numarası" :state="validateState('cardNumber')" invalid-feedback="Zorunlu Alan">
+          <b-form-group :label="$t('dashboard.renewSubscriptionView.cardNumber')" :state="validateState('cardNumber')" :invalid-feedback="$t('dashboard.renewSubscriptionView.errorMessages.cardNumberRequired')">
             <b-input maxlength="19" @input="formatCardNumber" id="v-card-number" data-card-field v-model="creditCard.cardNumber" placeholder="4242 4242 4242 4242" :state="validateState('cardNumber')" />
           </b-form-group>
           <b-form-row>
             <b-col>
-              <b-form-group label="Ay" :state="validateState('cardMonth')" invalid-feedback="Zorunlu Alan">
+              <b-form-group :label="$t('dashboard.renewSubscriptionView.cardMonth')" :state="validateState('cardMonth')" :invalid-feedback="$t('dashboard.renewSubscriptionView.errorMessages.cardMonthRequired')">
                 <b-input id="v-card-month" data-card-field v-model="creditCard.cardMonth" placeholder="12" :state="validateState('cardMonth')" />
               </b-form-group>
             </b-col>
             <b-col>
-              <b-form-group label="Yıl" :state="validateState('cardYear')" invalid-feedback="Zorunlu Alan">
+              <b-form-group :label="$t('dashboard.renewSubscriptionView.cardYear')" :state="validateState('cardYear')" :invalid-feedback="$t('dashboard.renewSubscriptionView.errorMessages.cardYearRequired')">
                 <b-input id="v-card-year" data-card-field v-model="creditCard.cardYear" placeholder="2021" :state="validateState('cardYear')" />
               </b-form-group>
             </b-col>
             <b-col>
-              <b-form-group label="Güvenlik Kodu" :state="validateState('cardCvv')" invalid-feedback="Zorunlu Alan">
+              <b-form-group :label="$t('dashboard.renewSubscriptionView.cardCvv')" :state="validateState('cardCvv')" :invalid-feedback="$t('dashboard.renewSubscriptionView.errorMessages.cardCvvRequired')">
                 <b-input id="v-card-cvv" data-card-field v-model="creditCard.cardCvv" placeholder="000" :state="validateState('cardCvv')" />
               </b-form-group>
             </b-col>
           </b-form-row>
-          <b-button type="submit" variant="landing-secondary" block>Ödemeyi Yap</b-button>
+          <b-button type="submit" variant="landing-secondary" block>{{ $t("dashboard.renewSubscriptionView.paymentFormButtonText") }}</b-button>
         </form>
       </div>
     </div>
@@ -74,8 +74,8 @@ export default {
         cardCvv: "",
       },
       labels: {
-        cardHolder: "Kart Sahibi",
-        cardExpires: "Tarih",
+        cardHolder: this.$t("dashboard.renewSubscriptionView.cardHolder"),
+        cardExpires: this.$t("dashboard.renewSubscriptionView.cardDate"),
         cardCvv: "CVV",
       },
       subscriptionModel: new FormData(),
@@ -105,8 +105,9 @@ export default {
   },
 
   async mounted() {
+    this.$title = this.$t("dashboard.renewSubscriptionView.tabTitle");
     const currentSubscription = await subscriptionService.checkSubscriptionStatus(this.$store.state.user.userId);
-    if (currentSubscription.message === "Expired") {
+    if (currentSubscription.success && currentSubscription.message === "Expired") {
       const subscriptionTypesResponse = await subscriptionService.getSubscriptionTypes();
       if (subscriptionTypesResponse.success) {
         this.subscriptionTypes = subscriptionTypesResponse.data;
@@ -123,7 +124,7 @@ export default {
         if (!this.selectedSubscriptionTypeId) {
           this.$notify({
             group: "notify-top-right",
-            text: "Lütfen abonelik türünü seçiniz.",
+            text: this.$t("dashboard.renewSubscriptionView.errorMessages.subscriptionTypeRequired"),
             duration: 5000,
             type: "error",
           });
@@ -144,7 +145,7 @@ export default {
         if (response.success) {
           this.$notify({
             group: "notify-top-right",
-            text: "Aboneliğiniz başarıyla yenilendi.",
+            text: this.$t("dashboard.renewSubscriptionView.messages.subscriptionRenewedSuccessfully"),
             duration: 5000,
             type: "success",
           });
@@ -154,92 +155,93 @@ export default {
           }, 2000);
         } else {
           this.$v.$reset();
-          var message = "Ödeme alınırken bir hata oluştu.";
+          var message = this.$t("dashboard.renewSubscriptionView.errorMessages.paymentCommon");
+          console.log(response);
 
           switch (response.message) {
             case "10051":
-              message = "Kart limiti yetersiz.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.inadequateLimit");
               break;
 
             case "10005":
-              message = "İşlem onaylanmadı.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.notApproved");
               break;
 
             case "10012":
-              message = "Geçersiz işlem.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.invalidTransaction");
               break;
 
             case "10041":
             case "10051":
-              message = "Bu kart için kayıp, çalıntı bildirimi yapılmıştır.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.lostStolenCard");
               break;
 
             case "10054":
-              message = "Vadesi dolmuş kart.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.expiredCard");
               break;
 
             case "10084":
-              message = "CVC kodu hatalı.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.invalidCvv");
               break;
 
             case "10057":
-              message = "Kart sahibi bu işlemi yapamaz.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.cardHolderCant");
               break;
 
             case "10058":
-              message = "Terminalin bu işlemi yapmaya yetkisi yok.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.terminalCant");
               break;
 
             case "10093":
-              message = "Kartınız e-ticaret işlemlerine kapalıdır. Bankanızı arayınız.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.unavailableForEcommerce");
               break;
 
             case "10201":
-              message = "Kart, işleme izin vermedi.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.cardDidntAllow");
               break;
 
             case "10206":
-              message = "CVC uzunluğu geçersiz.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.invalidCvvLength");
               break;
 
             case "10207":
-              message = "Bankanızdan onay alınız.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.bankConfirmation");
               break;
 
             case "10214":
-              message = "İletişim veya sistem hatası.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.systemFailure");
               break;
 
             case "10215":
-              message = "Geçersiz kart numarası.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.invalidCardNumber");
               break;
 
             case "10216":
-              message = "Banka bilgileri bulunamadı.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.bankNotFound");
               break;
 
             case "10217":
-              message = "Bu işlem için 3D Secure zorunludur.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.3dSecureRequired");
               break;
 
             case "10219":
-              message = "Bankaya gönderilen istek zaman aşımına uğradı.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.timedOut");
               break;
 
             case "10225":
-              message = "Kısıtlı kart.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.limitedCard");
               break;
 
             case "10228":
-              message = "Banka veya terminal işlem yapamıyor.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.bankCannotProcess");
               break;
 
             case "10229":
-              message = "Son kullanma tarihi geçersiz.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.invalidExpirationDate");
               break;
 
             case "10232":
-              message = "Geçersiz tutar.";
+              message = this.$t("dashboard.renewSubscriptionView.errorMessages.invalidAmount");
               break;
           }
 
@@ -249,6 +251,8 @@ export default {
             duration: 5000,
             type: "error",
           });
+
+          this.subscriptionModel = new FormData();
         }
 
         loader.hide();

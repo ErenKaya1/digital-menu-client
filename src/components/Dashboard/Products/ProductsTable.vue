@@ -6,11 +6,11 @@
       <template #cell(nameEN)="row">{{ row.value }}</template>
       <template #cell(price)="row">{{ row.value }}</template>
       <template #cell(actions)="row">
-        <b-button size="sm" variant="info" @click="$router.push(`/dashboard/product/edit/${row.item.id}`)" class="mr-1">Düzenle</b-button>
-        <b-button size="sm" variant="danger" @click="deleteProduct(row.item)" class="mr-1">Sil</b-button>
+        <b-button size="sm" variant="info" @click="$router.push(`/dashboard/product/edit/${row.item.id}`)" class="mr-1">{{ $t("dashboard.productsView.editProductButtonText") }}</b-button>
+        <b-button size="sm" variant="danger" @click="deleteProduct(row.item)" class="mr-1">{{ $t("dashboard.productsView.deleteProductButtonText") }}</b-button>
       </template>
     </b-table>
-    <b-alert variant="warning" show v-else>Henüz ürün eklemediniz.</b-alert>
+    <b-alert variant="warning" show v-else>{{ $t("dashboard.productsView.messages.noProductAdded") }}</b-alert>
   </div>
 </template>
 
@@ -24,10 +24,10 @@ export default {
     return {
       products: [],
       fields: [
-        { key: "nameTR", label: "Ürün Adı (TR)", sortable: true },
-        { key: "nameEN", label: "Ürün Adı (EN)", sortable: true },
-        { key: "price", label: "Fiyat", sortable: true },
-        { key: "actions", label: "Seçenekler", tdClass: "options-column", thClass: "options-column" },
+        { key: "nameTR", label: this.$t("dashboard.productsView.tableFields.productNameTR"), sortable: true },
+        { key: "nameEN", label: this.$t("dashboard.productsView.tableFields.productNameEN"), sortable: true },
+        { key: "price", label: this.$t("dashboard.productsView.tableFields.price"), sortable: true },
+        { key: "actions", label: this.$t("dashboard.productsView.tableFields.options"), tdClass: "options-column", thClass: "options-column" },
       ],
       isLoaded: false,
     };
@@ -58,14 +58,14 @@ export default {
 
     async deleteProduct(product) {
       this.$bvModal
-        .msgBoxConfirm("Bu ürün silinecektir.", {
-          title: "Emin misiniz?",
+        .msgBoxConfirm(this.$t("dashboard.productsView.messages.confirmDeleteProduct"), {
+          title: this.$t("dashboard.productsView.messages.confirmDeleteProductTitle"),
           centered: true,
           size: "sm",
           buttonSize: "sm",
           okVariant: "danger",
-          okTitle: "EVET",
-          cancelTitle: "HAYIR",
+          okTitle: this.$t("common.yes").toUpperCase(),
+          cancelTitle: this.$t("common.no").toUpperCase(),
           cancelVariant: "dark",
         })
         .then(async (value) => {
@@ -74,7 +74,7 @@ export default {
             if (response.code === 200) {
               this.$notify({
                 group: "notify-top-right",
-                text: "Ürün başarıyla silindi.",
+                text: this.$t("dashboard.productsView.messages.productDeletedSuccessfully"),
                 duration: 5000,
                 type: "info",
               });

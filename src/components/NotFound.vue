@@ -1,17 +1,17 @@
 <template>
-  <div class="error-page bg-landing-secondary">
+  <div class="error-page bg-landing-primary">
     <div class="container d-flex align-items-center justify-content-center ui-mh-100vh text-white">
       <div class="row align-content-center align-items-start align-items-md-center w-100 py-5">
         <div class="col-md-6 order-2 order-md-1 text-md-left text-center">
           <h1 class="error-title font-weight-bolder mb-4">Whoops...</h1>
-          <div class="error-message font-weight-light mb-5">Aradığınız sayfayı bulamadık :(<br /></div>
-          <b-button to="/" variant="outline-light">←&nbsp; Anasayfaya Dön</b-button>
+          <div class="error-message font-weight-light mb-5">{{ $t("404View.notFoundText") }}<br /></div>
+          <b-button to="/" variant="outline-light">←&nbsp; {{ $t("404View.backToHomepageButtonText") }}</b-button>
         </div>
         <div class="col-md-6 order-1 order-md-2 text-center mb-5 mb-md-0">
           <div class="ui-device macbook w-100 rounded" style="max-width: 500px">
             <img class="device-img" src="@/assets/macbook-gold.png" alt />
             <div class="device-content">
-              <div class="error-device-content bg-landing-secondary">
+              <div class="error-device-content bg-landing-primary">
                 <div class="error-device-code text-white font-weight-bolder">404</div>
               </div>
             </div>

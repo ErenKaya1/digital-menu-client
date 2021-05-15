@@ -4,32 +4,38 @@
       <span class="close text-light">X</span>
     </div>
     <form @submit.prevent="submitCategoryForm" enctype="multipart/form-data">
-      <h5 class="h5">Yeni Kategori Ekle</h5>
+      <h5 class="h5">{{ $t("dashboard.newCategoryView.formTitle") }}</h5>
       <hr />
       <b-form-group
-        label="Kategori Adı (TR)"
+        :label="$t('dashboard.newCategoryView.categoryNameTR')"
         :state="validateState('nameTR')"
-        :invalid-feedback="!$v.category.nameTR.required ? 'Türkçe varsayılan dil olduğu için zorunludur.' : !$v.category.nameTR.maxLength ? 'Kategori adı 50 karakterden uzun olamaz.' : ''"
+        :invalid-feedback="!$v.category.nameTR.required ? $t('dashboard.newCategoryView.errorMessages.trRequired') : !$v.category.nameTR.maxLength ? $t('dashboard.newCategoryView.errorMessages.categoryNameMaxLength') : ''"
       >
         <b-input v-model="category.nameTR" :state="validateState('nameTR')" />
       </b-form-group>
-      <b-form-group label="Kategori Adı (EN)" :state="!category.nameEN ? null : validateState('nameEN')" :invalid-feedback="!$v.category.nameTR.maxLength ? 'Kategori adı 50 karakterden uzun olamaz.' : ''">
+      <b-form-group :label="$t('dashboard.newCategoryView.categoryNameEN')" :state="!category.nameEN ? null : validateState('nameEN')" :invalid-feedback="!$v.category.nameEN.maxLength ? $t('dashboard.newCategoryView.errorMessages.categoryNameMaxLength') : ''">
         <b-input v-model="category.nameEN" :state="!category.nameEN ? null : validateState('nameEN')" />
       </b-form-group>
-      <b-form-group label="Açıklama (TR)">
+      <b-form-group :label="$t('dashboard.newCategoryView.descriptionTR')">
         <b-textarea rows="4" v-model.trim="category.descriptionTR" />
       </b-form-group>
-      <b-form-group label="Açıklama (EN)">
+      <b-form-group :label="$t('dashboard.newCategoryView.descriptionEN')">
         <b-textarea rows="4" v-model.trim="category.descriptionEN" />
       </b-form-group>
-      <b-form-group label="Kategori Görseli">
-        <b-form-file @input="imagePreview" placeholder="Dosya Seç veya Sürükle" drop-placeholder="Buraya Bırak" accept="image/*" />
+      <b-form-group :label="$t('dashboard.newCategoryView.categoryImage')">
+        <b-form-file
+          :browse-text="$t('dashboard.newCategoryView.categoryImageInputBrowseText')"
+          @input="imagePreview"
+          :placeholder="$t('dashboard.newCategoryView.categoryImageInputPlaceholder')"
+          :drop-placeholder="$t('dashboard.newCategoryView.categoryImageInputDropPlaceholder')"
+          accept="image/*"
+        />
       </b-form-group>
       <b-form-group v-if="imageUrl">
         <img :src="imageUrl" class="image-preview" fluid />
       </b-form-group>
-      <b-btn type="submit" variant="landing-secondary" class="mt-4">Kaydet</b-btn>
-      <b-btn @click="$router.go(-1)" variant="danger" class="mt-4 ml-2">Vazgeç</b-btn>
+      <b-btn type="submit" variant="landing-secondary" class="mt-4">{{ $t("dashboard.newCategoryView.categoryFormButtonText") }}</b-btn>
+      <b-btn @click="$router.go(-1)" variant="danger" class="mt-4 ml-2">{{ $t("dashboard.newCategoryView.cancelButtonText") }}</b-btn>
     </form>
   </div>
 </template>
@@ -64,6 +70,10 @@ export default {
     },
   },
 
+  mounted() {
+    this.$title = this.$t("dashboard.newCategoryView.tabTitle");
+  },
+
   methods: {
     async submitCategoryForm() {
       this.$v.$touch();
@@ -78,15 +88,14 @@ export default {
         if (data.code === 200) {
           this.$notify({
             group: "notify-top-right",
-            text: "Kategori başarıyla kaydedildi.",
+            text: this.$t("dashboard.newCategoryView.messages.categorySavedSuccessfully"),
             duration: 5000,
             type: "success",
           });
-
-          this.$root.$emit("refreshCategories");
-          this.$router.push("/dashboard/categories");
         }
 
+        this.$root.$emit("refreshCategories");
+        this.$router.push("/dashboard/categories");
         loader.hide();
       }
     },

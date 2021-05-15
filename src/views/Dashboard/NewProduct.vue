@@ -4,34 +4,48 @@
       <span class="close text-light">X</span>
     </div>
     <form @submit.prevent="submitProductForm" enctype="multipart/form-data">
-      <h5 class="h5">Yeni Ürün Ekle</h5>
+      <h5 class="h5">{{ $t("dashboard.newProductView.formTitle") }}</h5>
       <hr />
-      <b-form-group label="Ürün Adı (TR)" :state="validateState('nameTR')" :invalid-feedback="!$v.product.nameTR.required ? 'Türkçe varsayılan dil olduğu için zorunludur.' : !$v.product.nameTR.maxLength ? 'Ürün adı 50 karakterden uzun olamaz.' : ''">
+      <b-form-group
+        :label="$t('dashboard.newProductView.productNameTR')"
+        :state="validateState('nameTR')"
+        :invalid-feedback="!$v.product.nameTR.required ? $t('dashboard.newProductView.errorMessages.trRequired') : !$v.product.nameTR.maxLength ? $t('dashboard.newProductView.errorMessages.productNameMaxLength') : ''"
+      >
         <b-input v-model.trim="product.nameTR" :state="validateState('nameTR')" />
       </b-form-group>
-      <b-form-group label="Ürün Adı (EN)" :state="!product.nameEN ? null : validateState('nameEN')" :invalid-feedback="!$v.product.nameTR.maxLength ? 'Ürün adı 50 karakterden uzun olamaz.' : ''">
+      <b-form-group
+        :label="$t('dashboard.newProductView.productNameEN')"
+        :state="!product.nameEN ? null : validateState('nameEN')"
+        :invalid-feedback="!$v.product.nameEN.maxLength ? $t('dashboard.newProductView.errorMessages.productNameMaxLength') : ''"
+      >
         <b-input v-model.trim="product.nameEN" :state="!product.nameEN ? null : validateState('nameEN')" />
       </b-form-group>
-      <b-form-group label="Ücret" :state="validateState('price')" :invalid-feedback="!$v.product.price.required ? 'Fiyat alanı zorunludur.' : ''">
+      <b-form-group :label="$t('dashboard.newProductView.price')" :state="validateState('price')" :invalid-feedback="!$v.product.price.required ? $t('dashboard.newProductView.errorMessages.priceRequired') : ''">
         <b-input v-model.trim="product.price" :state="validateState('price')" />
       </b-form-group>
-      <b-form-group label="Kategori" :state="validateState('categoryId')" :invalid-feedback="!$v.product.categoryId.required ? 'Kategori seçiniz.' : ''">
+      <b-form-group :label="$t('dashboard.newProductView.category')" :state="validateState('categoryId')" :invalid-feedback="!$v.product.categoryId.required ? $t('dashboard.newProductView.errorMessages.categoryRequired') : ''">
         <b-form-select v-model="product.categoryId" :options="categories" :state="validateState('categoryId')" />
       </b-form-group>
-      <b-form-group label="Açıklama (TR)">
+      <b-form-group :label="$t('dashboard.newProductView.descriptionTR')">
         <b-textarea rows="4" v-model.trim="product.descriptionTR" />
       </b-form-group>
-      <b-form-group label="Açıklama (EN)">
+      <b-form-group :label="$t('dashboard.newProductView.descriptionEN')">
         <b-textarea rows="4" v-model.trim="product.descriptionEN" />
       </b-form-group>
-      <b-form-group label="Ürün Görseli">
-        <b-form-file @input="imagePreview" placeholder="Dosya Seç veya Sürükle" drop-placeholder="Buraya Bırak" accept="image/*" />
+      <b-form-group :label="$t('dashboard.newProductView.productImage')">
+        <b-form-file
+          :browse-text="$t('dashboard.newProductView.productImageInputBrowseText')"
+          @input="imagePreview"
+          :placeholder="$t('dashboard.newProductView.productImageInputPlaceholder')"
+          :drop-placeholder="$t('dashboard.newProductView.productImageInputDropPlaceholder')"
+          accept="image/*"
+        />
       </b-form-group>
       <b-form-group v-if="imageUrl">
         <img :src="imageUrl" class="image-preview" fluid />
       </b-form-group>
-      <b-btn type="submit" variant="landing-secondary" class="mt-4">Kaydet</b-btn>
-      <b-btn @click="$router.go(-1)" variant="danger" class="mt-4 ml-2">Vazgeç</b-btn>
+      <b-btn type="submit" variant="landing-secondary" class="mt-4">{{ $t("dashboard.newProductView.productFormButtonText") }}</b-btn>
+      <b-btn @click="$router.go(-1)" variant="danger" class="mt-4 ml-2">{{ $t("dashboard.newProductView.cancelButtonText") }}</b-btn>
     </form>
   </div>
 </template>
@@ -78,6 +92,7 @@ export default {
   },
 
   async mounted() {
+    this.$title = this.$t("dashboard.newProductView.tabTitle");
     const categoryData = await categoryService.getAllCategories(this.$store.state.user.userId);
     if (categoryData.success) {
       categoryData.data.map((category) => {
@@ -89,7 +104,7 @@ export default {
     } else {
       this.$notify({
         group: "notify-top-right",
-        text: "Kategoriler yüklenirken bir hata oluştu.",
+        text: this.$t("dashboard.newProductView.errorMessages.categoriesCouldntFetched"),
         duration: 5000,
         type: "error",
       });
@@ -101,6 +116,7 @@ export default {
       this.$v.$touch();
       if (!this.$v.$invalid) {
         var loader = this.$loading.show();
+        this.$v.$reset();
         this.productModel.append("NameTR", this.product.nameTR);
         this.productModel.append("NameEN", this.product.nameEN);
         this.productModel.append("DescriptionTR", this.product.descriptionTR);
@@ -112,7 +128,7 @@ export default {
         if (data.success) {
           this.$notify({
             group: "notify-top-right",
-            text: "Ürün başarıyla kaydedildi.",
+            text: this.$t("dashboard.newProductView.messages.productSavedSuccessfully"),
             duration: 5000,
             type: "success",
           });
@@ -122,7 +138,7 @@ export default {
         } else if (data.code === 400) {
           this.$notify({
             group: "notify-top-right",
-            text: "Maksimum ürün sayısına ulaşıldı.",
+            text: this.$t("dashboard.newProductView.errorMessages.maxProduct"),
             duration: 5000,
             type: "error",
           });

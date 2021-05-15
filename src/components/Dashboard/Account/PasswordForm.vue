@@ -1,23 +1,25 @@
 <template>
   <form class="px-3 my-5" @submit.prevent="submitPasswordForm">
-    <b-form-group label="Eski Parola" :state="validateState('oldPassword')" :invalid-feedback="!$v.passwordCredentials.oldPassword.required ? 'Lütfen eski parolanızı giriniz.' : ''">
+    <b-form-group :label="$t('dashboard.accountView.oldPassword')" :state="validateState('oldPassword')" :invalid-feedback="!$v.passwordCredentials.oldPassword.required ? $t('dashboard.accountView.errorMessages.oldPasswordRequired') : ''">
       <b-input type="password" v-model.trim="passwordCredentials.oldPassword" :state="validateState('oldPassword')" />
     </b-form-group>
     <b-form-group
-      label="Yeni Parola"
+      :label="$t('dashboard.accountView.newPassword')"
       :state="passwordCredentials.oldPassword === '' ? null : validateState('newPassword')"
-      :invalid-feedback="!$v.passwordCredentials.newPassword.required ? $t('messages.error.passwordRequiredError') : !$v.passwordCredentials.newPassword.minLength ? $t('messages.error.passwordLengthError') : ''"
+      :invalid-feedback="
+        !$v.passwordCredentials.newPassword.required ? $t('dashboard.accountView.errorMessages.newPasswordRequired') : !$v.passwordCredentials.newPassword.minLength ? $t('dashboard.accountView.errorMessages.newPasswordMinLength') : ''
+      "
     >
       <b-input type="password" v-model.trim="passwordCredentials.newPassword" :disabled="passwordCredentials.oldPassword == ''" :state="passwordCredentials.oldPassword === '' ? null : validateState('newPassword')" />
     </b-form-group>
     <b-form-group
-      label="Yeni Parola Tekrar"
+      :label="$t('dashboard.accountView.newPasswordConfirm')"
       :state="passwordCredentials.oldPassword === '' ? null : validatePasswordForm()"
-      :invalid-feedback="!$v.newPasswordConfirm.required ? 'Parola doğrulama alanı boş bırakılamaz.' : !$v.newPasswordConfirm.sameAs ? 'Parolalar uyuşmuyor' : ''"
+      :invalid-feedback="!$v.newPasswordConfirm.required ? $t('dashboard.accountView.errorMessages.newPasswordConfirmRequired') : !$v.newPasswordConfirm.sameAs ? $t('dashboard.accountView.errorMessages.passwordsDoesntMatch') : ''"
     >
       <b-input type="password" v-model.trim="newPasswordConfirm" :disabled="passwordCredentials.oldPassword == ''" :state="passwordCredentials.oldPassword === '' ? null : validatePasswordForm()" />
     </b-form-group>
-    <b-btn type="submit" variant="landing-secondary" class="mt-4">Parolayı Güncelle</b-btn>
+    <b-btn type="submit" variant="landing-secondary" class="mt-4">{{ $t("dashboard.accountView.passwordFormButtonText") }}</b-btn>
   </form>
 </template>
 
@@ -64,14 +66,14 @@ export default {
         if (data.success) {
           this.$notify({
             group: "notify-top-right",
-            text: "Parola başarıyla güncellendi.",
+            text: this.$t("dashboard.accountView.messages.passwordUpdatedSuccessfully"),
             duration: 5000,
             type: "success",
           });
         } else if (data.code === 400) {
           this.$notify({
             group: "notify-top-right",
-            text: "Eski parola hatalı",
+            text: this.$t("dashboard.accountView.errorMessages.oldPasswordWrong"),
             duration: 5000,
             type: "error",
           });

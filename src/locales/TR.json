@@ -1,114 +1,490 @@
 {
-  "features": "Özellikler",
-  "screenshots": "Ekran Görüntüleri",
-  "pricing": "Fiyatlandırma",
-  "signin": "Giriş",
-  "signup": "Kayıt Ol",
-  "username": "Kullanıcı Adı",
-  "firstName": "İsim",
-  "lastName": "Soyisim",
-  "emailAddress": "E-Posta Adresi",
-  "phoneNumber": "Telefon Numarası",
-  "password": "Parola",
-  "passwordConfirm": "Parolar Tekrar",
-  "rememberMe": "Beni Hatırla",
-  "forgotPassword": "Parolamı Unuttum",
-  "login": "Giriş",
-  "dashboard": "Panel",
-  "logout": "Çıkış",
-  "landingView": {
-    "landing": {
-      "tabTitle": "Anasayfa",
-      "heading": "İşletmenizi Dijital Ortama Taşıyın",
-      "text": "Dijital Menü ile menülerinizi dijital ortama taşıyın, işletmenizdeki teması minimuma indirin. Kendinizi, çalışma arkadaşlarınızı ve misafirlerinizi riske atmayın.",
-      "buttonText": "ÜCRETSİZ DENE",
-      "descriptionTitle": "Dijital Menu Nedir?",
-      "descriptionContent": "COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz."
-    },
-    "featuresBlock": {
-      "title": "Tüm İhtiyaçlarınız Bir Arada",
-      "description": "Bir menüde olması gereken tüm içerikleri oluşturabileceğiniz Dijital Menu'nun en temel özelliklerini sizin için listeledik. Dijital Menu'yu her gün geliştirmeye ve Dijital Menu'ye her gün yeni özellikler eklemeye devam ediyoruz.",
-      "features1-Title": "Ürün Görselleri",
-      "features1-Description": "Ürünlerinize görseller de ekleyerek daha dikkat çekici olmasını sağlayabilirsiniz.",
-      "features2-Title": "Çoklu Dil Desteği",
-      "features2-Description": "Ürün bilgilerinizi Türkçe'ye alternatif olarak İngilizce de oluşturabilirsiniz. Sizlerden gelecek talepler doğrultusunda bu seçeneklerin artabileceğini unutmayın.",
-      "features3-Title": "Çoklu Para Birimi Desteği",
-      "features3-Description": "Menülerinizi oluşturuken sadece TRY cinsinden ücretlerinizi belirlersiniz. Digital Menu sizin yerinize USD ve EUR cinsinden de ücretlerin görüntülenmesini sağlar.",
-      "features4-Title": "Kişiselleştirilmiş QR Kod",
-      "features4-Description": "QR kodlarını kendi tasarımlarında kullanmak isteyenler için, QR kodların temel özelliklerini (renk, boyut...) kişiselleştirebilirsiniz.",
-      "features5-Title": "Ürün Grubu Oluşturma",
-      "features5-Description": "Birden çok ürünün tek bir seçenek olarak gözükmesini istiyorsanız ürünlerinizi gruplayabilirsiniz.",
-      "features6-Title": "Tema Kişiselleştirme",
-      "features6-Description": "Digital Menu, misafirlerinizin ziyaret ettiği size ayrılmış olan sayfadaki birçok bileşeni kişiselleştirmenize olanak tanır."
-    },
-    "screenshotsBlock": {
-      "title": "Uygulamayı Keşfedin"
-    },
-    "howItWorksBlock": {
-      "title": "Nasıl Çalışır?",
-      "subTitle": "AYRINTILAR",
-      "howItWorks1-Title": "Üyeliğinizi Tamamlayın",
-      "howItWorks1-Description": "Üyelik paketleri arasından size en uygun olanı seçin.",
-      "howItWorks2-Title": "Ürünlerinizi Ekleyin",
-      "howItWorks2-Description": "Ürünlerinizi fiyat, görsel, açıklama gibi bilgileriyle beraber ekleyerek menünüzü oluşturun.",
-      "howItWorks3-Title": "QR Kodunuzu Konumlandırın",
-      "howItWorks3-Description": "Size özel oluşturulan QR kodu yazdırdıktan sonra masalarınıza konumlandırın."
-    },
-    "pricingBlock": {
-      "title": "İhtiyacınıza Uygun Paketi Seçin",
-      "unlimited": "Sınırsız"
-    },
-    "freeTrialButtonText": "14 Gün Ücretsiz Deneyin"
+  "common": {
+    "yes": "evet",
+    "no": "hayır"
   },
-  "footer": {
-    "whoWeAre": "Biz Kimiz?",
-    "aboutus": "Hakkımızda",
-    "ourstory": "Hikayemiz",
-    "crew": "Takım",
-    "support": "Destek",
-    "faq": "SSS",
-    "privacyPolicy": "Gizlilik Politikası",
-    "contact": "İletişim",
-    "socialMedia": "Sosyal Medya"
+  "dashboard": {
+    "sidemenu": {
+      "homepage": "Anasayfa",
+      "products": "Ürünler",
+      "categories": "Kategoriler",
+      "qrCode": "QR Kod",
+      "theme": "Tema",
+      "account": "Hesap",
+      "logout": "Çıkış Yap"
+    },
+    "homeView": {
+      "tabTitle": "Panel",
+      "subscriptionExpiredFirst": "Üyeliğiniz bitti. Üyeliğinizi yenilemek için",
+      "subscriptionExpiredSecond": " tıklayınız.",
+      "subscriptionSuspended": "Üyeliğiniz askıya alındı."
+    },
+    "accountView": {
+      "tabTitle": "Hesap",
+      "accountSettingsTitle": "Hesap",
+      "companySettingsTitle": "İşletme",
+      "passwordSettingsTitle": "Parola",
+      "username": "Kullanıcı Adı",
+      "firstName": "İsim",
+      "lastName": "Soyisim",
+      "emailAddress": "E-posta",
+      "phoneNumber": "Telefon",
+      "accountFormButtonText": "Hesap Bilgilerini Güncelle",
+      "logo": "Logo",
+      "logoInputBrowseText": "Gözat",
+      "logoInputPlaceholder": "Dosya Seç veya Sürükle",
+      "logoInputDropPlaceholder": "Buraya Bırak",
+      "companyName": "İşletme Adı",
+      "createMyOwnLink": "Linkimi kendim oluşturacağım.",
+      "linkInputLabel": "Menü Linki (Bu alanı değiştirseniz QR kodunuzu da yenilemeniz gerekmektedir.)",
+      "companyFormButtonText": "İşletme Bilgilerini Güncelle",
+      "oldPassword": "Eski Parola",
+      "newPassword": "Yeni Parola",
+      "newPasswordConfirm": "Yeni Parola Tekrar",
+      "passwordFormButtonText": "Parolayı Güncelle",
+      "messages": {
+        "accountUpdatedSuccessfully": "Hesap bilgileri başarıyla güncellendi.",
+        "accountUpdateFailed": "Hesap bilgileri güncellenemedi.",
+        "companyUpdatedSuccessfully": "İşletme bilgileri başarıyla güncellendi.",
+        "passwordUpdatedSuccessfully": "Parola başarıyla güncellendi."
+      },
+      "errorMessages": {
+        "usernameRequired": "Kullanıcı adı zorunludur.",
+        "usernameMaxLength": "Kullanıcı adı 30 karakterden uzun olamaz.",
+        "firstNameRequired": "İsim zorunludur.",
+        "firstNameMaxLength": "İsim 30 karakterden uzun olamaz.",
+        "lastNameRequired": "Soyisim zorunludur.",
+        "lastNameMaxLength": "Soyisim 30 karakterden uzun olamaz.",
+        "emailRequired": "E-posta zorunludur.",
+        "emailFormat": "Lütfen geçerli formatta bir e-posta giriniz.",
+        "duplicatedCompanySlug": "Girdiğiniz link daha önce alınmış.",
+        "oldPasswordRequired": "Eski parola zorunludur.",
+        "newPasswordRequired": "Yeni parola zorunludur.",
+        "newPasswordMinLength": "Parola en az 6 karakter olmalıdır.",
+        "newPasswordConfirmRequired": "Parola doğrulama zorunludur.",
+        "passwordsDoesntMatch": "Parolalar uyuşmuyor.",
+        "oldPasswordWrong": "Eski parola hatalı."
+      }
+    },
+    "categoriesView": {
+      "tabTitle": "Categories",
+      "newCategoryButtonText": "Yeni Kategori",
+      "editCategoryButtonText": "Düzenle",
+      "deleteCategoryButtonText": "Sil",
+      "tableFields": {
+        "categoryNameTR": "Kategori Adı (TR)",
+        "categoryNameEN": "Kategori Adı (EN)",
+        "options": "Seçenekler"
+      },
+      "messages": {
+        "noCategoryAdded": "Henüz kategori eklemediniz.",
+        "confirmDeleteCategory": "Bu kategori ve kategoriye ait tüm ürünler silinecektir.",
+        "confirmDeleteCategoryTitle": "Emin misiniz?",
+        "categoryDeletedSuccessfully": "Kategori başarıyla silindi."
+      }
+    },
+    "editCategoryView": {
+      "tabTitle": "Kategori Düzenle",
+      "formTitle": "Kategori Düzenle",
+      "categoryNameTR": "Kategori Adı (TR)",
+      "categoryNameEN": "Kategori Adı (EN)",
+      "descriptionTR": "Açıklama (TR)",
+      "descriptionEN": "Açıklama (EN)",
+      "categoryImage": "Kategori Görseli",
+      "categoryImageInputPlaceholder": "Dosya Seç veya Sürükle",
+      "categoryImageInputDropPlaceholder": "Buraya Bırak",
+      "categoryImageInputBrowseText": "Gözat",
+      "categoryFormButtonText": "Kaydet",
+      "cancelButtonText": "Vazgeç",
+      "": "",
+      "messages": {
+        "categoryUpdatedSuccessfully": "Kategori başarıyla güncellendi."
+      },
+      "errorMessages": {
+        "trRequired": "Türkçe varsayılan dil olduğu için zorunludur.",
+        "categoryNameMaxLength": "Kategori adı 50 karakterden uzun olamaz.",
+        "categoryUpdateFailed": "Kategori güncellenemedi."
+      }
+    },
+    "editProductView": {
+      "tabTitle": "Ürün Düzenle",
+      "formTitle": "Ürün Düzenle",
+      "productNameTR": "Ürün Adı (TR)",
+      "productNameEN": "Ürün Adı (EN)",
+      "price": "Ücret",
+      "category": "Kategori",
+      "descriptionTR": "Açıklama (TR)",
+      "descriptionEN": "Açıklama (EN)",
+      "productImage": "Ürün Görseli",
+      "productImageInputPlaceholder": "Dosya Seç veya Sürükle",
+      "productImageInputDropPlaceholder": "Buraya Bırak",
+      "productImageInputBrowseText": "Gözat",
+      "productFormButtonText": "Kaydet",
+      "cancelButtonText": "Vazgeç",
+      "messages": {
+        "productUpdatedSuccessfully": "Ürün başarıyla güncellendi."
+      },
+      "errorMessages": {
+        "trRequired": "Türkçe varsayılan dil olduğu için zorunludur.",
+        "productNameMaxLength": "Ürün adı 50 karakterden uzun olamaz.",
+        "priceRequired": "Ücret zorunludur.",
+        "categoryRequired": "Kategori zorunludur.",
+        "productNotFound": "Ürün bulunamadı.",
+        "categoriesCouldntFetched": "Kategoriler yüklenirken bir hata oluştu.",
+        "productUpdateFailed": "Ürün güncellenirken bir hata meydana geldi."
+      }
+    },
+    "newCategoryView": {
+      "tabTitle": "Yeni Kategori",
+      "formTitle": "Yeni Kategori Ekle",
+      "categoryNameTR": "Kategori Adı (TR)",
+      "categoryNameEN": "Kategori Adı (EN)",
+      "descriptionTR": "Açıklama (TR)",
+      "descriptionEN": "Açıklama (EN)",
+      "categoryImage": "Kategori Görseli",
+      "categoryImageInputPlaceholder": "Dosya Seç veya Sürükle",
+      "categoryImageInputDropPlaceholder": "Buraya Bırak",
+      "categoryImageInputBrowseText": "Gözat",
+      "categoryFormButtonText": "Kaydet",
+      "cancelButtonText": "Vazgeç",
+      "messages": {
+        "categorySavedSuccessfully": "Kategori başarıyla kaydedildi."
+      },
+      "errorMessages": {
+        "trRequired": "Türkçe varsayılan dil olduğu için zorunludur.",
+        "categoryNameMaxLength": "Kategori adı 50 karakterden uzun olamaz."
+      }
+    },
+    "newProductView": {
+      "tabTitle": "Yeni Ürün",
+      "formTitle": "Yeni Ürün Ekle",
+      "productNameTR": "Ürün Adı (TR)",
+      "productNameEN": "Ürün Adı (EN)",
+      "price": "Ücret",
+      "category": "Kategori",
+      "descriptionTR": "Açıklama (TR)",
+      "descriptionEN": "Açıklama (EN)",
+      "productImage": "Ürün Görseli",
+      "productImageInputBrowseText": "Gözat",
+      "productImageInputPlaceholder": "Dosya Seç veya Sürükle",
+      "productImageInputDropPlaceholder": "Buraya Bırak",
+      "productFormButtonText": "Kaydet",
+      "cancelButtonText": "Vazgeç",
+      "messages": {
+        "productSavedSuccessfully": "Ürün başarıyla kaydedildi."
+      },
+      "errorMessages": {
+        "trRequired": "Türkçe varsayılan dil olduğu için zorunludur.",
+        "productNameMaxLength": "Ürün adı 50 karakterden uzun olamaz.",
+        "priceRequired": "Ücret zorunludur.",
+        "categoryRequired": "Kategori zorunludur.",
+        "categoriesCouldntFetched": "Kategoriler yüklenirken bir hata oluştu.",
+        "maxProduct": "Maksimum ürün sayısına ulaşıldı."
+      }
+    },
+    "productsView": {
+      "tabTitle": "Ürünler",
+      "newProductButtonText": "Yeni Ürün",
+      "editProductButtonText": "Düzenle",
+      "deleteProductButtonText": "Sil",
+      "tableFields": {
+        "productNameTR": "Ürün Adı (TR)",
+        "productNameEN": "Ürün Adı (EN)",
+        "price": "Ücret",
+        "options": "Seçenekler"
+      },
+      "messages": {
+        "noProductAdded": "Henüz ürün eklemediniz.",
+        "confirmDeleteProduct": "Bu ürün silinecektir.",
+        "confirmDeleteProductTitle": "Emin misiniz?",
+        "productDeletedSuccessfully": "Ürün başarıyla silindi."
+      }
+    },
+    "qrView": {
+      "tabTitle": "QR Kod",
+      "margin": "Kenar Boşlukları",
+      "scale": "Ölçek",
+      "qrCodeColor": "QR Kod Rengi",
+      "backgroundColor": "Arka Plan Rengi",
+      "fileFormat": "Dosya Formatı",
+      "quality": "Kalite (0-1)",
+      "downloadButtonText": "İndir"
+    },
+    "renewSubscriptionView": {
+      "tabTitle": "Abonelik Yenile",
+      "subscriptionTypesTitle": "Kendinize En Uygun Paketi Seçin",
+      "subscriptionTypesButtonText": "Seç",
+      "montlyPeriod": "ay",
+      "cardHolder": "Kart Sahibi",
+      "cardNumber": "Kart Numarası",
+      "cardDate": "Tarih",
+      "cardMonth": "Ay",
+      "cardYear": "Yıl",
+      "cardCvv": "Güvenlik Kodu",
+      "paymentFormButtonText": "Ödemeyi Yap",
+      "unlimited": "Sınırsız",
+      "messages": {
+        "alreadySubscribe": "Zaten devam eden bir aboneliğiniz var.",
+        "subscriptionRenewedSuccessfully": "Aboneliğiniz başarıyla yenilendi."
+      },
+      "errorMessages": {
+        "cardHolderRequired": "Kart sahibi zorunludur.",
+        "cardNumberRequired": "Kart numarası zorunludur.",
+        "cardMonthRequired": "Ay zorunludur.",
+        "cardYearRequired": "Yıl zorunludur.",
+        "cardCvvRequired": "Güvenlik kodu zorunludur.",
+        "subscriptionTypeRequired": "Lütfen paket seçiniz.",
+        "paymentCommon": "Ödeme alınırken bir hata oluştu.",
+        "inadequateLimit": "Kart limiti yetersiz.",
+        "notApproved": "İşlem onaylanmadı.",
+        "invalidTransaction": "Geçersiz işlem.",
+        "lostStolenCard": "Bu kart için kayıp & çalıntı bildirimi yapılmıştır.",
+        "expiredCard": "Vadesi dolmuş kart.",
+        "invalidCvv": "Güvenlik kodu hatalı.",
+        "cardHolderCant": "Kart sahibi bu işlemi yapamaz.",
+        "terminalCant": "Terminalin bi işlemi yapmaya yetkisi yok.",
+        "unavailableForEcommerce": "Kartınız e-ticaret işlemlerine kapalıdır. Lütfen bankanız ile iletişime geçin.",
+        "cardDidntAllow": "Kart işleme izin vermedi.",
+        "invalidCvvLength": "CVC uzunluğu geçersiz.",
+        "bankConfirmation": "Lütfen bankanızdan onay alınız.",
+        "systemFailure": "İletişim veya sistem hatası.",
+        "invalidCardNumber": "Geçersiz kart numarası.",
+        "bankNotFound": "Banka bilgileri bulunamadı.",
+        "3dSecureRequired": "Bu işlem için 3D Secure zorunludur.",
+        "timedOut": "Bankaya gönderilen istek zaman aşımına uğradı.",
+        "limitedCard": "Kısıtlı kart.",
+        "bankCannotProcess": "Banka veya terminal işlem yapamıyor.",
+        "invalidExpirationDate": "Son kullanma tarihi geçersiz.",
+        "invalidAmount": "Geçersiz tutar."
+      }
+    },
+    "themeView": {
+      "tabTitle": "Tema",
+      "background": "Arka Plan",
+      "texts": "Yazılar",
+      "price": "Ücret",
+      "productBackground": "Ürün Arka Plan",
+      "languageCurrencyBackground": "Dil & Para Birimi Arka Plan",
+      "languageCurrencyText": "Dil & Para Birimi Yazı",
+      "categoryDescription": "Kategori Açıklama",
+      "selectedCategoryBorder": "Seçili Kategori Çerçeve",
+      "links": "Linkler",
+      "themeFormButtonText": "Kaydet",
+      "previewCategoryName": "İçecek",
+      "previewCategoryDescription": "Birbirinden Güzel İçecekler",
+      "previewFooterWhoAreAre": "Biz Kimiz",
+      "previewFooterAboutUs": "Hakkımızda",
+      "previewFooterOurStory": "Hikayemiz",
+      "previewFooterCrew": "Ekip",
+      "previewFooterSupport": "Destek",
+      "previewFooterFaq": "SSS",
+      "previewFooterprivacyPolicy": "Gizlilik Politikası",
+      "previewFooterContact": "İletişim",
+      "previewFooterSocialMedia": "Sosyal Medya",
+      "previewCategory1": "Başlangıç",
+      "previewCategory2": "Ara Sıcak",
+      "previewCategory3": "Ana Yemek",
+      "previewCategory4": "İçecek",
+      "previewCategory5": "Tatlı",
+      "previewProduct1": "Su",
+      "previewProduct2": "Kola",
+      "previewProduct3": "Ayran",
+      "previewProduct4": "Ice Tea",
+      "previewProduct5": "Portakal Suyu",
+      "messages": {
+        "themeUpdatedSuccessfully": "Tema başarıyla güncellendi."
+      },
+      "errorMessages": {
+        "themeUpdateFailed": "Tema güncellenemedi."
+      }
+    },
+    "forgotPasswordView": {}
   },
-  "registerView": {
-    "tabTitle": "Kayıt Ol",
-    "pageTitle": "ARAMIZA <br /> KATILIN",
-    "pageDescription": "Üyeliğinizi tamamladıktan sonra 14 günlük deneme sürümünü kullanmaya başlayabilirsiniz.",
-    "formTitle": "Yeni Hesap Oluşturun",
-    "disclaimer": "'Kayıt Ol' butonuna tıklayarak gizlilik politikamızı kabul etmiş sayılırsınız.",
-    "moreInformation": "Detaylı bilgi için tıklayınız.",
-    "alreadyHaveAnAccount": "Zaten üye misiniz?"
-  },
-  "loginView": {
-    "tabTitle": "Giriş Yap",
-    "pageTitle": "TEKRAR HOŞGELDİNİZ <br />",
-    "formTitle": "Giriş Yap",
-    "dontHaveAnAccountYet": "Henüz üye değil misiniz?"
+  "404View": {
+    "tabTitle": "404",
+    "notFoundText": "Aradığınız sayfayı bulamadık :(",
+    "backToHomepageButtonText": "Anasayfaya Dön"
   },
   "forgotPasswordView": {
     "tabTitle": "Parolamı Unuttum",
-    "formTitle": "Parola Sıfırla",
+    "formTitle": "Parolamı Unuttum",
     "formDescription": "E-posta adresinizi girdikten sonra size parolanızı sıfırlayabileceğiniz bir link göndereceğiz.",
-    "inputPlaceholder": "E-posta adresinizi girin",
-    "sendEmailButtonText": "Parola Sıfırlama E-Postası Gönder",
-    "emailSentMessage": "Parolanızı sıfırlamanız için size bir e-posta gönderdik. Lütfen gelen kutunuzu kontrol ediniz.",
-    "backToHomepageButtonText": "Anasayfaya Dön"
+    "inputPlaceholder": "E-posta adresinizi giriniz.",
+    "formButtonText": "Parola Sıfırlama E-Postası Gönder",
+    "backToHomepageButtonText": "Anasayfaya Dön",
+    "messages": {
+      "emailSent": "Parolanızı sıfırlamanız için size bir e-posta gönderdik. Lütfen gelen kutunuzu kontrol ediniz."
+    },
+    "errorMessages": {
+      "emailRequired": "E-posta zorunludur.",
+      "emailFormat": "Lütfen geçerli formatta bir e-posta giriniz."
+    }
   },
-  "messages": {
-    "error": {
-      "usernameRequiredError": "Kullanıcı adı alanı boş bırakılamaz.",
-      "firstNameRequiredError": "İsim alanı boş bırakılamaz.",
-      "lastNameRequiredError": "Soyisim alanı boş bırakılamaz.",
-      "emailRequiredError": "E-posta alanı boş bırakılamaz.",
-      "emailWrongFormatError": "Lütfen geçerli bir e-posta giriniz.",
-      "passwordRequiredError": "Parola alanı boş bırakılamaz.",
-      "passwordLengthError": "Parola 6 karakterden uzun olmalıdır.",
-      "passwordsDontMatchError": "Parolalar uyuşmuyor.",
-      "usernameMaxLengthError": "Kullanıcı adı 30 karakterden uzun olamaz.",
-      "firstNameMaxLengthError": "İsim 30 karakterden uzun olamaz.",
-      "lastNameMaxLengthError": "Soyisim 30 karakterden uzun olamaz.",
-      "passwordConfirmRequiredError": "Parola doğrulama alanı boş bırakılamaz."
+  "landingView": {
+    "tabTitle": "Anasayfa",
+    "landingHeading": "İşletmenizi Dijital Ortama Taşıyın",
+    "landingText": "Dijital Menü ile menülerinizi dijital ortama taşıyın, işletmenizdeki teması minimuma indirin. Kendinizi, çalışma arkadaşlarınızı ve misafirlerinizi riske atmayın.",
+    "landingButtonText": "Ücretsiz Deneyin",
+    "description": {
+      "title": "Dijital Menu Nedir?",
+      "content": "COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz."
+    },
+    "features": {
+      "title": "Özellikler",
+      "subTitle": "Tüm İhtiyaçlarınız Bir Arada",
+      "description": "Bir menüde olması gereken tüm içerikleri oluşturabileceğiniz Dijital Menu'nun en temel özelliklerini sizin için listeledik. Dijital Menu'yu her gün geliştirmeye ve Dijital Menu'ye her gün yeni özellikler eklemeye devam ediyoruz.",
+      "feature1": {
+        "title": "Ürün Görselleri",
+        "description": "Ürünlerinize görseller de ekleyerek daha dikkat çekici olmasını sağlayabilirsiniz."
+      },
+      "feature2": {
+        "title": "Çoklu Dil Desteği",
+        "description": "Ürün bilgilerinizi Türkçe'ye alternatif olarak İngilizce de oluşturabilirsiniz. Sizlerden gelecek talepler doğrultusunda bu seçeneklerin artabileceğini unutmayın."
+      },
+      "feature3": {
+        "title": "Çoklu Para Birimi Desteği",
+        "description": "Menülerinizi oluşturuken sadece TRY cinsinden ücretlerinizi belirlersiniz. Digital Menu sizin yerinize USD ve EUR cinsinden de ücretlerin görüntülenmesini sağlar."
+      },
+      "feature4": {
+        "title": "Kişiselleştirilmiş QR Kod",
+        "description": "QR kodlarını kendi tasarımlarında kullanmak isteyenler için, QR kodların temel özelliklerini (renk, boyut...) kişiselleştirebilirsiniz."
+      },
+      "feature5": {
+        "title": "Ürün Grubu Oluşturma",
+        "description": "Birden çok ürünün tek bir seçenek olarak gözükmesini istiyorsanız ürünlerinizi gruplayabilirsiniz."
+      },
+      "feature6": {
+        "title": "Tema Kişiselleştirme",
+        "description": "Digital Menu, misafirlerinizin ziyaret ettiği size ayrılmış olan sayfadaki birçok bileşeni kişiselleştirmenize olanak tanır."
+      }
+    },
+    "screenshots": {
+      "title": "Ekran Görüntüleri",
+      "subTitle": "Uygulamayı Keşfedin"
+    },
+    "howItWorks": {
+      "title": "Ayrıntılar",
+      "subTitle": "Nasıl Çalışır",
+      "howItWorks1": {
+        "title": "Üyeliğinizi Tamamlayın",
+        "description": "Üyelik paketleri arasından size en uygun olanı seçin."
+      },
+      "howItWorks2": {
+        "title": "Ürünlerinizi Ekleyin",
+        "description": "Ürünlerinizi fiyat, görsel, açıklama gibi bilgileriyle beraber ekleyerek menünüzü oluşturun."
+      },
+      "howItWorks3": {
+        "title": "QR Kodunuzu Konumlandırın",
+        "description": "Size özel oluşturulan QR kodu yazdırdıktan sonra masalarınıza konumlandırın."
+      }
+    },
+    "pricing": {
+      "title": "Ücretlendirme",
+      "subTitle": "İhtiyacınıza Uygun Paketi Seçin",
+      "unlimited": "Sınırsız",
+      "freeTrialButtonText": "14 Gün Ücretsiz Deneyin"
+    },
+    "navbar": {
+      "features": "Özellikler",
+      "screenshots": "Ekran Görüntüleri",
+      "pricing": "Ücretlendirme",
+      "dashboard": "Panel",
+      "logout": "Çıkış",
+      "login": "Giriş"
+    },
+    "footer": {
+      "whoWeAre": "Biz Kimiz?",
+      "aboutUs": "Hakkımızda",
+      "ourStory": "Hikayemiz",
+      "crew": "Ekip",
+      "support": "Destek",
+      "faq": "SSS",
+      "privacyPolicy": "Gizlilik Politikası",
+      "contact": "İletişim",
+      "socialMedia": "Sosyal Medya"
+    }
+  },
+  "loginView": {
+    "tabTitle": "Giriş",
+    "pageTitle": "TEKRAR HOŞGELDİNİZ",
+    "formTitle": "Giriş Yap",
+    "username": "Kullanıcı Adı",
+    "password": "Parola",
+    "forgotPassword": "Parolamı Unuttum",
+    "rememberMe": "Beni Hatırla",
+    "formButtonText": "Giriş",
+    "dontHaveAnAccountYet": "Henüz üye değil misiniz?",
+    "signUpLinkText": "Kayıt Ol",
+    "errorMessages": {
+      "usernameRequired": "Kullanıcı adı zorunludur.",
+      "passwordRequired": "Parola zorunludur.",
+      "invalidCredentials": "Lütfen bilgilerinizi konrol ediniz."
+    }
+  },
+  "menuView": {
+    "footer": {
+      "whoWeAre": "Biz Kimiz?",
+      "aboutUs": "Hakkımızda",
+      "ourStory": "Hikayemiz",
+      "crew": "Ekip",
+      "support": "Destek",
+      "faq": "SSS",
+      "privacyPolicy": "Gizlilik Politikası",
+      "contact": "İletişim",
+      "socialMedia": "Sosyal Medya"
+    }
+  },
+  "registerView": {
+    "tabTitle": "Kayıt",
+    "pageTitle": "ARAMIZA <br /> KATILIN",
+    "pageDescription": "Üyeliğinizi tamamladıktan sonra 14 günlük deneme sürümünü kullanmaya başlayabilirsiniz.",
+    "formTitle": "Kayıt Ol",
+    "username": "Kullanıcı Adı",
+    "firstName": "İsim",
+    "lastName": "Soyisim",
+    "emailAddress": "E-posta",
+    "phoneNumber": "Telefon",
+    "password": "Parola",
+    "passwordConfirm": "Parola Tekrar",
+    "formButtonText": "Kayıt Ol",
+    "disclaimer": "'Kayıt Ol' butonuna tıklayarak gizlilik politikamızı kabul etmiş sayılırsınız.",
+    "moreInformation": "Detaylı bilgi için tıklayınız.",
+    "alreadyHaveAnAccount": "Zaten üye misiniz?",
+    "signIn": "Giriş Yap",
+    "errorMessages": {
+      "usernameRequired": "Kullanıcı adı zorunludur.",
+      "usernameMaxLength": "Kullanıcı adı 30 karakterden uzun olamaz.",
+      "firstNameRequired": "İsim zorunludur.",
+      "firstNameMaxLength": "İsim 30 karakterden uzun olamaz.",
+      "lastNameRequired": "Soyisim zorunludur.",
+      "lastNameMaxLength": "Soyisim 30 karakterden uzun olamaz.",
+      "emailRequired": "E-posta zorunludur.",
+      "emailFormat": "Lütfen geçerli formatta bir e-posta giriniz.",
+      "passwordRequired": "Parola zorunludur.",
+      "passwordMinLength": "Parola en az 6 karakter olmalıdır.",
+      "passwordConfirmRequired": "Parola doğrulama zorunludur.",
+      "passwordsDontMatch": "Parolalar uyuşmuyor.",
+      "duplicatedUsername": "Girdiğiniz kullanıcı adı daha önce alınmış",
+      "duplicatedEmailAddress": "Girdiğiniz e-posta adresi daha önce alınmış."
+    }
+  },
+  "resetPasswordView": {
+    "tabTitle": "Parola Sıfırla",
+    "formTitle": "Parola Sıfırla",
+    "newPassword": "Yeni Parola",
+    "newPasswordConfirm": "Yeni Parola Tekrar",
+    "formButtonText": "Parola Sıfırla",
+    "messages": {
+      "passwordUpdatedSuccessfully": "Parola başarıyla değiştirildi. Yeni parolanızla giriş yapabilirsiniz."
+    },
+    "errorMessages": {
+      "newPasswordRequired": "Yeni parola zorunludur.",
+      "newPasswordMinLength": "Parola en az 6 karakter olmalıdır.",
+      "newPasswordConfirmRequired": "Parola doğrulama zorunludur.",
+      "passwordsDontMatch": "Parolalar uyuşmuyor.",
+      "resetPasswordTokenExpired": "Parola yenileme bağlantısının süresi doldu.",
+      "invalidResetPasswordToken": "Parola yenileme bağlantısı geçersiz.",
+      "passwordUpdateFailed": "Parola değiştirilirken bir hata meydana geldi."
     }
   }
 }

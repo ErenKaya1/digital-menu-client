@@ -11,7 +11,7 @@
           </div>
           <div class="pb-5">
             <p class="mb-2" v-for="(feature, index) in type.features" :key="index">
-              {{ feature.isUnlimited ? $t("landingView.pricingBlock.unlimited") : feature.totalValue }} {{ feature.name }}
+              {{ feature.isUnlimited ? $t("landingView.pricing.unlimited") : feature.totalValue }} {{ feature.name }}
             </p>
           </div>
         </div>
@@ -19,7 +19,7 @@
     </b-row>
 
     <div class="text-center pt-4">
-      <b-link class="btn btn-landing-primary btn-lg" to="/register">{{ $t("landingView.freeTrialButtonText") }}</b-link>
+      <b-link class="btn btn-landing-primary btn-lg" to="/register">{{ $t("landingView.pricing.freeTrialButtonText") }}</b-link>
     </div>
   </div>
 </template>

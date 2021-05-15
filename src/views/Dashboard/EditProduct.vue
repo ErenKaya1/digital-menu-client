@@ -4,34 +4,48 @@
       <span class="close text-light">X</span>
     </div>
     <form @submit.prevent="submitProductForm" enctype="multipart/form-data">
-      <h5 class="h5">Ürün Düzenle</h5>
+      <h5 class="h5">{{ $t("dashboard.editProductView.formTitle") }}</h5>
       <hr />
-      <b-form-group label="Ürün Adı (TR)" :state="validateState('nameTR')" :invalid-feedback="!$v.product.nameTR.required ? 'Türkçe varsayılan dil olduğu için zorunludur.' : !$v.product.nameTR.maxLength ? 'Ürün adı 50 karakterden uzun olamaz.' : ''">
+      <b-form-group
+        :label="$t('dashboard.editProductView.productNameTR')"
+        :state="validateState('nameTR')"
+        :invalid-feedback="!$v.product.nameTR.required ? $t('dashboard.editProductView.errorMessages.trRequired') : !$v.product.nameTR.maxLength ? $t('dashboard.editProductView.errorMessages.productNameMaxLength') : ''"
+      >
         <b-input v-model.trim="product.nameTR" :state="validateState('nameTR')" />
       </b-form-group>
-      <b-form-group label="Ürün Adı (EN)" :state="!product.nameEN ? null : validateState('nameEN')" :invalid-feedback="!$v.product.nameTR.maxLength ? 'Ürün adı 50 karakterden uzun olamaz.' : ''">
+      <b-form-group
+        :label="$t('dashboard.editProductView.productNameEN')"
+        :state="!product.nameEN ? null : validateState('nameEN')"
+        :invalid-feedback="!$v.product.nameEN.maxLength ? $t('dashboard.editProductView.errorMessages.productNameMaxLength') : ''"
+      >
         <b-input v-model.trim="product.nameEN" :state="!product.nameEN ? null : validateState('nameEN')" />
       </b-form-group>
-      <b-form-group label="Ücret" :state="validateState('price')" :invalid-feedback="!$v.product.price.required ? 'Fiyat alanı zorunludur.' : ''">
+      <b-form-group :label="$t('dashboard.editProductView.price')" :state="validateState('price')" :invalid-feedback="!$v.product.price.required ? $t('dashboard.editProductView.errorMessages.priceRequired') : ''">
         <b-input v-model.trim="product.price" :state="validateState('price')" />
       </b-form-group>
-      <b-form-group label="Kategori" :state="validateState('categoryId')" :invalid-feedback="!$v.product.categoryId.required ? 'Kategori seçiniz.' : ''">
+      <b-form-group :label="$t('dashboard.editProductView.category')" :state="validateState('categoryId')" :invalid-feedback="!$v.product.categoryId.required ? $t('dashboard.editProductView.errorMessages.categoryRequired') : ''">
         <b-form-select v-model="product.categoryId" :options="categories" :state="validateState('categoryId')" />
       </b-form-group>
-      <b-form-group label="Açıklama (TR)">
+      <b-form-group :label="$t('dashboard.editProductView.descriptionTR')">
         <b-textarea rows="4" v-model.trim="product.descriptionTR" />
       </b-form-group>
-      <b-form-group label="Açıklama (EN)">
+      <b-form-group :label="$t('dashboard.editProductView.descriptionEN')">
         <b-textarea rows="4" v-model.trim="product.descriptionEN" />
       </b-form-group>
-      <b-form-group label="Ürün Görseli">
-        <b-form-file @input="imagePreview" placeholder="Dosya Seç veya Sürükle" drop-placeholder="Buraya Bırak" accept="image/*" />
+      <b-form-group :label="$t('dashboard.editProductView.productImage')">
+        <b-form-file
+          :browse-text="$t('dashboard.editProductView.productImageInputBrowseText')"
+          @input="imagePreview"
+          :placeholder="$t('dashboard.editProductView.productImageInputPlaceholder')"
+          :drop-placeholder="$t('dashboard.editProductView.productImageInputDropPlaceholder')"
+          accept="image/*"
+        />
       </b-form-group>
       <b-form-group v-if="product.imagePath">
         <img :src="product.imagePath" class="image-preview" fluid />
       </b-form-group>
-      <b-btn type="submit" variant="landing-secondary" class="mt-4">Kaydet</b-btn>
-      <b-btn @click="$router.go(-1)" variant="danger" class="mt-4 ml-2">Vazgeç</b-btn>
+      <b-btn type="submit" variant="landing-secondary" class="mt-4">{{ $t("dashboard.editProductView.productFormButtonText") }}</b-btn>
+      <b-btn @click="$router.go(-1)" variant="danger" class="mt-4 ml-2">{{ $t("dashboard.editProductView.cancelButtonText") }}</b-btn>
     </form>
   </div>
 </template>
@@ -79,6 +93,7 @@ export default {
   },
 
   async mounted() {
+    this.$title = this.$t("dashboard.editProductView.tabTitle");
     const categoryData = await categoryService.getAllCategories(this.$store.state.user.userId);
     if (categoryData.success) {
       categoryData.data.map((category) => {
@@ -104,15 +119,18 @@ export default {
       } else {
         this.$notify({
           group: "notify-top-right",
-          text: "Ürün bulunamadı.",
+          text: this.$t("dashboard.editProductView.errorMessages.productNotFound"),
           duration: 5000,
           type: "error",
         });
+
+        this.$root.$emit("refreshProducts");
+        this.$router.push("/dashboard/products");
       }
     } else {
       this.$notify({
         group: "notify-top-right",
-        text: "Kategoriler yüklenirken bir hata oluştu.",
+        text: this.$t("dashboard.editProductView.errorMessages.categoriesCouldntFetched"),
         duration: 5000,
         type: "error",
       });
@@ -137,7 +155,7 @@ export default {
         if (productData.code === 200) {
           this.$notify({
             group: "notify-top-right",
-            text: "Ürün başarıyla güncellendi.",
+            text: this.$t("dashboard.editProductView.messages.productUpdatedSuccessfully"),
             duration: 5000,
             type: "success",
           });
@@ -145,7 +163,7 @@ export default {
         } else {
           this.$notify({
             group: "notify-top-right",
-            text: "Ürün güncellenirken bir hata meydana geldi.",
+            text: this.$t("dashboard.editProductView.errorMessages.productUpdateFailed"),
             duration: 5000,
             type: "error",
           });

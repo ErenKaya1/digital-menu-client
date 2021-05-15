@@ -5,60 +5,60 @@
       <form @submit.prevent="submitThemeForm" class="border p-3 theme-form">
         <b-form-row>
           <b-col>
-            <b-form-group label="Arka Plan">
+            <b-form-group :label="$t('dashboard.themeView.background')">
               <b-input type="color" v-model.trim="styles.menu.backgroundColor" />
             </b-form-group>
           </b-col>
           <b-col>
-            <b-form-group label="Yazılar">
+            <b-form-group :label="$t('dashboard.themeView.texts')">
               <b-input type="color" v-model.trim="styles.text.color" />
             </b-form-group>
           </b-col>
         </b-form-row>
         <b-form-row>
           <b-col>
-            <b-form-group label="Fiyat">
+            <b-form-group :label="$t('dashboard.themeView.price')">
               <b-input type="color" v-model.trim="styles.price.color" />
             </b-form-group>
           </b-col>
           <b-col>
-            <b-form-group label="Ürün Arka Plan">
+            <b-form-group :label="$t('dashboard.themeView.productBackground')">
               <b-input type="color" v-model.trim="styles.product.backgroundColor" />
             </b-form-group>
           </b-col>
         </b-form-row>
         <b-form-row>
           <b-col>
-            <b-form-group label="Dil & Para Birimi Arka Plan">
+            <b-form-group :label="$t('dashboard.themeView.languageCurrencyBackground')">
               <b-input type="color" v-model.trim="styles.languageCurrency.backgroundColor" />
             </b-form-group>
           </b-col>
           <b-col>
-            <b-form-group label="Dil & Para Birimi Yazı">
+            <b-form-group :label="$t('dashboard.themeView.languageCurrencyText')">
               <b-input type="color" v-model.trim="styles.languageCurrency.color" />
             </b-form-group>
           </b-col>
         </b-form-row>
         <b-form-row>
           <b-col>
-            <b-form-group label="Kategori Açıklama">
+            <b-form-group :label="$t('dashboard.themeView.categoryDescription')">
               <b-input type="color" v-model.trim="styles.category.description.color" />
             </b-form-group>
           </b-col>
           <b-col>
-            <b-form-group label="Seçili Kategori Çerçeve">
+            <b-form-group :label="$t('dashboard.themeView.selectedCategoryBorder')">
               <b-input type="color" v-model.trim="styles.category.border.borderColor" />
             </b-form-group>
           </b-col>
         </b-form-row>
         <b-form-row>
           <b-col cols="6">
-            <b-form-group label="Linkler">
+            <b-form-group :label="$t('dashboard.themeView.links')">
               <b-input type="color" v-model.trim="styles.link.color" />
             </b-form-group>
           </b-col>
         </b-form-row>
-        <b-button type="submit" variant="landing-secondary">Kaydet</b-button>
+        <b-button type="submit" variant="landing-secondary">{{ $t("dashboard.themeView.themeFormButtonText") }}</b-button>
       </form>
     </b-col>
     <b-col>
@@ -95,7 +95,7 @@ export default {
         },
         languageCurrency: {
           backgroundColor: "#3AB5A1",
-          color: "#3AB5A1",
+          color: "#F5F5F5",
         },
         category: {
           description: {
@@ -131,14 +131,14 @@ export default {
       if (response.success) {
         this.$notify({
           group: "notify-top-right",
-          text: "Başarıyla güncellendi.",
+          text: this.$t("dashboard.themeView.messages.themeUpdatedSuccessfully"),
           duration: 5000,
           type: "success",
         });
       } else {
         this.$notify({
           group: "notify-top-right",
-          text: "Tema güncellenemedi.",
+          text: this.$t("dashboard.themeView.errorMessages.themeUpdateFailed"),
           duration: 5000,
           type: "success",
         });
@@ -149,6 +149,7 @@ export default {
   },
 
   async mounted() {
+    this.$title = this.$t("dashboard.themeView.tabTitle");
     const themeResponse = await menuService.getMenuTheme(this.$store.state.user.userId);
     if (themeResponse.success) {
       this.styles = {

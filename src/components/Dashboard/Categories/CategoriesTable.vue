@@ -5,11 +5,11 @@
       <template #cell(nameTR)="row">{{ row.value }}</template>
       <template #cell(nameEN)="row">{{ row.value }}</template>
       <template #cell(actions)="row">
-        <b-button @click="$router.push(`/dashboard/category/edit/${row.item.id}`)" size="sm" variant="info" class="mr-1">Düzenle</b-button>
-        <b-button size="sm" variant="danger" @click="deleteCategory(row.item)" class="mr-1">Sil</b-button>
+        <b-button @click="$router.push(`/dashboard/category/edit/${row.item.id}`)" size="sm" variant="info" class="mr-1">{{ $t("dashboard.categoriesView.editCategoryButtonText") }}</b-button>
+        <b-button size="sm" variant="danger" @click="deleteCategory(row.item)" class="mr-1">{{ $t("dashboard.categoriesView.deleteCategoryButtonText") }}</b-button>
       </template>
     </b-table>
-    <b-alert variant="warning" show v-else>Henüz kategori eklemediniz.</b-alert>
+    <b-alert variant="warning" show v-else>{{ $t("dashboard.categoriesView.messages.noCategoryAdded") }}</b-alert>
   </div>
 </template>
 
@@ -23,9 +23,9 @@ export default {
     return {
       categories: [],
       fields: [
-        { key: "nameTR", label: "Kategori Adı (TR)", sortable: true },
-        { key: "nameEN", label: "Kategori Adı (EN)", sortable: true },
-        { key: "actions", label: "Seçenekler", tdClass: "options-column", thClass: "options-column" },
+        { key: "nameTR", label: this.$t("dashboard.categoriesView.tableFields.categoryNameTR"), sortable: true },
+        { key: "nameEN", label: this.$t("dashboard.categoriesView.tableFields.categoryNameEN"), sortable: true },
+        { key: "actions", label: this.$t("dashboard.categoriesView.tableFields.options"), tdClass: "options-column", thClass: "options-column" },
       ],
       isLoaded: false,
     };
@@ -43,14 +43,14 @@ export default {
   methods: {
     deleteCategory(category) {
       this.$bvModal
-        .msgBoxConfirm("Bu kategori ve kategoriye ait tüm ürünler silinecektir.", {
-          title: "Emin misiniz?",
+        .msgBoxConfirm(this.$t("dashboard.categoriesView.messages.confirmDeleteCategory"), {
+          title: this.$t("dashboard.categoriesView.messages.confirmDeleteCategoryTitle"),
           centered: true,
           size: "sm",
           buttonSize: "sm",
           okVariant: "danger",
-          okTitle: "EVET",
-          cancelTitle: "HAYIR",
+          okTitle: this.$t("common.yes").toUpperCase(),
+          cancelTitle: this.$t("common.no").toUpperCase(),
           cancelVariant: "dark",
         })
         .then(async (value) => {
@@ -59,7 +59,7 @@ export default {
             if (response.code === 200) {
               this.$notify({
                 group: "notify-top-right",
-                text: "Kategori başarıyla silindi.",
+                text: this.$t("dashboard.categoriesView.messages.categoryDeletedSuccessfully"),
                 duration: 5000,
                 type: "info",
               });

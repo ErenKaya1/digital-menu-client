@@ -44,8 +44,6 @@ export default {
       i18n.locale = lang;
       this.selectedLang = lang.toUpperCase();
     }
-
-    console.log(this.styles);
   },
 };
 </script>

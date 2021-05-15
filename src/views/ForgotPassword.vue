@@ -4,7 +4,7 @@
       <b-card no-body v-if="emailSent">
         <div class="p-4 p-sm-5">
           <div class="display-1 lnr lnr-checkmark-circle text-center text-landing-primary mb-4"></div>
-          <p class="text-center text-big mb-4">{{ $t("forgotPasswordView.emailSentMessage") }}</p>
+          <p class="text-center text-big mb-4">{{ $t("forgotPasswordView.messages.emailSent") }}</p>
           <b-link to="/" class="btn btn-landing-primary btn-block">{{ $t("forgotPasswordView.backToHomepageButtonText") }}</b-link>
         </div>
       </b-card>
@@ -21,10 +21,13 @@
           <h5 class="text-center text-muted font-weight-normal mb-4">{{ $t("forgotPasswordView.formTitle") }}</h5>
           <hr class="mt-0 mb-4" />
           <p>{{ $t("forgotPasswordView.formDescription") }}</p>
-          <b-form-group :state="validateEmailAddress()" :invalid-feedback="!$v.credentials.emailAddress.required ? $t('messages.error.emailRequiredError') : !$v.credentials.emailAddress.email ? $t('messages.error.emailWrongFormatError') : ''">
+          <b-form-group
+            :state="validateEmailAddress()"
+            :invalid-feedback="!$v.credentials.emailAddress.required ? $t('forgotPasswordView.errorMessages.emailRequired') : !$v.credentials.emailAddress.email ? $t('forgotPasswordView.errorMessages.emailFormat') : ''"
+          >
             <b-input v-model="credentials.emailAddress" :placeholder="this.$t('forgotPasswordView.inputPlaceholder')" :state="validateEmailAddress()" />
           </b-form-group>
-          <b-btn type="submit" variant="landing-primary" :block="true">{{ $t("forgotPasswordView.sendEmailButtonText") }}</b-btn>
+          <b-btn type="submit" variant="landing-primary" :block="true">{{ $t("forgotPasswordView.formButtonText") }}</b-btn>
         </div>
       </form>
     </div>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <subscription-status />
-    <h1>Dashboard Vue</h1>
+    <h1>Digital Menu</h1>
   </div>
 </template>
 
@@ -12,7 +12,7 @@ export default {
   components: { SubscriptionStatus },
 
   mounted() {
-    this.$title = this.$t("dashboard");
+    this.$title = this.$t("dashboard.homeView.tabTitle");
   },
 };
 </script>

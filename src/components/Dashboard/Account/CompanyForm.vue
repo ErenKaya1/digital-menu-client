@@ -2,26 +2,26 @@
   <form class="my-5 px-3" @submit.prevent="submitCompanyForm" enctype="multipart/form-data">
     <b-row>
       <b-col cols="12" sm="6">
-        <b-form-group label="Logo">
-          <b-form-file @input="imagePreview" placeholder="Dosya Seç veya Sürükle" drop-placeholder="Buraya Bırak" />
+        <b-form-group :label="$t('dashboard.accountView.logo')">
+          <b-form-file :browse-text="$t('dashboard.accountView.logoInputBrowseText')" @input="imagePreview" :placeholder="$t('dashboard.accountView.logoInputPlaceholder')" :drop-placeholder="$t('dashboard.accountView.logoInputDropPlaceholder')" />
         </b-form-group>
       </b-col>
       <b-col cols="12" sm="6">
         <b-img v-if="this.imageUrl" :src="imageUrl" class="logo-preview" fluid />
       </b-col>
     </b-row>
-    <b-form-group label="Şirket Adı">
+    <b-form-group :label="$t('dashboard.accountView.companyName')">
       <b-input v-model.trim="company.name" @input="updateCompanySlug" />
     </b-form-group>
-    <b-form-group label="Linkimi kendim oluşturacağım.">
+    <b-form-group :label="$t('dashboard.accountView.createMyOwnLink')">
       <b-form-checkbox v-model.trim="customSlug" />
     </b-form-group>
-    <b-form-group label="Menü Linki (Bu alanı değiştirseniz QR kodunuzu da yenilemeniz gerekmektedir.)">
-      <b-input-group prepend="https://www.digitalmenu.com/menu/">
+    <b-form-group :label="$t('dashboard.accountView.linkInputLabel')">
+      <b-input-group :prepend="appUrl">
         <b-form-input v-model.trim="company.slug" :disabled="!customSlug" />
       </b-input-group>
     </b-form-group>
-    <b-btn type="submit" variant="landing-secondary" class="mt-4">Şirket Bilgilerini Güncelle</b-btn>
+    <b-btn type="submit" variant="landing-secondary" class="mt-4">{{ $t("dashboard.accountView.companyFormButtonText") }}</b-btn>
   </form>
 </template>
 
@@ -37,6 +37,7 @@ export default {
       customSlug: false,
       imageUrl: "",
       companyModel: new FormData(),
+      appUrl: process.env.VUE_APP_URL + "/menu",
     };
   },
 
@@ -65,7 +66,7 @@ export default {
         this.company = data.data;
         this.$notify({
           group: "notify-top-right",
-          text: "Şirket bilgileri başarıyla güncellendi.",
+          text: this.$t("dashboard.accountView.messages.companyUpdatedSuccessfully"),
           duration: 5000,
           type: "success",
         });
@@ -75,8 +76,9 @@ export default {
         var errorMessage = "";
 
         switch (data.errorCode) {
+          // duplicated slug
           case 0:
-            errorMessage = "Girdiğiniz slug daha önce alınmış.";
+            errorMessage = this.$t("dashboard.accountView.messages.duplicatedCompanySlug");
             break;
         }
 

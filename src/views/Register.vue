@@ -22,51 +22,51 @@
             <h4 class="text-center custom-text-muted font-weight-normal mt-5 mb-0">{{ $t("registerView.formTitle") }}</h4>
             <form class="my-5" @submit.prevent="register">
               <b-form-group
-                :label="this.$t('username')"
+                :label="$t('registerView.username')"
                 :state="validateState('username')"
-                :invalid-feedback="!$v.credentials.username.required ? $t('messages.error.usernameRequiredError') : !$v.credentials.username.maxLength ? $t('messages.error.usernameMaxLengthError') : ''"
+                :invalid-feedback="!$v.credentials.username.required ? $t('registerView.errorMessages.usernameRequired') : !$v.credentials.username.maxLength ? $t('registerView.errorMessages.usernameMaxLength') : ''"
               >
                 <b-input v-model.trim="credentials.username" :state="validateState('username')" />
               </b-form-group>
               <b-form-group
-                :label="this.$t('firstName')"
+                :label="$t('registerView.firstName')"
                 :state="validateState('firstName')"
-                :invalid-feedback="!$v.credentials.firstName.required ? $t('messages.error.firstNameRequiredError') : !$v.credentials.firstName.maxLength ? $t('messages.error.firstNameMaxLengthError') : ''"
+                :invalid-feedback="!$v.credentials.firstName.required ? $t('registerView.errorMessages.firstNameRequired') : !$v.credentials.firstName.maxLength ? $t('registerView.errorMessages.firstNameMaxLength') : ''"
               >
                 <b-input v-model.trim="credentials.firstName" :state="validateState('firstName')" />
               </b-form-group>
               <b-form-group
-                :label="this.$t('lastName')"
+                :label="$t('registerView.lastName')"
                 :state="validateState('lastName')"
-                :invalid-feedback="!$v.credentials.lastName.required ? $t('messages.error.lastNameRequiredError') : !$v.credentials.lastName.maxLength ? $t('messages.error.lastNameMaxLengthError') : ''"
+                :invalid-feedback="!$v.credentials.lastName.required ? $t('registerView.errorMessages.lastNameRequired') : !$v.credentials.lastName.maxLength ? $t('registerView.errorMessages.lastNameMaxLength') : ''"
               >
                 <b-input v-model.trim="credentials.lastName" :state="validateState('lastName')" />
               </b-form-group>
               <b-form-group
-                :label="this.$t('emailAddress')"
+                :label="$t('registerView.emailAddress')"
                 :state="validateState('emailAddress')"
-                :invalid-feedback="!$v.credentials.emailAddress.required ? $t('messages.error.emailRequiredError') : !$v.credentials.emailAddress.email ? $t('messages.error.emailWrongFormatError') : ''"
+                :invalid-feedback="!$v.credentials.emailAddress.required ? $t('registerView.errorMessages.emailRequired') : !$v.credentials.emailAddress.email ? $t('registerView.errorMessages.emailFormat') : ''"
               >
                 <b-input v-model.trim="credentials.emailAddress" :state="validateState('emailAddress')" />
               </b-form-group>
-              <b-form-group :label="this.$t('phoneNumber')">
+              <b-form-group :label="$t('registerView.phoneNumber')">
                 <b-input v-model.trim="credentials.phoneNumber" />
               </b-form-group>
               <b-form-group
-                :label="this.$t('password')"
+                :label="$t('registerView.password')"
                 :state="validateState('password')"
-                :invalid-feedback="!$v.credentials.password.required ? $t('messages.error.passwordRequiredError') : !$v.credentials.password.minLength ? $t('messages.error.passwordLengthError') : ''"
+                :invalid-feedback="!$v.credentials.password.required ? $t('registerView.errorMessages.passwordRequired') : !$v.credentials.password.minLength ? $t('registerView.errorMessages.passwordMinLength') : ''"
               >
                 <b-input type="password" v-model.trim="credentials.password" :state="validateState('password')" />
               </b-form-group>
               <b-form-group
-                :label="this.$t('passwordConfirm')"
+                :label="$t('registerView.passwordConfirm')"
                 :state="validatePasswordConfirm()"
-                :invalid-feedback="!$v.passwordConfirm.required ? $t('messages.error.passwordConfirmRequiredError') : !$v.passwordConfirm.sameAs ? $t('messages.error.passwordsDontMatchError') : ''"
+                :invalid-feedback="!$v.passwordConfirm.required ? $t('registerView.errorMessages.passwordConfirmRequired') : !$v.passwordConfirm.sameAs ? $t('registerView.errorMessages.passwordsDontMatch') : ''"
               >
                 <b-input type="password" v-model.trim="passwordConfirm" :state="validatePasswordConfirm()" />
               </b-form-group>
-              <b-btn type="submit" variant="landing-primary" :block="true" class="mt-4">{{ $t("signup") }}</b-btn>
+              <b-btn type="submit" variant="landing-primary" :block="true" class="mt-4">{{ $t("registerView.formButtonText") }}</b-btn>
               <div class="custom-text-muted small mt-4">
                 {{ $t("registerView.disclaimer") }}
                 <b-link to="/privacy-policy" class="text-landing-primary">{{ $t("registerView.moreInformation") }}</b-link>
@@ -74,7 +74,7 @@
             </form>
             <div class="text-center text-muted">
               {{ $t("registerView.alreadyHaveAnAccount") }}
-              <b-link to="/login" class="text-landing-primary">{{ $t("signin") }}</b-link>
+              <b-link to="/login" class="text-landing-primary">{{ $t("registerView.signIn") }}</b-link>
             </div>
           </div>
         </b-col>
@@ -90,14 +90,14 @@ export default {
   data() {
     return {
       credentials: {
-        username: "erenkaya",
-        firstName: "eren",
-        lastName: "kaya",
-        emailAddress: "erenkaya2580@gmail.com",
-        phoneNumber: "123 ",
-        password: "asdasd",
+        username: "",
+        firstName: "",
+        lastName: "",
+        emailAddress: "",
+        phoneNumber: " ",
+        password: "",
       },
-      passwordConfirm: "asdasd",
+      passwordConfirm: "",
     };
   },
 
@@ -159,12 +159,12 @@ export default {
           switch (data.errorCode) {
             // duplicated username
             case 1:
-              errorMessage = "Girdiğiniz kullanıcı adı daha önce alınmış.";
+              errorMessage = this.$t("registerView.errorMessages.duplicatedUsername");
               break;
 
             // duplicated email address
             case 2:
-              errorMessage = "Girdğiniz e-posta adresi daha önce alınmış.";
+              errorMessage = this.$t("registerView.errorMessages.duplicatedEmailAddress");
               break;
           }
 

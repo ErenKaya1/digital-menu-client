@@ -1,37 +1,37 @@
 <template>
   <form class="my-5 px-3" @submit.prevent="submitAccountForm">
     <b-form-group
-      :label="this.$t('username')"
+      :label="this.$t('dashboard.accountView.username')"
       :state="validateState('username')"
-      :invalid-feedback="!$v.user.username.required ? $t('messages.error.usernameRequiredError') : !$v.user.username.maxLength ? $t('messages.error.usernameMaxLengthError') : ''"
+      :invalid-feedback="!$v.user.username.required ? $t('dashboard.accountView.errorMessages.usernameRequired') : !$v.user.username.maxLength ? $t('dashboard.accountView.errorMessages.usernameMaxLength') : ''"
     >
       <b-input v-model.trim="user.username" :state="validateState('username')" />
     </b-form-group>
     <b-form-group
-      :label="this.$t('firstName')"
+      :label="this.$t('dashboard.accountView.firstName')"
       :state="validateState('firstName')"
-      :invalid-feedback="!$v.user.firstName.required ? $t('messages.error.firstNameRequiredError') : !$v.user.firstName.maxLength ? $t('messages.error.firstNameMaxLengthError') : ''"
+      :invalid-feedback="!$v.user.firstName.required ? $t('dashboard.accountView.errorMessages.firstNameRequired') : !$v.user.firstName.maxLength ? $t('dashboard.accountView.errorMessages.firstNameMaxLength') : ''"
     >
       <b-input v-model.trim="user.firstName" :state="validateState('firstName')" />
     </b-form-group>
     <b-form-group
-      :label="this.$t('lastName')"
+      :label="this.$t('dashboard.accountView.lastName')"
       :state="validateState('lastName')"
-      :invalid-feedback="!$v.user.lastName.required ? $t('messages.error.lastNameRequiredError') : !$v.user.lastName.maxLength ? $t('messages.error.lastNameMaxLengthError') : ''"
+      :invalid-feedback="!$v.user.lastName.required ? $t('dashboard.accountView.errorMessages.lastNameRequired') : !$v.user.lastName.maxLength ? $t('dashboard.accountView.errorMessages.lastNameMaxLength') : ''"
     >
       <b-input v-model.trim="user.lastName" :state="validateState('lastName')" />
     </b-form-group>
     <b-form-group
-      :label="this.$t('emailAddress')"
+      :label="this.$t('dashboard.accountView.emailAddress')"
       :state="validateState('emailAddress')"
-      :invalid-feedback="!$v.user.emailAddress.required ? $t('messages.error.emailRequiredError') : !$v.user.emailAddress.email ? $t('messages.error.emailWrongFormatError') : ''"
+      :invalid-feedback="!$v.user.emailAddress.required ? $t('dashboard.accountView.errorMessages.emailRequired') : !$v.user.emailAddress.email ? $t('dashboard.accountView.errorMessages.emailFormat') : ''"
     >
       <b-input v-model.trim="user.emailAddress" :state="validateState('emailAddress')" />
     </b-form-group>
-    <b-form-group :label="this.$t('phoneNumber')">
+    <b-form-group :label="this.$t('dashboard.accountView.phoneNumber')">
       <b-input v-model.trim="user.phoneNumber" />
     </b-form-group>
-    <b-btn type="submit" variant="landing-secondary" class="mt-4">Hesap Bilgilerini Güncelle</b-btn>
+    <b-btn type="submit" variant="landing-secondary" class="mt-4">{{ $t("dashboard.accountView.accountFormButtonText") }}</b-btn>
   </form>
 </template>
 
@@ -80,7 +80,7 @@ export default {
         if (data.success) {
           this.$notify({
             group: "notify-top-right",
-            text: "Hesap bilgileri başarıyla güncellendi.",
+            text: this.$t("dashboard.accountView.messages.accountUpdatedSuccessfully"),
             duration: 5000,
             type: "success",
           });
@@ -90,7 +90,7 @@ export default {
         } else {
           this.$notify({
             group: "notify-top-right",
-            text: "Hesap bilgileri güncellenemedi.",
+            text: this.$t("dashboard.accountView.messages.accountUpdateFailed"),
             duration: 5000,
             type: "error",
           });

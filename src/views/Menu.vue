@@ -89,6 +89,7 @@ export default {
       const companySlug = this.$route.params.companySlug;
       const menu = await menuService.getMenu(companySlug);
       if (menu.success) {
+        this.$title = menu.data.companyName;
         this.categories = menu.data.categories;
         this.logoPath = menu.data.companyLogo || null;
         this.selectedCategoryId = this.categories[0].id;

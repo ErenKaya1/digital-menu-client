@@ -6,7 +6,7 @@
 import "vue-sidebar-menu/dist/vue-sidebar-menu.css";
 import { SidebarMenu } from "vue-sidebar-menu";
 import authService from "@/services/authService";
-import "@fortawesome/fontawesome-free/css/all.min.css"
+import "@fortawesome/fontawesome-free/css/all.min.css";
 export default {
   components: {
     SidebarMenu,
@@ -22,37 +22,37 @@ export default {
           },
           {
             href: "/dashboard",
-            title: "Anasayfa",
+            title: this.$t("dashboard.sidemenu.homepage"),
             icon: "lnr lnr-home",
           },
           {
             href: "/dashboard/products",
-            title: "Ürünler",
+            title: this.$t("dashboard.sidemenu.products"),
             icon: "fas fa-utensils",
           },
           {
             href: "/dashboard/categories",
-            title: "Kategoriler",
+            title: this.$t("dashboard.sidemenu.categories"),
             icon: "fas fa-layer-group",
           },
           {
             href: "/dashboard/qr",
-            title: "QR Kod",
+            title: this.$t("dashboard.sidemenu.qrCode"),
             icon: "fas fa-qrcode",
           },
           {
             href: "/dashboard/theme",
-            title: "Tema",
+            title: this.$t("dashboard.sidemenu.theme"),
             icon: "fas fa-palette",
           },
           {
             href: "/dashboard/account",
-            title: "Profil",
+            title: this.$t("dashboard.sidemenu.account"),
             icon: "lnr lnr-user",
           },
           {
             class: "logout",
-            title: "Çıkış Yap",
+            title: this.$t("dashboard.sidemenu.logout"),
             icon: "lnr lnr-exit",
           },
         ],
