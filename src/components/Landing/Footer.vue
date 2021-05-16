@@ -2,8 +2,9 @@
   <footer class="footer pt-4">
     <b-container class="text-center py-4">
       <div class="pb-3">
-        <span class="footer-text font-weight-bolder">DIGITAL MENU</span>
-        <span class="align-top">©</span>
+        <span class="footer-text font-weight-bolder">
+          <img class="footer-logo" src="/img/logo-green-blue.svg" />
+        </span>
       </div>
       <hr class="mb-4" />
       <b-row>
@@ -37,5 +38,9 @@
 
 .footer-link {
   color: var(--color-footer-text);
+}
+
+.footer-logo {
+  height: 50px;
 }
 </style>

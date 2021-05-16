@@ -1,14 +1,14 @@
 <template>
-  <b-navbar class="landing-navbar pt-lg-4" toggleable="lg" type="dark" fixed="top">
+  <b-navbar class="landing-navbar" toggleable="lg" type="dark" fixed="top">
     <b-container fluid class="px-3">
-      <b-navbar-brand to="/" class="text-big font-weight-bolder line-height-1 text-expanded py-3">DIGITAL MENU</b-navbar-brand>
+      <b-navbar-brand to="/" class="text-big font-weight-bolder line-height-1 text-expanded py-3"> <img id="navbar-logo" src="/img/logo-white.svg" /></b-navbar-brand>
       <b-navbar-toggle target="landing-navbar-collapse" @click="navbarToggle"></b-navbar-toggle>
       <b-collapse id="landing-navbar-collapse" is-nav>
         <b-navbar-nav class="align-items-lg-center ml-auto">
           <b-nav-item href="#features" is="a" class="anchor-link nav-link nav-item">{{ $t("landingView.navbar.features") }}</b-nav-item>
           <b-nav-item href="#screenshots" is="a" class="anchor-link nav-link nav-item">{{ $t("landingView.navbar.screenshots") }}</b-nav-item>
           <b-nav-item href="#pricing" is="a" class="anchor-link nav-link nav-item">{{ $t("landingView.navbar.pricing") }}</b-nav-item>
-          <language-switcher v-on:languageChanged="handleLanguageChange" variant="outline-light"/>
+          <language-switcher v-on:languageChanged="handleLanguageChange" variant="outline-light" />
           <b-nav-item is="div" class="nav-item py-3 py-lg-0 ml-lg-4" v-if="isUserLoggedIn">
             <b-link to="/dashboard" class="btn-dashboard anchor-link btn btn-outline-light rounded-pill text-expanded ml-1">
               <small>{{ $t("landingView.navbar.dashboard") }}</small>
@@ -66,12 +66,12 @@ export default {
       const dashboardBtn = document.getElementsByClassName("btn-dashboard")[0];
       const logoutBtn = document.getElementsByClassName("btn-logout")[0];
       const languageSwitcher = document.querySelector("#languageSwitcher button");
+      const navbarLogo = document.getElementById("navbar-logo");
       const navbarScrollThreshold = 20;
       const navbarBreakPoint = 992;
       const navbarCustomClasses = {
         default: {
           variant: "navbar-dark",
-          classes: "pt-lg-4",
         },
         alt: {
           navbar: "navbar-light",
@@ -84,7 +84,6 @@ export default {
       if (scrollTop > navbarScrollThreshold && !navbar.classList.contains("landing-navbar-alt")) {
         navbar.classList.add("landing-navbar-alt");
         navbar.classList.remove(navbarCustomClasses.default.variant);
-        navbar.classList.remove(navbarCustomClasses.default.classes);
         navbar.classList.add(navbarCustomClasses.alt.variant);
         navbar.classList.add(navbarCustomClasses.alt.classes);
         navbar.classList.add(navbarCustomClasses.alt.navbar);
@@ -105,9 +104,9 @@ export default {
 
         languageSwitcher.classList.add("btn-landing-primary");
         languageSwitcher.classList.remove("btn-outline-light");
+        navbarLogo.setAttribute("src", "/img/logo-green-blue.svg");
       } else if (scrollTop <= navbarScrollThreshold && navbar.classList.contains("landing-navbar-alt")) {
         navbar.classList.remove("landing-navbar-alt");
-        navbar.classList.add(navbarCustomClasses.default.classes);
         navbar.classList.add(navbarCustomClasses.default.variant);
         navbar.classList.remove(navbarCustomClasses.alt.classes);
         navbar.classList.remove(navbarCustomClasses.alt.variant);
@@ -132,6 +131,8 @@ export default {
         if (window.outerWidth >= navbarBreakPoint || navbarCollapse.classList.contains("show")) {
           navbar.classList.remove(navbarCustomClasses.alt.variant);
         }
+
+        navbarLogo.setAttribute("src", "/img/logo-white.svg");
       }
     },
     navbarToggle() {
@@ -141,8 +142,8 @@ export default {
       const dashboardBtn = document.getElementsByClassName("btn-dashboard")[0];
       const logoutBtn = document.getElementsByClassName("btn-logout")[0];
       const languageSwitcher = document.querySelector("#languageSwitcher button");
+      const navbarLogo = document.getElementById("navbar-logo");
       const navbarScrollThreshold = 20;
-      const scrollTop = window.scrollY;
 
       // kapalı => açık
       if (!navbarCollapse.classList.contains("show") && window.outerWidth < 992) {
@@ -164,12 +165,14 @@ export default {
 
         languageSwitcher.classList.add("btn-landing-primary");
         languageSwitcher.classList.remove("btn-outline-light");
+        navbarLogo.setAttribute("src", "/img/logo-green-blue.svg");
       }
       // açık => kapalı
-      else if (navbarCollapse.classList.contains("show") && scrollTop <= navbarScrollThreshold) {
+      else if (navbarCollapse.classList.contains("show") && window.scrollY <= navbarScrollThreshold) {
         navbar.classList.remove("bg-white");
         navbar.classList.remove("navbar-light");
         navbar.classList.add("navbar-dark");
+        navbarLogo.setAttribute("src", "/img/logo-white.svg");
       }
     },
   },
@@ -178,7 +181,7 @@ export default {
 
 <style>
 .landing-navbar {
-  transition: all 0.1s;
+  transition: all 0.2s;
 }
 
 .landing-navbar .nav-link {
@@ -199,5 +202,37 @@ export default {
 
 .bg-light .navbar-toggler-icon {
   background-image: var(--navbar-toggler-dark);
+}
+
+.navbar-brand img {
+  transition: height 0.2;
+}
+
+.landing-navbar .navbar-brand img {
+  height: 70px;
+}
+
+.landing-navbar-alt .navbar-brand img {
+  height: 50px;
+}
+
+@media (max-width: 992px) {
+  .landing-navbar .navbar-brand img {
+    height: 50px;
+  }
+
+  .landing-navbar-alt .navbar-brand img {
+    height: 40px;
+  }
+}
+
+@media (max-width: 568px) {
+  .landing-navbar .navbar-brand img {
+    height: 40px;
+  }
+
+  .landing-navbar-alt .navbar-brand img {
+    height: 35px;
+  }
 }
 </style>

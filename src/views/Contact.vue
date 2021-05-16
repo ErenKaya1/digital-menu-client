@@ -7,15 +7,15 @@
 
         <div class="contant-container">
           <div class="contact-channels">
-            <div>
+            <div class="channel">
               <p>{{ $t("contactView.email") }}</p>
               <a href="mailto:info@digitalmenu-iesu.tk">info@digitalmenu-iesu.tk</a>
             </div>
-            <div>
+            <div class="channel">
               <p>{{ $t("contactView.phone") }}</p>
               <a href="tel:123456789">123456789</a>
             </div>
-            <div>
+            <div class="channel">
               <p>{{ $t("contactView.socialMedia") }}</p>
               <a href="https://twitter.com" target="_blank">Twitter</a>
               <a href="https://facebook.com" target="_blank">Facebook</a>
@@ -141,7 +141,7 @@ export default {
 
 .contact {
   background-color: var(--color-white);
-  margin-top: 80px;
+  margin-top: 90px;
   width: 100%;
 }
 
@@ -177,5 +177,29 @@ export default {
   display: block;
   color: var(--color-muted);
   margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .contact-content h1 {
+    font-size: 36px;
+  }
+
+  .contact .contact-channels p {
+    margin-bottom: 5px;
+  }
+
+  .contact .contact-channels .channel {
+    margin-bottom: 20px;
+  }
+
+  .contact-content {
+    width: 80%;
+  }
+
+  .contact .contact-channels {
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 60px;
+  }
 }
 </style>
