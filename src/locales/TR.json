@@ -515,5 +515,47 @@
       "emailFormat": "Lütfen geçerli formatta bir e-posta giriniz.",
       "contentRequired": "Mesaj zorunludur."
     }
+  },
+  "faqView": {
+    "tabTitle": "Sık Sorulan Sorular",
+    "pageTitle": "Sık Sorulan Sorular",
+    "questions": [
+      {
+        "question": "Digital Menu nedir?",
+        "answer": "a1"
+      },
+      {
+        "question": "Digital Menu ücretli midir?",
+        "answer": "a1"
+      },
+      {
+        "question": "Digital Menu'nun özellikleri nelerdir?",
+        "answer": "a1"
+      },
+      {
+        "question": "Digital Menu'nun sağladığı avantajlar nelerdir?",
+        "answer": "a1"
+      },
+      {
+        "question": "Digital Menu'ye nasıl üye olurum?",
+        "answer": "a1"
+      },
+      {
+        "question": "Digital Menu güvenli mi?",
+        "answer": "a1"
+      },
+      {
+        "question": "Digital Menu ekibi ile nasıl iletişime geçerim?",
+        "answer": "a1"
+      },
+      {
+        "question": "Üyeliğim bitti. Ne yapmam gerek?",
+        "answer": "a1"
+      },
+      {
+        "question": "Üyeliğim bitti. Verilerim silinir mi?",
+        "answer": "a1"
+      }
+    ]
   }
 }

@@ -104,6 +104,10 @@ const routes = [
     component: () => import(/* webpackChunkName: "contact" */ "@/views/Contact.vue"),
   },
   {
+    path: "/faq",
+    component: () => import(/* webpackChunkName: "faq" */ "@/views/Faq.vue"),
+  },
+  {
     path: "*",
     name: "NotFound",
     component: () => import(/* webpackChunkName: "404" */ "@/views/404.vue"),
