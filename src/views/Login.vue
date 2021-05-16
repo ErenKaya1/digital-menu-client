@@ -1,5 +1,5 @@
 <template>
-  <div class="authentication-wrapper authentication-3">
+  <div class="login-view authentication-wrapper authentication-3">
     <div class="authentication-inner">
       <b-col lg="8" class="d-none d-lg-flex align-items-center ui-bg-cover ui-bg-overlay-container p-5 login-bg">
         <div class="ui-bg-overlay custom-bg-dark opacity-50"></div>
@@ -13,12 +13,16 @@
             <!-- Logo -->
             <div class="d-flex justify-content-center align-items-center">
               <div class="ui-w-60">
-                <div class="w-100 position-relative" style="padding-bottom: 54%"></div>
+                <div class="w-100 position-relative" style="padding-bottom: 30%">
+                  <b-link to="/">
+                    <img class="login-logo" src="/img/logo-green-blue.svg" alt="" />
+                  </b-link>
+                </div>
               </div>
             </div>
             <!-- / Logo -->
 
-            <h4 class="text-center custom-text-muted font-weight-normal mt-5 mb-0">{{ $t("loginView.formTitle") }}</h4>
+            <h4 class="text-center custom-text-muted font-weight-normal mb-0">{{ $t("loginView.formTitle") }}</h4>
             <form class="my-5" @submit.prevent="login">
               <b-form-group :label="$t('loginView.username')" :state="validateState('userName')" :invalid-feedback="$v.credentials.userName.$error ? $t('loginView.errorMessages.usernameRequired') : ''">
                 <b-input v-model="credentials.userName" :state="validateState('userName')" />
@@ -123,7 +127,23 @@ export default {
 </script>
 
 <style>
+@import "../../node_modules/@fontsource/comfortaa/700.css";
+
+.login-view h1 {
+  font-family: "Comfortaa";
+}
+
 .login-bg {
   background-image: url("../assets/login-img.jpg");
+}
+
+.login-logo {
+  height: 100px;
+}
+
+@media (max-width: 512px) {
+  .login-logo {
+    height: 70px;
+  }
 }
 </style>
