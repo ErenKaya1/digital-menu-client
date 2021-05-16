@@ -100,6 +100,10 @@ const routes = [
     component: () => import(/* webpackChunkName: "about-us" */ "@/views/AboutUs.vue"),
   },
   {
+    path: "/contact",
+    component: () => import(/* webpackChunkName: "contact" */ "@/views/Contact.vue"),
+  },
+  {
     path: "*",
     name: "NotFound",
     component: () => import(/* webpackChunkName: "404" */ "@/views/404.vue"),
@@ -107,6 +111,9 @@ const routes = [
 ];
 
 const router = new VueRouter({
+  scrollBehavior() {
+    return { x: 0, y: 0 };
+  },
   mode: "history",
   base: process.env.BASE_URL,
   routes,

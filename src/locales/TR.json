@@ -486,5 +486,34 @@
       "invalidResetPasswordToken": "Parola yenileme bağlantısı geçersiz.",
       "passwordUpdateFailed": "Parola değiştirilirken bir hata meydana geldi."
     }
+  },
+  "aboutUsView": {
+    "tabTitle": "Hakkımızda",
+    "pageTitle": "Hakkımızda",
+    "pageSummary": "COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz.",
+    "pageContent": "COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz. COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz. COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz."
+  },
+  "contactView": {
+    "tabTitle": "İletişim",
+    "pageTitle": "İletişim",
+    "email": "E-posta",
+    "phone": "Telefon",
+    "socialMedia": "Sosyal Medya",
+    "firstName": "İsim",
+    "lastName": "Soyisim",
+    "message": "Mesaj",
+    "formButtonText": "Gönder",
+    "messages": {
+      "messageSentSuccessfully": "Mesajınız gönderildi. Sizinle en kısa zamanda iletişime geçeceğiz."
+    },
+    "errorMessages": {
+      "firstNameRequired": "İsim zorunludur.",
+      "firstNameMaxLength": "İsim 30 karakterden uzun olamaz.",
+      "lastNameRequired": "Soyisim zorunludur.",
+      "lastNameMaxLength": "Soyisim 30 karakterden uzun olamaz.",
+      "emailRequired": "E-posta zorunludur.",
+      "emailFormat": "Lütfen geçerli formatta bir e-posta giriniz.",
+      "contentRequired": "Mesaj zorunludur."
+    }
   }
 }

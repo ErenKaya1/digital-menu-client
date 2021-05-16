@@ -6,21 +6,9 @@
         <img src="@/assets/register-img.jpg" alt="" />
       </div>
       <div class="text-container">
-        <h1>Hakkımızda</h1>
-        <p class="subtitle">
-          COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR
-          kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini
-          minimuma indirmiş olursunuz.
-        </p>
-        <p class="content text-muted">
-          COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR
-          kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini
-          minimuma indirmiş olursunuz. COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü
-          oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü
-          yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz. COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır.
-          Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza
-          ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz.
-        </p>
+        <h1>{{ $t("aboutUsView.pageTitle") }}</h1>
+        <p class="subtitle">{{ $t("aboutUsView.pageSummary") }}</p>
+        <p class="content text-muted">{{ $t("aboutUsView.pageContent") }}</p>
       </div>
     </div>
     <app-footer />
@@ -33,6 +21,10 @@ import AppFooter from "@/components/Landing/Footer.vue";
 
 export default {
   components: { CommonNavbar, AppFooter },
+
+  mounted() {
+    this.$title = this.$t("aboutUsView.tabTitle");
+  },
 };
 </script>
 

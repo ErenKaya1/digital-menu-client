@@ -96,7 +96,7 @@ export default {
 
   methods: {
     async generateQRCode() {
-      this.imageUrl = await QRCode.toDataURL(`${process.env.VUE_APP_URL}/${this.company.slug}`, this.QRCodeOptions);
+      this.imageUrl = await QRCode.toDataURL(`${process.env.VUE_APP_URL}/menu/${this.company.slug}`, this.QRCodeOptions);
     },
   },
 };
