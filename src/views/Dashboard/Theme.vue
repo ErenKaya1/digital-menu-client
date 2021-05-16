@@ -1,58 +1,50 @@
 <template>
   <table-loader v-if="!isLoaded" />
   <b-row v-else>
-    <b-col cols="7">
+    <b-col cols="12" sm="6" xl="7">
       <form @submit.prevent="submitThemeForm" class="border p-3 theme-form">
         <b-form-row>
-          <b-col>
+          <b-col cols="12" lg="6" xl="4">
             <b-form-group :label="$t('dashboard.themeView.background')">
               <b-input type="color" v-model.trim="styles.menu.backgroundColor" />
             </b-form-group>
           </b-col>
-          <b-col>
+          <b-col cols="12" lg="6" xl="4">
             <b-form-group :label="$t('dashboard.themeView.texts')">
               <b-input type="color" v-model.trim="styles.text.color" />
             </b-form-group>
           </b-col>
-        </b-form-row>
-        <b-form-row>
-          <b-col>
+          <b-col cols="12" lg="6" xl="4">
             <b-form-group :label="$t('dashboard.themeView.price')">
               <b-input type="color" v-model.trim="styles.price.color" />
             </b-form-group>
           </b-col>
-          <b-col>
+          <b-col cols="12" lg="6" xl="4">
             <b-form-group :label="$t('dashboard.themeView.productBackground')">
               <b-input type="color" v-model.trim="styles.product.backgroundColor" />
             </b-form-group>
           </b-col>
-        </b-form-row>
-        <b-form-row>
-          <b-col>
+          <b-col cols="12" lg="6" xl="4">
             <b-form-group :label="$t('dashboard.themeView.languageCurrencyBackground')">
               <b-input type="color" v-model.trim="styles.languageCurrency.backgroundColor" />
             </b-form-group>
           </b-col>
-          <b-col>
+          <b-col cols="12" lg="6" xl="4">
             <b-form-group :label="$t('dashboard.themeView.languageCurrencyText')">
               <b-input type="color" v-model.trim="styles.languageCurrency.color" />
             </b-form-group>
           </b-col>
-        </b-form-row>
-        <b-form-row>
-          <b-col>
+          <b-col cols="12" lg="6" xl="4">
             <b-form-group :label="$t('dashboard.themeView.categoryDescription')">
               <b-input type="color" v-model.trim="styles.category.description.color" />
             </b-form-group>
           </b-col>
-          <b-col>
+          <b-col cols="12" lg="6" xl="4">
             <b-form-group :label="$t('dashboard.themeView.selectedCategoryBorder')">
               <b-input type="color" v-model.trim="styles.category.border.borderColor" />
             </b-form-group>
           </b-col>
-        </b-form-row>
-        <b-form-row>
-          <b-col cols="6">
+          <b-col cols="12" lg="6" xl="4">
             <b-form-group :label="$t('dashboard.themeView.links')">
               <b-input type="color" v-model.trim="styles.link.color" />
             </b-form-group>
@@ -61,7 +53,7 @@
         <b-button type="submit" variant="landing-secondary">{{ $t("dashboard.themeView.themeFormButtonText") }}</b-button>
       </form>
     </b-col>
-    <b-col>
+    <b-col cols="12" sm="6" xl="5">
       <menu-preview :styles="styles" />
     </b-col>
   </b-row>

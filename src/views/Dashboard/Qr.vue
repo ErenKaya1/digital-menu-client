@@ -3,42 +3,36 @@
   <div v-else>
     <div class="border p-3 qrcode-form">
       <b-form-row>
-        <b-col>
+        <b-col cols="12" sm="6">
           <b-form-group :label="$t('dashboard.qrView.margin')">
             <b-input @input="generateQRCode" v-model.trim="QRCodeOptions.margin" />
           </b-form-group>
         </b-col>
-        <b-col>
+        <b-col cols="12" sm="6">
           <b-form-group :label="$t('dashboard.qrView.scale')">
             <b-input @input="generateQRCode" v-model.trim="QRCodeOptions.scale" />
           </b-form-group>
         </b-col>
-      </b-form-row>
-      <b-form-row>
-        <b-col>
+        <b-col cols="12" sm="6">
           <b-form-group :label="$t('dashboard.qrView.qrCodeColor')">
             <b-input @input="generateQRCode" type="color" v-model.trim="QRCodeOptions.color.dark" />
           </b-form-group>
         </b-col>
-        <b-col>
+        <b-col cols="12" sm="6">
           <b-form-group :label="$t('dashboard.qrView.backgroundColor')">
             <b-input @input="generateQRCode" type="color" v-model.trim="QRCodeOptions.color.light" />
           </b-form-group>
         </b-col>
-      </b-form-row>
-      <b-form-row>
-        <b-col>
+        <b-col cols="12" sm="6">
           <b-form-group :label="$t('dashboard.qrView.fileFormat')">
             <b-form-select @input="generateQRCode" :options="imageTypes" v-model="QRCodeOptions.type" />
           </b-form-group>
         </b-col>
-        <b-col>
+        <b-col cols="12" sm="6">
           <b-form-group :label="$t('dashboard.qrView.quality')">
             <b-input @input="generateQRCode" :disabled="QRCodeOptions.type === 'image/png'" v-model="QRCodeOptions.quality" />
           </b-form-group>
         </b-col>
-      </b-form-row>
-      <b-form-row>
         <b-col>
           <b-form-group>
             <b-link download="digital_menu" :href="this.imageUrl" class="btn btn-landing-secondary">{{ $t("dashboard.qrView.downloadButtonText") }}</b-link>
