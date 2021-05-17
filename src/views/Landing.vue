@@ -62,6 +62,7 @@
       </b-container>
     </div>
     <app-footer />
+    <back-to-top />
   </div>
 </template>
 
@@ -72,6 +73,8 @@ import HowItWorks from "@/components/Landing/HowItWorks.vue";
 import Pricing from "@/components/Landing/Pricing.vue";
 import AppFooter from "@/components/Landing/Footer.vue";
 import AppNavbar from "@/components/Landing/Navbar.vue";
+import BackToTop from "@/components/BackToTop.vue";
+import GoTop from "@inotom/vue-go-top";
 import subscriptionService from "@/services/subscriptionService";
 
 export default {
@@ -82,6 +85,8 @@ export default {
     Pricing,
     AppFooter,
     AppNavbar,
+    BackToTop,
+    GoTop,
   },
 
   data() {
