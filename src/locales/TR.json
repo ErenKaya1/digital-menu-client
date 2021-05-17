@@ -522,7 +522,7 @@
     "questions": [
       {
         "question": "Digital Menu nedir?",
-        "answer": "a1"
+        "answer": "a1a1a1a1a1a1"
       },
       {
         "question": "Digital Menu ücretli midir?",
@@ -555,6 +555,32 @@
       {
         "question": "Üyeliğim bitti. Verilerim silinir mi?",
         "answer": "a1"
+      }
+    ]
+  },
+  "privacyPolicyView": {
+    "tabTitle": "Gizlilik Politikası",
+    "pageTitle": "Gizlilik Politikası",
+    "policies": [
+      {
+        "title": "Giriş",
+        "content": "COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz."
+      },
+      {
+        "title": "Giriş",
+        "content": "COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz."
+      },
+      {
+        "title": "Giriş",
+        "content": "COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz."
+      },
+      {
+        "title": "Giriş",
+        "content": "COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz."
+      },
+      {
+        "title": "Giriş",
+        "content": "COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz."
       }
     ]
   }

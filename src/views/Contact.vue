@@ -5,58 +5,56 @@
       <div class="contact-content">
         <h1 class="display-4 text-center pb-4 mb-5">İletişim</h1>
 
-        <div class="contant-container">
-          <div class="contact-channels">
-            <div class="channel">
-              <p>{{ $t("contactView.email") }}</p>
-              <a href="mailto:info@digitalmenu-iesu.tk">info@digitalmenu-iesu.tk</a>
-            </div>
-            <div class="channel">
-              <p>{{ $t("contactView.phone") }}</p>
-              <a href="tel:123456789">123456789</a>
-            </div>
-            <div class="channel">
-              <p>{{ $t("contactView.socialMedia") }}</p>
-              <a href="https://twitter.com" target="_blank">Twitter</a>
-              <a href="https://facebook.com" target="_blank">Facebook</a>
-              <a href="https://instagram.com" target="_blank">Instagram</a>
-            </div>
+        <div class="contact-channels">
+          <div class="channel">
+            <p>{{ $t("contactView.email") }}</p>
+            <a href="mailto:info@digitalmenu-iesu.tk">info@digitalmenu-iesu.tk</a>
           </div>
-          <div class="contact-form">
-            <form @submit.prevent="submitContactForm">
-              <b-form-row>
-                <b-col>
-                  <b-form-group
-                    :label="$t('contactView.firstName')"
-                    :state="validateState('firstName')"
-                    :invalid-feedback="!$v.message.firstName.required ? $t('contactView.errorMessages.firstNameRequired') : !$v.message.firstName.maxLength ? $t('contactView.errorMessages.firstNameMaxLength') : ''"
-                  >
-                    <b-input v-model.trim="message.firstName" type="text" :state="validateState('firstName')" />
-                  </b-form-group>
-                </b-col>
-                <b-col>
-                  <b-form-group
-                    :label="$t('contactView.lastName')"
-                    :state="validateState('lastName')"
-                    :invalid-feedback="!$v.message.lastName.required ? $t('contactView.errorMessages.lastNameRequired') : !$v.message.lastName.maxLength ? $t('contactView.errorMessages.lastNameMaxLength') : ''"
-                  >
-                    <b-input v-model.trim="message.lastName" type="text" :state="validateState('lastName')" />
-                  </b-form-group>
-                </b-col>
-              </b-form-row>
-              <b-form-group
-                :label="$t('contactView.email')"
-                :state="validateState('emailAddress')"
-                :invalid-feedback="!$v.message.emailAddress.required ? $t('contactView.errorMessages.emailRequired') : !$v.message.emailAddress.email ? $t('contactView.errorMessages.emailFormat') : ''"
-              >
-                <b-input v-model.trim="message.emailAddress" type="text" :state="validateState('emailAddress')" />
-              </b-form-group>
-              <b-form-group :label="$t('contactView.message')" :state="validateState('content')" :invalid-feedback="!$v.message.content.required ? $t('contactView.errorMessages.contentRequired') : ''">
-                <b-textarea v-model.trim="message.content" rows="5" :state="validateState('content')"></b-textarea>
-              </b-form-group>
-              <b-button type="submit" variant="landing-primary">{{ $t("contactView.formButtonText") }}</b-button>
-            </form>
+          <div class="channel">
+            <p>{{ $t("contactView.phone") }}</p>
+            <a href="tel:123456789">123456789</a>
           </div>
+          <div class="channel">
+            <p>{{ $t("contactView.socialMedia") }}</p>
+            <a href="https://twitter.com" target="_blank">Twitter</a>
+            <a href="https://facebook.com" target="_blank">Facebook</a>
+            <a href="https://instagram.com" target="_blank">Instagram</a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form @submit.prevent="submitContactForm">
+            <b-form-row>
+              <b-col>
+                <b-form-group
+                  :label="$t('contactView.firstName')"
+                  :state="validateState('firstName')"
+                  :invalid-feedback="!$v.message.firstName.required ? $t('contactView.errorMessages.firstNameRequired') : !$v.message.firstName.maxLength ? $t('contactView.errorMessages.firstNameMaxLength') : ''"
+                >
+                  <b-input v-model.trim="message.firstName" type="text" :state="validateState('firstName')" />
+                </b-form-group>
+              </b-col>
+              <b-col>
+                <b-form-group
+                  :label="$t('contactView.lastName')"
+                  :state="validateState('lastName')"
+                  :invalid-feedback="!$v.message.lastName.required ? $t('contactView.errorMessages.lastNameRequired') : !$v.message.lastName.maxLength ? $t('contactView.errorMessages.lastNameMaxLength') : ''"
+                >
+                  <b-input v-model.trim="message.lastName" type="text" :state="validateState('lastName')" />
+                </b-form-group>
+              </b-col>
+            </b-form-row>
+            <b-form-group
+              :label="$t('contactView.email')"
+              :state="validateState('emailAddress')"
+              :invalid-feedback="!$v.message.emailAddress.required ? $t('contactView.errorMessages.emailRequired') : !$v.message.emailAddress.email ? $t('contactView.errorMessages.emailFormat') : ''"
+            >
+              <b-input v-model.trim="message.emailAddress" type="text" :state="validateState('emailAddress')" />
+            </b-form-group>
+            <b-form-group :label="$t('contactView.message')" :state="validateState('content')" :invalid-feedback="!$v.message.content.required ? $t('contactView.errorMessages.contentRequired') : ''">
+              <b-textarea v-model.trim="message.content" rows="5" :state="validateState('content')"></b-textarea>
+            </b-form-group>
+            <b-button type="submit" variant="landing-primary">{{ $t("contactView.formButtonText") }}</b-button>
+          </form>
         </div>
       </div>
     </div>

@@ -17,7 +17,7 @@
         <div class="col-6 col-sm pb-4">
           <div class="footer-text font-secondary font-weight-bold mb-3">{{ $t("landingView.footer.support").toLocaleUpperCase() }}</div>
           <b-link to="/faq" class="footer-link d-block small pb-2">{{ $t("landingView.footer.faq").toLocaleUpperCase() }}</b-link>
-          <b-link to="/policy" class="footer-link d-block small pb-2">{{ $t("landingView.footer.privacyPolicy") }}</b-link>
+          <b-link to="/privacy-policy" class="footer-link d-block small pb-2">{{ $t("landingView.footer.privacyPolicy") }}</b-link>
           <b-link to="/contact" class="footer-link d-block small pb-2">{{ $t("landingView.footer.contact") }}</b-link>
         </div>
         <div class="col-6 offset-3 offset-sm-0 col-sm pb-4">
