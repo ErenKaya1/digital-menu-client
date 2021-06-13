@@ -22,9 +22,9 @@
         </div>
         <div class="col-6 offset-3 offset-sm-0 col-sm pb-4">
           <div class="footer-text font-secondary font-weight-bold mb-3">{{ $t("landingView.footer.socialMedia").toLocaleUpperCase() }}</div>
-          <a href="#" class="footer-link d-block small pb-2" target="_blank"> &nbsp;Twitter</a>
-          <a href="#" class="footer-link d-block small pb-2" target="_blank"> &nbsp;Facebook</a>
-          <a href="#" class="footer-link d-block small pb-2" target="_blank"> &nbsp;Instagram</a>
+          <a href="https://twitter.com" class="footer-link d-block small pb-2" target="_blank"> &nbsp;Twitter</a>
+          <a href="https://facebook.com" class="footer-link d-block small pb-2" target="_blank"> &nbsp;Facebook</a>
+          <a href="https://instagram.com" class="footer-link d-block small pb-2" target="_blank"> &nbsp;Instagram</a>
         </div>
       </b-row>
     </b-container>

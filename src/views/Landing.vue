@@ -38,7 +38,7 @@
         </b-col>
         <hr class="landing-separator border-light mx-auto" />
         <b-row class="text-center">
-          <feature v-for="(feature, index) in features" :key="index" :title="feature.title" :iconClass="feature.iconClass" :description="feature.description" />
+          <feature v-for="(feature, index) in $t('landingView.features.items')" :key="index" :title="feature.title" :iconClass="feature.iconClass" :description="feature.description" />
         </b-row>
       </b-container>
     </div>
@@ -50,7 +50,7 @@
       <h1 class="display-5 font-secondary text-center font-weight-semibold">{{ $t("landingView.howItWorks.subTitle") }}</h1>
       <hr class="landing-separator border-success mx-auto mt-5 mb-4" />
       <b-row class="text-center">
-        <how-it-works v-for="(item, index) in howItWorks" :key="index" :iconClass="item.iconClass" :title="item.title" :description="item.description" />
+        <how-it-works v-for="(item, index) in $t('landingView.howItWorks.items')" :key="index" :iconClass="item.iconClass" :title="item.title" :description="item.description" />
       </b-row>
     </b-container>
     <div class="bg-white">
@@ -90,19 +90,6 @@ export default {
   data() {
     return {
       subscriptionType: [],
-      features: [
-        { title: this.$t("landingView.features.feature1.title"), description: this.$t("landingView.features.feature1.description"), iconClass: "lnr lnr-star" },
-        { title: this.$t("landingView.features.feature2.title"), description: this.$t("landingView.features.feature2.description"), iconClass: "lnr lnr-star" },
-        { title: this.$t("landingView.features.feature3.title"), description: this.$t("landingView.features.feature3.description"), iconClass: "lnr lnr-star" },
-        { title: this.$t("landingView.features.feature4.title"), description: this.$t("landingView.features.feature4.description"), iconClass: "lnr lnr-star" },
-        { title: this.$t("landingView.features.feature5.title"), description: this.$t("landingView.features.feature5.description"), iconClass: "lnr lnr-star" },
-        { title: this.$t("landingView.features.feature6.title"), description: this.$t("landingView.features.feature6.description"), iconClass: "lnr lnr-star" },
-      ],
-      howItWorks: [
-        { title: this.$t("landingView.howItWorks.howItWorks1.title"), description: this.$t("landingView.howItWorks.howItWorks1.description"), iconClass: "lnr lnr-star" },
-        { title: this.$t("landingView.howItWorks.howItWorks2.title"), description: this.$t("landingView.howItWorks.howItWorks2.description"), iconClass: "lnr lnr-star" },
-        { title: this.$t("landingView.howItWorks.howItWorks3.title"), description: this.$t("landingView.howItWorks.howItWorks3.description"), iconClass: "lnr lnr-star" },
-      ],
     };
   },
 

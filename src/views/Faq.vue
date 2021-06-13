@@ -5,7 +5,7 @@
       <div class="faq-content">
         <h1 class="display-4 text-center pb-2 mb-5">Sık Sorulan Sorular</h1>
         <div class="faq-answers">
-          <div class="accordion answer" role="tablist" v-for="(question, index) of questions" :key="index">
+          <div class="accordion answer" role="tablist" v-for="(question, index) of $t('faqView.questions')" :key="index">
             <b-card no-body class="mb-1">
               <b-card-header header-tag="div" class="p-1" role="tab">
                 <span block v-b-toggle="`question-${index}`">
@@ -33,12 +33,6 @@ import AppFooter from "@/components/Landing/Footer.vue";
 
 export default {
   components: { CommonNavbar, AppFooter },
-
-  data() {
-    return {
-      questions: this.$t("faqView.questions"),
-    };
-  },
 
   mounted() {
     this.$title = this.$t("faqView.tabTitle");
@@ -83,6 +77,10 @@ export default {
 
 .faq-content .faq-answers .answer .card-body {
   padding: 16px;
+}
+
+.faq-content .faq-answers .answer .card-body p {
+  text-align: justify;
 }
 
 .faq-content .faq-answers .card-header span {

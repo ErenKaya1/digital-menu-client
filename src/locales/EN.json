@@ -1,110 +1,590 @@
 {
-  "features": "Özellikler",
-  "screenshots": "Ekran Görüntüleri",
-  "pricing": "Fiyatlandırma",
-  "signin": "Giriş",
-  "signup": "Kayıt Ol",
-  "username": "Kullanıcı Adı",
-  "firstName": "İsim",
-  "lastName": "Soyisim",
-  "emailAddress": "E-Posta Adresi",
-  "phoneNumber": "Telefon Numarası",
-  "password": "Parola",
-  "passwordConfirm": "Parolar Tekrar",
-  "rememberMe": "Beni Hatırla",
-  "forgotPassword": "Parolamı Unuttum",
-  "login": "Giriş",
-  "landingView": {
-    "landing": {
-      "tabTitle": "Anasayfa",
-      "heading": "İşletmenizi Dijital Ortama Taşıyın",
-      "text": "Dijital Menü ile menülerinizi dijital ortama taşıyın, işletmenizdeki teması minimuma indirin. Kendinizi, çalışma arkadaşlarınızı ve misafirlerinizi riske atmayın.",
-      "buttonText": "ÜCRETSİZ DENE",
-      "descriptionTitle": "Dijital Menu Nedir?",
-      "descriptionContent": "COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz."
-    },
-    "featuresBlock": {
-      "title": "Tüm İhtiyaçlarınız Bir Arada",
-      "description": "Bir menüde olması gereken tüm içerikleri oluşturabileceğiniz Dijital Menu'nun en temel özelliklerini sizin için listeledik. Dijital Menu'yu her gün geliştirmeye ve Dijital Menu'ye her gün yeni özellikler eklemeye devam ediyoruz.",
-      "features1-Title": "Ürün Görselleri",
-      "features1-Description": "Ürünlerinize görseller de ekleyerek daha dikkat çekici olmasını sağlayabilirsiniz.",
-      "features2-Title": "Çoklu Dil Desteği",
-      "features2-Description": "Ürün bilgilerinizi Türkçe'ye alternatif olarak İngilizce de oluşturabilirsiniz. Sizlerden gelecek talepler doğrultusunda bu seçeneklerin artabileceğini unutmayın.",
-      "features3-Title": "Çoklu Para Birimi Desteği",
-      "features3-Description": "Menülerinizi oluşturuken sadece TRY cinsinden ücretlerinizi belirlersiniz. Digital Menu sizin yerinize USD ve EUR cinsinden de ücretlerin görüntülenmesini sağlar.",
-      "features4-Title": "Kişiselleştirilmiş QR Kod",
-      "features4-Description": "QR kodlarını kendi tasarımlarında kullanmak isteyenler için, QR kodların temel özelliklerini (renk, boyut...) kişiselleştirebilirsiniz.",
-      "features5-Title": "Ürün Grubu Oluşturma",
-      "features5-Description": "Birden çok ürünün tek bir seçenek olarak gözükmesini istiyorsanız ürünlerinizi gruplayabilirsiniz.",
-      "features6-Title": "Tema Kişiselleştirme",
-      "features6-Description": "Digital Menu, misafirlerinizin ziyaret ettiği size ayrılmış olan sayfadaki birçok bileşeni kişiselleştirmenize olanak tanır."
-    },
-    "screenshotsBlock": {
-      "title": "Uygulamayı Keşfedin"
-    },
-    "howItWorksBlock": {
-      "title": "Nasıl Çalışır?",
-      "subTitle": "AYRINTILAR",
-      "howItWorks1-Title": "Üyeliğinizi Tamamlayın",
-      "howItWorks1-Description": "Üyelik paketleri arasından size en uygun olanı seçin.",
-      "howItWorks2-Title": "Ürünlerinizi Ekleyin",
-      "howItWorks2-Description": "Ürünlerinizi fiyat, görsel, açıklama gibi bilgileriyle beraber ekleyerek menünüzü oluşturun.",
-      "howItWorks3-Title": "QR Kodunuzu Konumlandırın",
-      "howItWorks3-Description": "Size özel oluşturulan QR kodu yazdırdıktan sonra masalarınıza konumlandırın."
-    },
-    "pricingBlock": {
-      "title": "İhtiyacınıza Uygun Paketi Seçin",
-      "unlimited": "Unlimited"
-    },
-    "freeTrialButtonText": "14 Gün Ücretsiz Deneyin"
+  "common": {
+    "yes": "yes",
+    "no": "no"
   },
-  "footer": {
-    "whoWeAre": "Biz Kimiz?",
-    "aboutus": "Hakkımızda",
-    "ourstory": "Hikayemiz",
-    "crew": "Takım",
-    "support": "Destek",
-    "faq": "SSS",
-    "privacyPolicy": "Gizlilik Politikası",
-    "contact": "İletişim",
-    "socialMedia": "Sosyal Medya"
+  "dashboard": {
+    "sidemenu": {
+      "homepage": "Homepage",
+      "products": "Products",
+      "categories": "Categories",
+      "qrCode": "QR Code",
+      "theme": "Theme",
+      "account": "Account",
+      "logout": "Log out"
+    },
+    "homeView": {
+      "tabTitle": "Dashboard",
+      "subscriptionExpiredFirst": "Your subscription was expired.",
+      "subscriptionExpiredSecond": " Click to renew your subscription.",
+      "subscriptionSuspended": "Your subscription has been suspended."
+    },
+    "accountView": {
+      "tabTitle": "Account",
+      "accountSettingsTitle": "Account",
+      "companySettingsTitle": "Business",
+      "passwordSettingsTitle": "Password",
+      "username": "Username",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "emailAddress": "E-mail",
+      "phoneNumber": "Phone Number",
+      "accountFormButtonText": "Updating Account Information",
+      "logo": "Logo",
+      "logoInputBrowseText": "Browse",
+      "logoInputPlaceholder": "Click or Drag&Drop",
+      "logoInputDropPlaceholder": "Drop Here",
+      "companyName": "Company Name",
+      "createMyOwnLink": "I will make my link.",
+      "linkInputLabel": "Menu Link (If you going to change this section, you have to renew your QR Code.)",
+      "companyFormButtonText": "Update Your Business Information",
+      "oldPassword": "Current Password",
+      "newPassword": "New Password",
+      "newPasswordConfirm": "New Password Confirm",
+      "passwordFormButtonText": "Change Password",
+      "messages": {
+        "accountUpdatedSuccessfully": "Your account information has been updated successfully.",
+        "accountUpdateFailed": "Your account information not updated.",
+        "companyUpdatedSuccessfully": "Your business information has been updated successfully.",
+        "passwordUpdatedSuccessfully": "Password has been updated successfully."
+      },
+      "errorMessages": {
+        "usernameRequired": "Username is required.",
+        "usernameMaxLength": "Username can not be longer than 30 characters.",
+        "firstNameRequired": "First name is required.",
+        "firstNameMaxLength": "First name can not be longer than 30 characters.",
+        "lastNameRequired": "Last name is required.",
+        "lastNameMaxLength": "Last name can not be longer than 30 characters.",
+        "emailRequired": "E-mail is required.",
+        "emailFormat": "Please entry a valid e-mail address.",
+        "duplicatedCompanySlug": "The link you write has been taken before.",
+        "oldPasswordRequired": "Current password is required.",
+        "newPasswordRequired": "New password is required.",
+        "newPasswordMinLength": "Password can not be shorter than 6 characters.",
+        "newPasswordConfirmRequired": "Password confirm is required.",
+        "passwordsDoesntMatch": "Passwords don't match.",
+        "oldPasswordWrong": "Current password is incorrect."
+      }
+    },
+    "categoriesView": {
+      "tabTitle": "Categories",
+      "newCategoryButtonText": "New Category",
+      "editCategoryButtonText": "Edit",
+      "deleteCategoryButtonText": "Delete",
+      "tableFields": {
+        "categoryNameTR": "Category Name (TR)",
+        "categoryNameEN": "Category Name (EN)",
+        "options": "Options"
+      },
+      "messages": {
+        "noCategoryAdded": "You didn't add any category so far.",
+        "confirmDeleteCategory": "This category and the products belong to the this category going to delete.",
+        "confirmDeleteCategoryTitle": "Are you sure?",
+        "categoryDeletedSuccessfully": "The category has been deleted successfully."
+      }
+    },
+    "editCategoryView": {
+      "tabTitle": "Edit Category",
+      "formTitle": "Edit Category",
+      "categoryNameTR": "Category Name (TR)",
+      "categoryNameEN": "Category Name (EN)",
+      "descriptionTR": "Description (TR)",
+      "descriptionEN": "Description (EN)",
+      "categoryImage": "Category Image",
+      "categoryImageInputPlaceholder": "Click or Drag&Drop",
+      "categoryImageInputDropPlaceholder": "Drop Here",
+      "categoryImageInputBrowseText": "Browse",
+      "categoryFormButtonText": "Save",
+      "cancelButtonText": "Cancel",
+      "messages": {
+        "categoryUpdatedSuccessfully": "The category has been updated successfully."
+      },
+      "errorMessages": {
+        "trRequired": " Required as Turkish is the default language.",
+        "categoryNameMaxLength": "Category name can not be longer than 50 characters.",
+        "categoryUpdateFailed": "The category update failed."
+      }
+    },
+    "editProductView": {
+      "tabTitle": "Edit Product",
+      "formTitle": "Edit Product",
+      "productNameTR": "Product Name (TR)",
+      "productNameEN": "Product Name (EN)",
+      "price": "Price",
+      "category": "Category",
+      "descriptionTR": "Description (TR)",
+      "descriptionEN": "Description (EN)",
+      "productImage": "Product Image",
+      "productImageInputPlaceholder": "Click to Drag&Drop",
+      "productImageInputDropPlaceholder": "Drop Here",
+      "productImageInputBrowseText": "Browse",
+      "productFormButtonText": "Save",
+      "cancelButtonText": "Cancel",
+      "messages": {
+        "productUpdatedSuccessfully": "The product has been updated successfully."
+      },
+      "errorMessages": {
+        "trRequired": "Required as Turkish is the default language.",
+        "productNameMaxLength": "Product name can not be longer than 50 characters.",
+        "priceRequired": "Price is required.",
+        "categoryRequired": "Category is required.",
+        "productNotFound": "Product not found.",
+        "categoriesCouldntFetched": "An error occurred while the categories uploading.",
+        "productUpdateFailed": "An error occurred while the product updating."
+      }
+    },
+    "newCategoryView": {
+      "tabTitle": "New Category",
+      "formTitle": "Add New Category",
+      "categoryNameTR": "Category Name (TR)",
+      "categoryNameEN": "Category Name (EN)",
+      "descriptionTR": "Description (TR)",
+      "descriptionEN": "Description (EN)",
+      "categoryImage": "Category Image",
+      "categoryImageInputPlaceholder": "Click to Drag&Drop",
+      "categoryImageInputDropPlaceholder": "Drop Here",
+      "categoryImageInputBrowseText": "Browse",
+      "categoryFormButtonText": "Save",
+      "cancelButtonText": "Cancel",
+      "messages": {
+        "categorySavedSuccessfully": "The category has been saved successfully."
+      },
+      "errorMessages": {
+        "trRequired": "Required as Turkish is the default language.",
+        "categoryNameMaxLength": "Category name can not be longer than 50 characters."
+      }
+    },
+    "newProductView": {
+      "tabTitle": "New Product",
+      "formTitle": "Add New Product",
+      "productNameTR": "Product Name (TR)",
+      "productNameEN": "Product Name (EN)",
+      "price": "Price",
+      "category": "Category",
+      "descriptionTR": "Description (TR)",
+      "descriptionEN": "Description (EN)",
+      "productImage": "Product Image",
+      "productImageInputBrowseText": "Browse",
+      "productImageInputPlaceholder": "Click to Drag&Drop",
+      "productImageInputDropPlaceholder": "Drop Here",
+      "productFormButtonText": "Save",
+      "cancelButtonText": "Cancel",
+      "messages": {
+        "productSavedSuccessfully": "The product has been saved successfully."
+      },
+      "errorMessages": {
+        "trRequired": "Required as Turkish is the default language.",
+        "productNameMaxLength": "Product name can not be longer than 50 characters.",
+        "priceRequired": "Price is required.",
+        "categoryRequired": "Category is required.",
+        "categoriesCouldntFetched": "An error occurred while the categories uploading.",
+        "maxProduct": "You have reached the maximum quantity for adding product."
+      }
+    },
+    "productsView": {
+      "tabTitle": "Products",
+      "newProductButtonText": "New Product",
+      "editProductButtonText": "Edit",
+      "deleteProductButtonText": "Delete",
+      "tableFields": {
+        "productNameTR": "Product Name (TR)",
+        "productNameEN": "Product Name (EN)",
+        "price": "Price",
+        "options": "Options"
+      },
+      "messages": {
+        "noProductAdded": "You didn't add any product so far.",
+        "confirmDeleteProduct": "This product will be deleted.",
+        "confirmDeleteProductTitle": "Are you sure?",
+        "productDeletedSuccessfully": "The product has been deleted successfully."
+      }
+    },
+    "qrView": {
+      "tabTitle": "QR Code",
+      "margin": "Margin",
+      "scale": "Scale",
+      "qrCodeColor": "QR Code Color",
+      "backgroundColor": "Background Color",
+      "fileFormat": "File Format",
+      "quality": "Quality (0-1)",
+      "downloadButtonText": "Download"
+    },
+    "renewSubscriptionView": {
+      "tabTitle": "Renew Subscription",
+      "subscriptionTypesTitle": "Select Your Best Subscription Package",
+      "subscriptionTypesButtonText": "Select",
+      "montlyPeriod": "mth",
+      "cardHolder": "Card Holder",
+      "cardNumber": "Card Number",
+      "cardDate": "date",
+      "cardMonth": "Month",
+      "cardYear": "Year",
+      "cardCvv": "CVV",
+      "paymentFormButtonText": "Make Payment",
+      "unlimited": "Unlimited",
+      "messages": {
+        "alreadySubscribe": "You have a subscription already.",
+        "subscriptionRenewedSuccessfully": "Your subscription has been renewed successfully."
+      },
+      "errorMessages": {
+        "cardHolderRequired": "Card holder is required.",
+        "cardNumberRequired": "Card number is required.",
+        "cardMonthRequired": "Month is required.",
+        "cardYearRequired": "Year is required.",
+        "cardCvvRequired": "CVV is required.",
+        "subscriptionTypeRequired": "Please select a subscription package.",
+        "paymentCommon": "An error occurred while the making payment.",
+        "inadequateLimit": "Insufficient card limit.",
+        "notApproved": "The transaction has not been approved.",
+        "invalidTransaction": "Invalid transaction.",
+        "lostStolenCard": "Lost&stolen notification has been made for this card. ",
+        "expiredCard": "Expired Card.",
+        "invalidCvv": "CVV code is incorrect.",
+        "cardHolderCant": "Card holder can not make this transaction.",
+        "terminalCant": "The terminal is not authorized to perform this operation.",
+        "unavailableForEcommerce": "Your card disabled for e-commerce transactions. Please contact your card bank.",
+        "cardDidntAllow": "Card didn't allow to this transaction.",
+        "invalidCvvLength": "CVV length is incorrect.",
+        "bankConfirmation": "Please get confirmation from your bank.",
+        "systemFailure": "Contact of system error.",
+        "invalidCardNumber": "Invalid card number.",
+        "bankNotFound": "Bank informations not reached.",
+        "3dSecureRequired": "3D Secure is required for this transaction.",
+        "timedOut": "The request sent to the bank was time out.",
+        "limitedCard": "Limited card.",
+        "bankCannotProcess": "Bank or terminal can not reach this transaction.",
+        "invalidExpirationDate": "Expiration date is incorred.",
+        "invalidAmount": "Invalid amount."
+      }
+    },
+    "themeView": {
+      "tabTitle": "Theme",
+      "background": "Background",
+      "texts": "Texts",
+      "price": "Price",
+      "productBackground": "Product Background",
+      "languageCurrencyBackground": "Langauge & Currency Background",
+      "languageCurrencyText": "Langauge & Currency Text",
+      "categoryDescription": "Category Description",
+      "selectedCategoryBorder": "Selected Category Border",
+      "links": "Links",
+      "themeFormButtonText": "Save",
+      "previewCategoryName": "Drink",
+      "previewCategoryDescription": "Best Drinks",
+      "previewFooterWhoAreAre": "Who We Are?",
+      "previewFooterAboutUs": "About Us",
+      "previewFooterOurStory": "Our Story",
+      "previewFooterCrew": "Crew",
+      "previewFooterSupport": "Support",
+      "previewFooterFaq": "FAQ",
+      "previewFooterprivacyPolicy": "Privacy Policy",
+      "previewFooterContact": "Contact",
+      "previewFooterSocialMedia": "Social Media",
+      "previewCategory1": "Starter",
+      "previewCategory2": "Appetizer",
+      "previewCategory3": "Main",
+      "previewCategory4": "Drink",
+      "previewCategory5": "Dessert",
+      "previewProduct1": "Water",
+      "previewProduct2": "Cola",
+      "previewProduct3": "Ayran",
+      "previewProduct4": "Ice Tea",
+      "previewProduct5": "Orange Juice",
+      "messages": {
+        "themeUpdatedSuccessfully": "The theme has been updated successfully."
+      },
+      "errorMessages": {
+        "themeUpdateFailed": "Theme update fail."
+      }
+    }
   },
-  "registerView": {
-    "tabTitle": "Kayıt Ol",
-    "pageTitle": "ARAMIZA KATILIN",
-    "pageDescription": "register page description",
-    "formTitle": "Yeni Hesap Oluşturun",
-    "disclaimer": "'Kayıt Ol' butonuna tıklayarak gizlilik politikamızı kabul etmiş sayılırsınız.",
-    "moreInformation": "Detaylı bilgi için tıklayınız.",
-    "alreadyHaveAnAccount": "Zaten üye misiniz?"
-  },
-  "loginView": {
-    "tabTitle": "Giriş Yap",
-    "pageTitle": "",
-    "pageDescription": "login page description",
-    "formTitle": "Giriş Yap",
-    "dontHaveAnAccountYet": "Henüz üye değil misiniz?"
+  "404View": {
+    "tabTitle": "404",
+    "notFoundText": "We couldn't find the page for you looking for. :(",
+    "backToHomepageButtonText": "Back to the homepage"
   },
   "forgotPasswordView": {
-    "tabTitle": "Parolamı Unuttum",
-    "formTitle": "Parola Sıfırla",
-    "formDescription": "E-posta adresinizi girdikten sonra size parolanızı sıfırlayabileceğiniz bir link göndereceğiz.",
-    "inputPlaceholder": "E-posta adresinizi girin",
-    "sendEmailButtonText": "Parola Sıfırlama E-Postası Gönder"
-  },
-  "messages": {
-    "error": {
-      "usernameRequiredError": "Kullanıcı adı alanı boş bırakılamaz.",
-      "firstNameRequiredError": "İsim alanı boş bırakılamaz.",
-      "lastNameRequiredError": "Soyisim alanı boş bırakılamaz.",
-      "emailRequiredError": "E-posta alanı boş bırakılamaz.",
-      "emailWrongFormatError": "Lütfen geçerli bir e-posta giriniz.",
-      "passwordRequiredError": "Parola alanı boş bırakılamaz.",
-      "passwordLengthError": "Parola 6-16 karakter uzunluğunda olmalıdır.",
-      "passwordsDontMatchError": "Parolalar uyuşmuyor.",
-      "usernameMaxLengthError": "Kullanıcı adı 16 karakterden uzun olamaz.",
-      "firstNameMaxLengthError": "İsim 16 karakterden uzun olamaz.",
-      "lastNameMaxLengthError": "Soyisim 16 karakterden uzun olamaz."
+    "tabTitle": "Forgot Password",
+    "formTitle": "Forgot Password",
+    "formDescription": "After joining your email address, we will send you a link to reset your password.",
+    "inputPlaceholder": "Enter your e-mail address",
+    "formButtonText": "Send Reset Password Link",
+    "backToHomepageButtonText": "Back to the Homepage",
+    "messages": {
+      "emailSent": "We sent a mail to renew your password. Please check your inbox."
+    },
+    "errorMessages": {
+      "emailRequired": "E-mail is required.",
+      "emailFormat": "Please entry a valid e-mail address."
     }
+  },
+  "landingView": {
+    "tabTitle": "Homepage",
+    "landingHeading": "Digitize Your Business",
+    "landingText": "With Digital Menu, digitize your menus, minimize contact in your business. Do not put yourself, your employees, and your customers at risk.",
+    "landingButtonText": "FREE TRIAL",
+    "description": {
+      "title": "What is Digital Menu?",
+      "content": "Developed to reduce contact in places where people congregate, such as cafes and restaurants, during the COVID-19 period, Digital Menu brings your physical menus to the digital environment. After you create your menu on the Digital Menu, you position your special QR code on your tables and allow your customers to view your menu. By transferring your menus to the digital environment with the Digital Menu, you'll minimize the risk of contracting COVID-19 to yourself, your employees, and your customers through the menu."
+    },
+    "features": {
+      "title": "Features",
+      "subTitle": "All Your Need Together",
+      "description": "We have listed for you the most basic features of the Digital Menu, where you can create all the content that should be in a menu. We continue to develop the Digital Menu and add new features to the Digital Menu every day.",
+      "items": [
+        {
+          "iconClass": "lnr lnr-star",
+          "title": "Product Image",
+          "description": "By adding images to your products, you can make them more attractive."
+        },
+        {
+          "iconClass": "lnr lnr-star",
+          "title": "Multi Langauge Support",
+          "description": "You can create your product information in English as an alternative to Turkish. Do not forget that these options may increase in line with the demands from you."
+        },
+        {
+          "iconClass": "lnr lnr-star",
+          "title": "Multi Currency Support",
+          "description": "When creating your menus, you will only set your prices in TRY. The Digital Menu allows you to display the prices in USD and EUR for you."
+        },
+        {
+          "iconClass": "lnr lnr-star",
+          "title": "Customized QR Code",
+          "description": "For those who want to use QR codes in their own designs, you can customize the basic features (color, size...) of QR codes."
+        },
+        {
+          "iconClass": "lnr lnr-star",
+          "title": "Creating Product Group",
+          "description": "If you want multiple products to appear as a single option, you can group your products."
+        },
+        {
+          "iconClass": "lnr lnr-star",
+          "title": "Theme Customization",
+          "description": "Digital Menu allows you to customize many components on the page your customers visit."
+        }
+      ]
+    },
+    "screenshots": {
+      "title": "Screenshots",
+      "subTitle": "Discover the App"
+    },
+    "howItWorks": {
+      "title": "Details",
+      "subTitle": "How It Works?",
+      "items": [
+        {
+          "iconClass": "lnr lnr-star",
+          "title": "Complete Your Subscription",
+          "description": "Choose best subscription package for you."
+        },
+        {
+          "iconClass": "lnr lnr-star",
+          "title": "Add Your Products",
+          "description": "Create your menu by adding your products with information such as price, image, description."
+        },
+        {
+          "iconClass": "lnr lnr-star",
+          "title": "Place Your QR Code",
+          "description": "After printing the QR code created specifically for you, place it on your tables."
+        }
+      ]
+    },
+    "pricing": {
+      "title": "Pricing",
+      "subTitle": "Choose your best subscription for you.",
+      "unlimited": "Unlimited",
+      "freeTrialButtonText": "14 Days Free Trial"
+    },
+    "navbar": {
+      "features": "Features",
+      "screenshots": "Screenshots",
+      "pricing": "Pricing",
+      "dashboard": "Dashboard",
+      "logout": "Logout",
+      "login": "Login"
+    },
+    "footer": {
+      "whoWeAre": "Who We Are?",
+      "aboutUs": "About Us",
+      "ourStory": "Our Story",
+      "crew": "Crew",
+      "support": "Support",
+      "faq": "FAQ",
+      "privacyPolicy": "Privacy Policy",
+      "contact": "Contact",
+      "socialMedia": "Social Media"
+    }
+  },
+  "loginView": {
+    "tabTitle": "Login",
+    "pageTitle": "WELCOME AGAIN",
+    "formTitle": "Login",
+    "username": "Username",
+    "password": "Password",
+    "forgotPassword": "Forgot Password",
+    "rememberMe": "Remember Me",
+    "formButtonText": "Login",
+    "dontHaveAnAccountYet": "Don't have an account yet?",
+    "signUpLinkText": "Register",
+    "errorMessages": {
+      "usernameRequired": "Username is required.",
+      "passwordRequired": "Password is required.",
+      "invalidCredentials": "Please check your informations."
+    }
+  },
+  "menuView": {
+    "footer": {
+      "whoWeAre": "Who We Are?",
+      "aboutUs": "About Us",
+      "ourStory": "Our Story",
+      "crew": "Crew",
+      "support": "Support",
+      "faq": "FAQ",
+      "privacyPolicy": "Privacy Policy",
+      "contact": "Contact",
+      "socialMedia": "Social Media"
+    }
+  },
+  "registerView": {
+    "tabTitle": "Register",
+    "pageTitle": "JOIN <br /> US",
+    "pageDescription": "After completing your registration, you can start using the 14-day trial version. ",
+    "formTitle": "Register",
+    "username": "Username",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "emailAddress": "E-mail",
+    "phoneNumber": "Phone Number",
+    "password": "Password",
+    "passwordConfirm": "Password Confirm",
+    "formButtonText": "Register",
+    "disclaimer": "By clicking the 'Register' button, you'll agree to our privacy policy.",
+    "moreInformation": "Click for the details.",
+    "alreadyHaveAnAccount": "Already have an account?",
+    "signIn": "Login",
+    "errorMessages": {
+      "usernameRequired": "Username is required.",
+      "usernameMaxLength": "Username can not be longer than 30 characters.",
+      "firstNameRequired": "First name is required.",
+      "firstNameMaxLength": "First name can not be longer than 30 characters.",
+      "lastNameRequired": "Last name is required.",
+      "lastNameMaxLength": "Last name can not be longer than 30 characters.",
+      "emailRequired": "E-mail is required.",
+      "emailFormat": "Please entry a valid e-mail address.",
+      "passwordRequired": "Password is required.",
+      "passwordMinLength": "Password can not be shorter than 6 characters.",
+      "passwordConfirmRequired": "Password confirm is required.",
+      "passwordsDontMatch": "Passwords don't match.",
+      "duplicatedUsername": "The username you write has been taken before.",
+      "duplicatedEmailAddress": "The e-mail you write has been taken before."
+    }
+  },
+  "resetPasswordView": {
+    "tabTitle": "Reset Password",
+    "formTitle": "Reset Password",
+    "newPassword": "New Password",
+    "newPasswordConfirm": "New Password Confirm",
+    "formButtonText": "Reset Password",
+    "messages": {
+      "passwordUpdatedSuccessfully": "Your password successfully changed. You can login with the new password."
+    },
+    "errorMessages": {
+      "newPasswordRequired": "New password is required.",
+      "newPasswordMinLength": "Password can not be shorter than 6 characters.",
+      "newPasswordConfirmRequired": "Password confirm is required.",
+      "passwordsDontMatch": "Passwords don't match.",
+      "resetPasswordTokenExpired": "Renew password link was expired.",
+      "invalidResetPasswordToken": "Renew password link is incorrect.",
+      "passwordUpdateFailed": "An error occurred while the password changing."
+    }
+  },
+  "aboutUsView": {
+    "tabTitle": "About Us",
+    "pageTitle": "About Us",
+    "pageSummary": "Developed to reduce contact in places where people congregate, such as cafes and restaurants, during the COVID-19 period, Digital Menu brings your physical menus to the digital environment. After you create your menu on the Digital Menu, you position your special QR code on your tables and allow your customers to view your menu. By transferring your menus to the digital environment with the Digital Menu, you'll minimize the risk of contracting COVID-19 to yourself, your employees, and your customers through the menu.",
+    "pageContent": "Developed to reduce contact in places where people congregate, such as cafes and restaurants, during the COVID-19 period, Digital Menu brings your physical menus to the digital environment. After you create your menu on the Digital Menu, you position your special QR code on your tables and allow your customers to view your menu. By transferring your menus to the digital environment with the Digital Menu, you'll minimize the risk of contracting COVID-19 to yourself, your employees, and your customers through the menu. Developed to reduce contact in places where people congregate, such as cafes and restaurants, during the COVID-19 period, Digital Menu brings your physical menus to the digital environment. After you create your menu on the Digital Menu, you position your special QR code on your tables and allow your customers to view your menu. By transferring your menus to the digital environment with the Digital Menu, you'll minimize the risk of contracting COVID-19 to yourself, your employees, and your customers through the menu. Developed to reduce contact in places where people congregate, such as cafes and restaurants, during the COVID-19 period, Digital Menu brings your physical menus to the digital environment. After you create your menu on the Digital Menu, you position your special QR code on your tables and allow your customers to view your menu. By transferring your menus to the digital environment with the Digital Menu, you'll minimize the risk of contracting COVID-19 to yourself, your employees, and your customers through the menu. Developed to reduce contact in places where people congregate, such as cafes and restaurants, during the COVID-19 period, Digital Menu brings your physical menus to the digital environment. After you create your menu on the Digital Menu, you position your special QR code on your tables and allow your customers to view your menu. By transferring your menus to the digital environment with the Digital Menu, you'll minimize the risk of contracting COVID-19 to yourself, your employees, and your customers through the menu. Developed to reduce contact in places where people congregate, such as cafes and restaurants, during the COVID-19 period, Digital Menu brings your physical menus to the digital environment. After you create your menu on the Digital Menu, you position your special QR code on your tables and allow your customers to view your menu. By transferring your menus to the digital environment with the Digital Menu, you'll minimize the risk of contracting COVID-19 to yourself, your employees, and your customers through the menu. Developed to reduce contact in places where people congregate, such as cafes and restaurants, during the COVID-19 period, Digital Menu brings your physical menus to the digital environment. After you create your menu on the Digital Menu, you position your special QR code on your tables and allow your customers to view your menu. By transferring your menus to the digital environment with the Digital Menu, you'll minimize the risk of contracting COVID-19 to yourself, your employees, and your customers through the menu. Developed to reduce contact in places where people congregate, such as cafes and restaurants, during the COVID-19 period, Digital Menu brings your physical menus to the digital environment. After you create your menu on the Digital Menu, you position your special QR code on your tables and allow your customers to view your menu. By transferring your menus to the digital environment with the Digital Menu, you'll minimize the risk of contracting COVID-19 to yourself, your employees, and your customers through the menu."
+  },
+  "contactView": {
+    "tabTitle": "Contact",
+    "pageTitle": "Contact",
+    "email": "E-mail",
+    "phone": "Phone Number",
+    "socialMedia": "Social Media",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "message": "Message",
+    "formButtonText": "Send",
+    "messages": {
+      "messageSentSuccessfully": "Your message send. We will contact you ASAP."
+    },
+    "errorMessages": {
+      "firstNameRequired": "Username is required.",
+      "firstNameMaxLength": "First name can not be longer than 30 characters.",
+      "lastNameRequired": "Last name is required.",
+      "lastNameMaxLength": "Last name can not be longer than 30 characters.",
+      "emailRequired": "E-mail is required.",
+      "emailFormat": "Please entry a valid e-mail address.",
+      "contentRequired": "Message is required."
+    }
+  },
+  "faqView": {
+    "tabTitle": "Frequently Asked Questions",
+    "pageTitle": "Frequently Asked Questions",
+    "questions": [
+      {
+        "question": "What is Digital Menu?",
+        "answer": "COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz."
+      },
+      {
+        "question": "Is Digital Menu Paid?",
+        "answer": "a1"
+      },
+      {
+        "question": "What is Digital Menu's features?",
+        "answer": "a1"
+      },
+      {
+        "question": "What are the advantages of the Digital Menu?",
+        "answer": "a1"
+      },
+      {
+        "question": "How can I register to the Digital Menu?",
+        "answer": "a1"
+      },
+      {
+        "question": "Is Digital Menu safe?",
+        "answer": "a1"
+      },
+      {
+        "question": "How can I contact with the Digital Menu?",
+        "answer": "a1"
+      },
+      {
+        "question": "My subscription was expired. What should I do?",
+        "answer": "a1"
+      },
+      {
+        "question": "My subscription was expired. Is my data will be deleted?",
+        "answer": "a1"
+      }
+    ]
+  },
+  "privacyPolicyView": {
+    "tabTitle": "Privacy Policy",
+    "pageTitle": "Privacy Policy",
+    "policies": [
+      {
+        "title": "Giriş",
+        "content": "COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz."
+      },
+      {
+        "title": "Giriş",
+        "content": "COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz."
+      },
+      {
+        "title": "Giriş",
+        "content": "COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz."
+      }
+    ]
   }
 }

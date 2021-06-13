@@ -272,7 +272,7 @@
       "themeFormButtonText": "Kaydet",
       "previewCategoryName": "İçecek",
       "previewCategoryDescription": "Birbirinden Güzel İçecekler",
-      "previewFooterWhoAreAre": "Biz Kimiz",
+      "previewFooterWhoAreAre": "Biz Kimiz?",
       "previewFooterAboutUs": "Hakkımızda",
       "previewFooterOurStory": "Hikayemiz",
       "previewFooterCrew": "Ekip",
@@ -297,8 +297,7 @@
       "errorMessages": {
         "themeUpdateFailed": "Tema güncellenemedi."
       }
-    },
-    "forgotPasswordView": {}
+    }
   },
   "404View": {
     "tabTitle": "404",
@@ -333,30 +332,38 @@
       "title": "Özellikler",
       "subTitle": "Tüm İhtiyaçlarınız Bir Arada",
       "description": "Bir menüde olması gereken tüm içerikleri oluşturabileceğiniz Dijital Menu'nun en temel özelliklerini sizin için listeledik. Dijital Menu'yu her gün geliştirmeye ve Dijital Menu'ye her gün yeni özellikler eklemeye devam ediyoruz.",
-      "feature1": {
-        "title": "Ürün Görselleri",
-        "description": "Ürünlerinize görseller de ekleyerek daha dikkat çekici olmasını sağlayabilirsiniz."
-      },
-      "feature2": {
-        "title": "Çoklu Dil Desteği",
-        "description": "Ürün bilgilerinizi Türkçe'ye alternatif olarak İngilizce de oluşturabilirsiniz. Sizlerden gelecek talepler doğrultusunda bu seçeneklerin artabileceğini unutmayın."
-      },
-      "feature3": {
-        "title": "Çoklu Para Birimi Desteği",
-        "description": "Menülerinizi oluşturuken sadece TRY cinsinden ücretlerinizi belirlersiniz. Digital Menu sizin yerinize USD ve EUR cinsinden de ücretlerin görüntülenmesini sağlar."
-      },
-      "feature4": {
-        "title": "Kişiselleştirilmiş QR Kod",
-        "description": "QR kodlarını kendi tasarımlarında kullanmak isteyenler için, QR kodların temel özelliklerini (renk, boyut...) kişiselleştirebilirsiniz."
-      },
-      "feature5": {
-        "title": "Ürün Grubu Oluşturma",
-        "description": "Birden çok ürünün tek bir seçenek olarak gözükmesini istiyorsanız ürünlerinizi gruplayabilirsiniz."
-      },
-      "feature6": {
-        "title": "Tema Kişiselleştirme",
-        "description": "Digital Menu, misafirlerinizin ziyaret ettiği size ayrılmış olan sayfadaki birçok bileşeni kişiselleştirmenize olanak tanır."
-      }
+      "items": [
+        {
+          "iconClass": "lnr lnr-star",
+          "title": "Ürün Görselleri",
+          "description": "Ürünlerinize görseller de ekleyerek daha dikkat çekici olmasını sağlayabilirsiniz."
+        },
+        {
+          "iconClass": "lnr lnr-star",
+          "title": "Çoklu Dil Desteği",
+          "description": "Ürün bilgilerinizi Türkçe'ye alternatif olarak İngilizce de oluşturabilirsiniz. Sizlerden gelecek talepler doğrultusunda bu seçeneklerin artabileceğini unutmayın."
+        },
+        {
+          "iconClass": "lnr lnr-star",
+          "title": "Çoklu Para Birimi Desteği",
+          "description": "Menülerinizi oluşturuken sadece TRY cinsinden ücretlerinizi belirlersiniz. Digital Menu sizin yerinize USD ve EUR cinsinden de ücretlerin görüntülenmesini sağlar."
+        },
+        {
+          "iconClass": "lnr lnr-star",
+          "title": "Kişiselleştirilmiş QR Kod",
+          "description": "QR kodlarını kendi tasarımlarında kullanmak isteyenler için, QR kodların temel özelliklerini (renk, boyut...) kişiselleştirebilirsiniz."
+        },
+        {
+          "iconClass": "lnr lnr-star",
+          "title": "Ürün Grubu Oluşturma",
+          "description": "Birden çok ürünün tek bir seçenek olarak gözükmesini istiyorsanız ürünlerinizi gruplayabilirsiniz."
+        },
+        {
+          "iconClass": "lnr lnr-star",
+          "title": "Tema Kişiselleştirme",
+          "description": "Digital Menu, misafirlerinizin ziyaret ettiği size ayrılmış olan sayfadaki birçok bileşeni kişiselleştirmenize olanak tanır."
+        }
+      ]
     },
     "screenshots": {
       "title": "Ekran Görüntüleri",
@@ -365,18 +372,23 @@
     "howItWorks": {
       "title": "Ayrıntılar",
       "subTitle": "Nasıl Çalışır",
-      "howItWorks1": {
-        "title": "Üyeliğinizi Tamamlayın",
-        "description": "Üyelik paketleri arasından size en uygun olanı seçin."
-      },
-      "howItWorks2": {
-        "title": "Ürünlerinizi Ekleyin",
-        "description": "Ürünlerinizi fiyat, görsel, açıklama gibi bilgileriyle beraber ekleyerek menünüzü oluşturun."
-      },
-      "howItWorks3": {
-        "title": "QR Kodunuzu Konumlandırın",
-        "description": "Size özel oluşturulan QR kodu yazdırdıktan sonra masalarınıza konumlandırın."
-      }
+      "items": [
+        {
+          "iconClass": "lnr lnr-star",
+          "title": "Üyeliğinizi Tamamlayın",
+          "description": "Üyelik paketleri arasından size en uygun olanı seçin."
+        },
+        {
+          "iconClass": "lnr lnr-star",
+          "title": "Ürünlerinizi Ekleyin",
+          "description": "Ürünlerinizi fiyat, görsel, açıklama gibi bilgileriyle beraber ekleyerek menünüzü oluşturun."
+        },
+        {
+          "iconClass": "lnr lnr-star",
+          "title": "QR Kodunuzu Konumlandırın",
+          "description": "Size özel oluşturulan QR kodu yazdırdıktan sonra masalarınıza konumlandırın."
+        }
+      ]
     },
     "pricing": {
       "title": "Ücretlendirme",
@@ -522,7 +534,7 @@
     "questions": [
       {
         "question": "Digital Menu nedir?",
-        "answer": "a1a1a1a1a1a1"
+        "answer": "COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz."
       },
       {
         "question": "Digital Menu ücretli midir?",
@@ -562,14 +574,6 @@
     "tabTitle": "Gizlilik Politikası",
     "pageTitle": "Gizlilik Politikası",
     "policies": [
-      {
-        "title": "Giriş",
-        "content": "COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz."
-      },
-      {
-        "title": "Giriş",
-        "content": "COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz."
-      },
       {
         "title": "Giriş",
         "content": "COVID-19 döneminde kafe, restoran gibi, insanların bir araya geldikleri mekanlarda teması azaltmak amacıyla geliştirilen Digital Menu, fiziksel menülerinizi dijital ortama taşır. Dijital Menu'de menünüzü oluşturduktan sonra size özel QR kodunuzu masalarınıza konumlandırarak misafirlerinizin menünüzü görüntülemesini sağlarsınız. Dijital Menu ile menülerinizi dijital ortama taşıyarak kendinize, çalışma arkadaşlarınıza ve misafirlerinize menü yoluyla COVID-19 bulaşma riskini minimuma indirmiş olursunuz."
