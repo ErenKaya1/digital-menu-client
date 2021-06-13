@@ -5,12 +5,19 @@
     </div>
     <div class="product-details">
       <p :style="styles.text" class="name">{{ product.name }}</p>
-      <p :style="styles.price" class="price">{{ product.price }}</p>
+      <p :style="styles.price" class="price">
+        {{ product.price }}
+        <span v-if="!$cookie.get('currency') || $cookie.get('currency') === 'try'">₺</span>
+        <span v-if="$cookie.get('currency') === 'eur'">€</span>
+        <span v-if="$cookie.get('currency') === 'usd'">$</span>
+      </p>
     </div>
   </div>
 </template>
 
 <script>
+import cookie from "vue-cookie";
+
 export default {
   props: ["product", "styles"],
 };
