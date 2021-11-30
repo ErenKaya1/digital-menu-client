@@ -1,3 +1,3 @@
-# digital-menu-client
+# Digital Menu Client
 
-## Kurulum Adımları [API projesinde](https://github.com/ErenKaya1/digital-menu-api) açıklanmıştır.
+## [Installation](https://github.com/ErenKaya1/digital-menu-api).
